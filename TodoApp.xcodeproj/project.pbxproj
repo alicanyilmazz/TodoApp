@@ -14,6 +14,9 @@
 		5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */; };
 		5A347D0B27234325002BD16C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0A27234325002BD16C /* Assets.xcassets */; };
 		5A347D0E27234325002BD16C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0C27234325002BD16C /* LaunchScreen.storyboard */; };
+		5A347D1D2723446A002BD16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D1C2723446A002BD16C /* AppDelegate.swift */; };
+		5A347D1F27234478002BD16C /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D1E27234478002BD16C /* AppContainer.swift */; };
+		5A347D2127234486002BD16C /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2027234486002BD16C /* AppRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		5A347D0A27234325002BD16C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A347D0D27234325002BD16C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A347D0F27234325002BD16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A347D1C2723446A002BD16C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5A347D1E27234478002BD16C /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		5A347D2027234486002BD16C /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,11 @@
 		5A347CFD27234324002BD16C /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				5A347D1B2723440C002BD16C /* Presentations */,
+				5A347D1A272343EA002BD16C /* Supporting Files */,
+				5A347D19272343D4002BD16C /* Resources */,
+				5A347D18272343C9002BD16C /* Scenes */,
+				5A347D17272343BF002BD16C /* App */,
 				5A347CFE27234324002BD16C /* AppDelegate.swift */,
 				5A347D0027234324002BD16C /* SceneDelegate.swift */,
 				5A347D0227234324002BD16C /* ViewController.swift */,
@@ -68,6 +79,44 @@
 				5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */,
 			);
 			path = TodoApp;
+			sourceTree = "<group>";
+		};
+		5A347D17272343BF002BD16C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5A347D1C2723446A002BD16C /* AppDelegate.swift */,
+				5A347D1E27234478002BD16C /* AppContainer.swift */,
+				5A347D2027234486002BD16C /* AppRouter.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5A347D18272343C9002BD16C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		5A347D19272343D4002BD16C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5A347D1A272343EA002BD16C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A347D1B2723440C002BD16C /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +193,10 @@
 				5A347D0327234324002BD16C /* ViewController.swift in Sources */,
 				5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */,
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
+				5A347D1D2723446A002BD16C /* AppDelegate.swift in Sources */,
+				5A347D2127234486002BD16C /* AppRouter.swift in Sources */,
 				5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */,
+				5A347D1F27234478002BD16C /* AppContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
