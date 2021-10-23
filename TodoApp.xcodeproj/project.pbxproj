@@ -17,6 +17,11 @@
 		5A347D2127234486002BD16C /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2027234486002BD16C /* AppRouter.swift */; };
 		5A347D242723E1D1002BD16C /* TodoListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D232723E1D1002BD16C /* TodoListBuilder.swift */; };
 		5A347D262723E38D002BD16C /* TodoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D252723E38D002BD16C /* TodoList.storyboard */; };
+		5A347D282723E7EE002BD16C /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D272723E7EE002BD16C /* TodoListViewController.swift */; };
+		5A347D2A2723F4E4002BD16C /* TodoListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D292723F4E4002BD16C /* TodoListContracts.swift */; };
+		5A347D2C2723F4FC002BD16C /* TodoListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2B2723F4FC002BD16C /* TodoListInteractor.swift */; };
+		5A347D2E2723F517002BD16C /* TodoListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2D2723F517002BD16C /* TodoListPresenter.swift */; };
+		5A347D302723F528002BD16C /* TodoListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2F2723F528002BD16C /* TodoListRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		5A347D2027234486002BD16C /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		5A347D232723E1D1002BD16C /* TodoListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListBuilder.swift; sourceTree = "<group>"; };
 		5A347D252723E38D002BD16C /* TodoList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoList.storyboard; sourceTree = "<group>"; };
+		5A347D272723E7EE002BD16C /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		5A347D292723F4E4002BD16C /* TodoListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListContracts.swift; sourceTree = "<group>"; };
+		5A347D2B2723F4FC002BD16C /* TodoListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListInteractor.swift; sourceTree = "<group>"; };
+		5A347D2D2723F517002BD16C /* TodoListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListPresenter.swift; sourceTree = "<group>"; };
+		5A347D2F2723F528002BD16C /* TodoListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +133,11 @@
 			children = (
 				5A347D252723E38D002BD16C /* TodoList.storyboard */,
 				5A347D232723E1D1002BD16C /* TodoListBuilder.swift */,
+				5A347D272723E7EE002BD16C /* TodoListViewController.swift */,
+				5A347D292723F4E4002BD16C /* TodoListContracts.swift */,
+				5A347D2B2723F4FC002BD16C /* TodoListInteractor.swift */,
+				5A347D2D2723F517002BD16C /* TodoListPresenter.swift */,
+				5A347D2F2723F528002BD16C /* TodoListRouter.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -198,10 +213,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A347D282723E7EE002BD16C /* TodoListViewController.swift in Sources */,
 				5A347D0327234324002BD16C /* ViewController.swift in Sources */,
+				5A347D2A2723F4E4002BD16C /* TodoListContracts.swift in Sources */,
 				5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */,
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
+				5A347D2E2723F517002BD16C /* TodoListPresenter.swift in Sources */,
+				5A347D302723F528002BD16C /* TodoListRouter.swift in Sources */,
 				5A347D2127234486002BD16C /* AppRouter.swift in Sources */,
+				5A347D2C2723F4FC002BD16C /* TodoListInteractor.swift in Sources */,
 				5A347D242723E1D1002BD16C /* TodoListBuilder.swift in Sources */,
 				5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */,
 				5A347D1F27234478002BD16C /* AppContainer.swift in Sources */,
@@ -349,7 +369,6 @@
 				INFOPLIST_FILE = TodoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -376,7 +395,6 @@
 				INFOPLIST_FILE = TodoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
