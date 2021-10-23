@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+final class TodoListRouter : TodoListRouterProtocol{
+    func navigate(to route: TodoListRoute) {
+        // TODO
+    }
+}
