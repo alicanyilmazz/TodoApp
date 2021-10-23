@@ -17,7 +17,6 @@ protocol TodoListInteractorProtocol : class{
 }
 
 enum TodoListInteractorOutput{
-    case updateTitle(String)
     case setLoading(Bool)
     case showTodoList([Todo])
     case showTodoDetail(Todo)

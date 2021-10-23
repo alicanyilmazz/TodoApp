@@ -21,3 +21,9 @@ final class TodoPresentation: NSObject {
         return self.title == other.title
     }
 }
+
+extension TodoPresentation {
+    convenience init(todo: Todo) {
+        self.init(title: todo.title!)
+    }
+}
