@@ -12,6 +12,7 @@ import UIKit
 protocol TodoListServiceProtocol {
   func fetchTodos(with request : NSFetchRequest<Todo>) -> [Todo]
   func addTodo(todo : String)
+  func searchTodo(todo : String) -> [Todo]
 }
 
 class TodoListService : TodoListServiceProtocol {
@@ -32,6 +33,13 @@ class TodoListService : TodoListServiceProtocol {
         newTodo.title = todo
         data.append(newTodo)
         save()
+    }
+    
+    func searchTodo(todo : String) -> [Todo]{
+        let request : NSFetchRequest<Todo> = Todo.fetchRequest()
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", todo)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        return fetchTodos(with: request)
     }
     
     func save(){

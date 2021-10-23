@@ -15,6 +15,7 @@ protocol TodoListInteractorProtocol : class {
     func load()
     func selectedTodo(at index : Int)
     func addTodo(todo : String)
+    func searchTodo(todo : String)
 }
 
 enum TodoListInteractorOutput{
@@ -33,6 +34,7 @@ protocol TodoListPresenterProtocol : class {
     func load()
     func selectedTodo(at index : Int)
     func addTodo(todo : String)
+    func searchTodo(todo : String)
 }
 
 enum TodoListPresenterOutput{

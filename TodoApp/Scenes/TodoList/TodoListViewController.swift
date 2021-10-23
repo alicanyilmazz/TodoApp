@@ -81,21 +81,22 @@ extension TodoListViewController : UITableViewDelegate{
         print("")
     }   
 }
-/*
+
 extension TodoListViewController : UISearchBarDelegate{
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-        loadItems(with: request)
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        self.presenter.searchTodo(todo: text)
+        //self.presenter.load()
+        self.tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
-            loadItems()
+            self.presenter.load()
+            self.tableView.reloadData()
             
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
@@ -103,4 +104,5 @@ extension TodoListViewController : UISearchBarDelegate{
         }
     }
 }
-*/
+
+

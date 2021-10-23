@@ -33,4 +33,10 @@ final class TodoListInteractor : TodoListInteractorProtocol{
     func addTodo(todo : String) {
         service.addTodo(todo: todo)
     }
+    
+    func searchTodo(todo: String) {
+        todos = service.searchTodo(todo: todo)
+        self.delegate?.handleOutput(.showTodoList(todos))
+    }
+    
 }
