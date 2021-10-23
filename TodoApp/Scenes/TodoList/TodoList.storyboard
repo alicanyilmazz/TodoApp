@@ -35,23 +35,34 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-Az-NaV">
-                                <rect key="frame" x="0.0" y="52" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="52" width="372" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FO-vx-9Zw">
+                                <rect key="frame" x="371.5" y="62" width="41.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="AddTodoButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Sgo-ya-8iY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fWd-R4-S6z" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="3jN-qO-0bo"/>
-                            <constraint firstItem="fWd-R4-S6z" firstAttribute="top" secondItem="bZR-Az-NaV" secondAttribute="bottom" id="4fs-HY-KP2"/>
-                            <constraint firstItem="fWd-R4-S6z" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6S6-3Y-P0Y"/>
-                            <constraint firstItem="fWd-R4-S6z" firstAttribute="top" secondItem="bZR-Az-NaV" secondAttribute="bottom" id="9KL-EI-0fc"/>
-                            <constraint firstItem="bZR-Az-NaV" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Gb8-4C-RHu"/>
-                            <constraint firstAttribute="bottom" secondItem="fWd-R4-S6z" secondAttribute="bottom" id="ObO-a4-6LY"/>
-                            <constraint firstItem="bZR-Az-NaV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="Z6w-3f-nHw"/>
-                            <constraint firstItem="bZR-Az-NaV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cRr-or-fEd"/>
+                            <constraint firstItem="bZR-Az-NaV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1jJ-Bo-rjs"/>
+                            <constraint firstItem="bZR-Az-NaV" firstAttribute="centerY" secondItem="3FO-vx-9Zw" secondAttribute="centerY" id="7JR-1U-19E"/>
+                            <constraint firstItem="fWd-R4-S6z" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="7PS-nZ-hn4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3FO-vx-9Zw" secondAttribute="trailing" constant="1" id="996-4u-8Cr"/>
+                            <constraint firstItem="bZR-Az-NaV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="Bz2-MW-jgu"/>
+                            <constraint firstItem="bZR-Az-NaV" firstAttribute="leading" secondItem="fWd-R4-S6z" secondAttribute="leading" id="pBg-5b-ErW"/>
+                            <constraint firstItem="fWd-R4-S6z" firstAttribute="top" secondItem="3FO-vx-9Zw" secondAttribute="bottom" constant="10" id="s70-zs-yMN"/>
+                            <constraint firstItem="3FO-vx-9Zw" firstAttribute="leading" secondItem="bZR-Az-NaV" secondAttribute="trailing" id="wCS-nN-aC0"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fWd-R4-S6z" secondAttribute="bottom" constant="-83" id="zaI-AR-6AT"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="fWd-R4-S6z" id="4pN-3X-TED"/>
                     </connections>
@@ -62,6 +73,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
