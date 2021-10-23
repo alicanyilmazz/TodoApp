@@ -6,14 +6,29 @@
 //
 
 import Foundation
+import CoreData
 
 // MARK - Interactor
 
+protocol TodoListInteractorProtocol : class{
+    func load()
+    func selectedTodo(at index : Int)
+}
 
+enum TodoListInteractorOutput{
+    case updateTitle(String)
+    case setLoading(Bool)
+    case showTodoList([Todo])
+    case showTodoDetail(Todo)
+}
+
+protocol TodoListInteractorDelegate : class{
+    func handleOutput(_ output : TodoListInteractorOutput)
+}
 
 // MARK - Presenter
 
-protocol TodoListPresenterProtocol{
+protocol TodoListPresenterProtocol : class{
     func load()
     func selectedTodo(at index : Int)
 }
@@ -21,12 +36,23 @@ protocol TodoListPresenterProtocol{
 enum TodoListPresenterOutput{
     case updateTitle(String)
     case setLoading(Bool)
-    //case showTodoList([])
+    case showTodoList([TodoPresentation])
 }
 
 // MARK - View
 
+protocol TodoListViewProtocol : class{
+    func handleOutput(_ output : TodoListPresenterOutput)
+}
+
 
 // MARK - Router
 
+enum TodoListRoute{
+    case detail(Todo)
+}
+
+protocol TodoListRouterProtocol : class{
+    func navigate(to route: TodoListRoute)
+}
 

@@ -24,6 +24,7 @@
 		5A347D302723F528002BD16C /* TodoListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2F2723F528002BD16C /* TodoListRouter.swift */; };
 		5A347D332723F993002BD16C /* TodoPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D322723F993002BD16C /* TodoPresentation.swift */; };
 		5A347D352723F9BC002BD16C /* TodoDetailPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D342723F9BC002BD16C /* TodoDetailPresentation.swift */; };
+		5A347D382723FED7002BD16C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D372723FED7002BD16C /* Todo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5A347D2F2723F528002BD16C /* TodoListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListRouter.swift; sourceTree = "<group>"; };
 		5A347D322723F993002BD16C /* TodoPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoPresentation.swift; sourceTree = "<group>"; };
 		5A347D342723F9BC002BD16C /* TodoDetailPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailPresentation.swift; sourceTree = "<group>"; };
+		5A347D372723FED7002BD16C /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				5A347D0C27234325002BD16C /* LaunchScreen.storyboard */,
 				5A347D0F27234325002BD16C /* Info.plist */,
 				5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */,
+				5A347D372723FED7002BD16C /* Todo.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				5A347D282723E7EE002BD16C /* TodoListViewController.swift in Sources */,
 				5A347D0327234324002BD16C /* ViewController.swift in Sources */,
 				5A347D2A2723F4E4002BD16C /* TodoListContracts.swift in Sources */,
+				5A347D382723FED7002BD16C /* Todo.swift in Sources */,
 				5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */,
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
 				5A347D352723F9BC002BD16C /* TodoDetailPresentation.swift in Sources */,
