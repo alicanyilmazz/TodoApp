@@ -8,6 +8,7 @@
 import Foundation
 
 final class TodoListPresenter : TodoListPresenterProtocol{
+
     private unowned var view : TodoListViewProtocol
     private let interactor : TodoListInteractorProtocol
     private let router: TodoListRouterProtocol
@@ -28,7 +29,9 @@ final class TodoListPresenter : TodoListPresenterProtocol{
         interactor.selectedTodo(at: index)
     }
     
-    
+    func addTodo(todo : String) {
+        interactor.addTodo(todo: todo)
+    }   
 }
 
 extension TodoListPresenter : TodoListInteractorDelegate{
@@ -41,6 +44,7 @@ extension TodoListPresenter : TodoListInteractorDelegate{
             view.handleOutput(.showTodoList(todoPresentation))
         case .showTodoDetail(let todo):
             router.navigate(to: .detail(todo))
+        default : print("olmadı")
         }
     }
 }

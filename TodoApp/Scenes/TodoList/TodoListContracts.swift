@@ -14,6 +14,7 @@ protocol TodoListInteractorProtocol : class {
     var delegate : TodoListInteractorDelegate? {get set}
     func load()
     func selectedTodo(at index : Int)
+    func addTodo(todo : String)
 }
 
 enum TodoListInteractorOutput{
@@ -31,6 +32,7 @@ protocol TodoListInteractorDelegate : class{
 protocol TodoListPresenterProtocol : class {
     func load()
     func selectedTodo(at index : Int)
+    func addTodo(todo : String)
 }
 
 enum TodoListPresenterOutput{

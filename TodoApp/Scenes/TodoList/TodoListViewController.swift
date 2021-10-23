@@ -17,6 +17,7 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.load()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         // Do any additional setup after loading the view.
     }
     
@@ -25,7 +26,7 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
         case .updateTitle(let title):
             self.title = title
         case .setLoading(let isLoading):
-              print("setloading")//UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoList(let todos):
             self.todos = todos
         }
@@ -37,21 +38,18 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
         let alert = UIAlertController(title: "Add New Todo", message: "", preferredStyle: .alert)
         let actionAdd = UIAlertAction(title: "Add", style: .default) { (action) in
             // what will happed once the user clicks the Add Item button our UIAlert
-
-            //let newItem = Item(context: self.context)
-            /*
-            if let _text = textField.text {
-                newItem.title = _text
-
-                self.itemArray.append(newItem)
-                self.saveItems()
-            }*/
+            guard let _text = textField.text, !_text.isEmpty else {
+                return
+            }
+            self.presenter.addTodo(todo: _text)
+            self.presenter.load()
+            self.tableView.reloadData()
         }
         
         let actionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                 
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create new item"
+            alertTextField.placeholder = "Add New Todo :D"
             alertTextField.textColor = .systemPink
             textField = alertTextField
         }
@@ -59,6 +57,7 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
         alert.addAction(actionAdd)
         alert.addAction(actionCancel)
         present(alert, animated: true, completion: nil)
+
     }
     
 }
@@ -82,3 +81,26 @@ extension TodoListViewController : UITableViewDelegate{
         print("")
     }   
 }
+/*
+extension TodoListViewController : UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(with: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            loadItems()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+}
+*/

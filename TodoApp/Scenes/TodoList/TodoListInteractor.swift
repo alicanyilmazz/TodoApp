@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 final class TodoListInteractor : TodoListInteractorProtocol{
-    
     var delegate : TodoListInteractorDelegate?
     
     private let service: TodoListServiceProtocol
@@ -30,5 +29,8 @@ final class TodoListInteractor : TodoListInteractorProtocol{
         let todo = todos[index]
         delegate?.handleOutput(.showTodoDetail(todo))
     }
- 
+    
+    func addTodo(todo : String) {
+        service.addTodo(todo: todo)
+    }
 }
