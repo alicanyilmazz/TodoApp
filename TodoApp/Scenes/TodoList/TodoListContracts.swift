@@ -10,7 +10,7 @@ import CoreData
 
 // MARK - Interactor
 
-protocol TodoListInteractorProtocol : class{
+protocol TodoListInteractorProtocol : class {
     var delegate : TodoListInteractorDelegate? {get set}
     func load()
     func selectedTodo(at index : Int)
@@ -28,7 +28,7 @@ protocol TodoListInteractorDelegate : class{
 
 // MARK - Presenter
 
-protocol TodoListPresenterProtocol : class{
+protocol TodoListPresenterProtocol : class {
     func load()
     func selectedTodo(at index : Int)
 }

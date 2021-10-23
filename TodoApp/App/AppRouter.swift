@@ -17,6 +17,8 @@ final class AppRouter {
     
     func start() {
         let viewController = TodoListBuilder.make()
+        //viewController.view.backgroundColor = .systemPink
+        //viewController.title = "Replace Me"
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

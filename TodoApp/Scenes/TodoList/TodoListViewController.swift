@@ -22,16 +22,43 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     
     func handleOutput(_ output: TodoListPresenterOutput) {
         switch output {
-        case .updateTitle(let string):
+        case .updateTitle(let title):
             self.title = title
         case .setLoading(let isLoading):
-            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+              print("setloading")//UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoList(let todos):
             self.todos = todos
         }
     }
     
     @IBAction func AddTodoButtonClicked(_ sender: UIButton) {
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Todo", message: "", preferredStyle: .alert)
+        let actionAdd = UIAlertAction(title: "Add", style: .default) { (action) in
+            // what will happed once the user clicks the Add Item button our UIAlert
+
+            //let newItem = Item(context: self.context)
+            /*
+            if let _text = textField.text {
+                newItem.title = _text
+
+                self.itemArray.append(newItem)
+                self.saveItems()
+            }*/
+        }
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+                
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new item"
+            alertTextField.textColor = .systemPink
+            textField = alertTextField
+        }
+        
+        alert.addAction(actionAdd)
+        alert.addAction(actionCancel)
+        present(alert, animated: true, completion: nil)
     }
     
 }
@@ -52,8 +79,6 @@ extension TodoListViewController : UITableViewDataSource{
 
 extension TodoListViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
-    
-    
+        print("")
+    }   
 }

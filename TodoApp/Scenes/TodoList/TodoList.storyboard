@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todo List View Controller-->
+        <!--TodoListViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="TodoListViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TodoListViewController" title="TodoListViewController" id="Y6W-OH-hqX" customClass="TodoListViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,11 +35,13 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-Az-NaV">
-                                <rect key="frame" x="0.0" y="52" width="372" height="51"/>
+                                <rect key="frame" x="0.0" y="52" width="371" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FO-vx-9Zw">
-                                <rect key="frame" x="371.5" y="62" width="41.5" height="31"/>
+                                <rect key="frame" x="372" y="52" width="42" height="51"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                                 <connections>
@@ -51,13 +53,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bZR-Az-NaV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1jJ-Bo-rjs"/>
-                            <constraint firstItem="bZR-Az-NaV" firstAttribute="centerY" secondItem="3FO-vx-9Zw" secondAttribute="centerY" id="7JR-1U-19E"/>
+                            <constraint firstItem="fWd-R4-S6z" firstAttribute="top" secondItem="3FO-vx-9Zw" secondAttribute="bottom" id="6Hq-Z4-0u7"/>
                             <constraint firstItem="fWd-R4-S6z" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="7PS-nZ-hn4"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3FO-vx-9Zw" secondAttribute="trailing" constant="1" id="996-4u-8Cr"/>
                             <constraint firstItem="bZR-Az-NaV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="Bz2-MW-jgu"/>
+                            <constraint firstItem="3FO-vx-9Zw" firstAttribute="trailing" secondItem="fWd-R4-S6z" secondAttribute="trailing" id="FOj-yP-K4f"/>
+                            <constraint firstItem="3FO-vx-9Zw" firstAttribute="leading" secondItem="bZR-Az-NaV" secondAttribute="trailing" constant="1" id="G1a-IW-zvR"/>
+                            <constraint firstItem="3FO-vx-9Zw" firstAttribute="top" secondItem="bZR-Az-NaV" secondAttribute="top" id="OrC-VB-qSi"/>
+                            <constraint firstItem="3FO-vx-9Zw" firstAttribute="bottom" secondItem="bZR-Az-NaV" secondAttribute="bottom" id="kRG-Iq-XJ2"/>
                             <constraint firstItem="bZR-Az-NaV" firstAttribute="leading" secondItem="fWd-R4-S6z" secondAttribute="leading" id="pBg-5b-ErW"/>
-                            <constraint firstItem="fWd-R4-S6z" firstAttribute="top" secondItem="3FO-vx-9Zw" secondAttribute="bottom" constant="10" id="s70-zs-yMN"/>
-                            <constraint firstItem="3FO-vx-9Zw" firstAttribute="leading" secondItem="bZR-Az-NaV" secondAttribute="trailing" id="wCS-nN-aC0"/>
                             <constraint firstAttribute="bottomMargin" secondItem="fWd-R4-S6z" secondAttribute="bottom" constant="-83" id="zaI-AR-6AT"/>
                         </constraints>
                     </view>
@@ -76,6 +79,9 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

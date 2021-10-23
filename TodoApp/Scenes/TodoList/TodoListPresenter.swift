@@ -8,7 +8,7 @@
 import Foundation
 
 final class TodoListPresenter : TodoListPresenterProtocol{
-    private unowned let view : TodoListViewProtocol
+    private unowned var view : TodoListViewProtocol
     private let interactor : TodoListInteractorProtocol
     private let router: TodoListRouterProtocol
     

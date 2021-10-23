@@ -10,7 +10,7 @@ import CoreData
 
 final class TodoListInteractor : TodoListInteractorProtocol{
     
-    weak var delegate : TodoListInteractorDelegate?
+    var delegate : TodoListInteractorDelegate?
     
     private let service: TodoListServiceProtocol
     private var todos : [Todo] = []
