@@ -11,6 +11,7 @@ import CoreData
 // MARK - Interactor
 
 protocol TodoListInteractorProtocol : class{
+    var delegate : TodoListInteractorDelegate? {get set}
     func load()
     func selectedTodo(at index : Int)
 }
