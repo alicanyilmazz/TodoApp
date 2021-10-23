@@ -60,6 +60,45 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
 
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var textField = UITextField()
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+            self.presenter.deleteTodo(index: indexPath.row)
+            self.todos.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            boolValue(true)
+           }
+        deleteAction.backgroundColor = .systemPink
+        
+        let editAction = UIContextualAction(style: .destructive, title: "Edit") {  (contextualAction, view, boolValue) in
+
+            let alert = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Save", style: .default) { (action) in
+
+                guard let text = textField.text, !text.isEmpty else {
+                    return
+                }
+                self.presenter.EditTodo(index: indexPath.row,todo: text)
+                self.presenter.load()
+                self.tableView.reloadData()
+            }
+            alert.addTextField { (alertTextField) in
+                alertTextField.placeholder = "Edit item"
+                alertTextField.textColor = .systemPink
+                textField = alertTextField
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+            
+            boolValue(true)
+           }
+        editAction.backgroundColor = .systemOrange
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction , editAction])
+
+        return swipeActions
+    }
 }
 
 
@@ -89,7 +128,6 @@ extension TodoListViewController : UISearchBarDelegate{
             return
         }
         self.presenter.searchTodo(todo: text)
-        //self.presenter.load()
         self.tableView.reloadData()
     }
     

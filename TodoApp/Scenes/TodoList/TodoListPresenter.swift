@@ -8,6 +8,7 @@
 import Foundation
 
 final class TodoListPresenter : TodoListPresenterProtocol{
+    
     private unowned var view : TodoListViewProtocol
     private let interactor : TodoListInteractorProtocol
     private let router: TodoListRouterProtocol
@@ -34,6 +35,14 @@ final class TodoListPresenter : TodoListPresenterProtocol{
     
     func searchTodo(todo: String) {
         interactor.searchTodo(todo: todo)
+    }
+    
+    func deleteTodo(index: Int) {
+        interactor.deleteTodo(index: index)
+    }
+    
+    func EditTodo(index: Int, todo: String) {
+        interactor.EditTodo(index: index, todo: todo)
     }
 }
 

@@ -13,6 +13,9 @@ protocol TodoListServiceProtocol {
   func fetchTodos(with request : NSFetchRequest<Todo>) -> [Todo]
   func addTodo(todo : String)
   func searchTodo(todo : String) -> [Todo]
+  func deleteTodo(index : Int)
+  func editTodo(index : Int,todo : String)
+  func save()
 }
 
 class TodoListService : TodoListServiceProtocol {
@@ -40,6 +43,18 @@ class TodoListService : TodoListServiceProtocol {
         request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", todo)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         return fetchTodos(with: request)
+    }
+    
+    func deleteTodo(index : Int){
+        let allTodos = fetchTodos()
+        context.delete(allTodos[index])
+
+    }
+    
+    func editTodo(index : Int,todo : String){
+        let allTodos = fetchTodos()
+        allTodos[index].setValue(todo, forKey: "title")
+        save()
     }
     
     func save(){
