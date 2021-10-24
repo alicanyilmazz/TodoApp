@@ -90,6 +90,8 @@
 		5A347CFD27234324002BD16C /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				5A347D0A27234325002BD16C /* Assets.xcassets */,
+				5A347D0C27234325002BD16C /* LaunchScreen.storyboard */,
 				5A347D0F27234325002BD16C /* Info.plist */,
 				5A347D17272343BF002BD16C /* App */,
 				5A347D18272343C9002BD16C /* Scenes */,
@@ -123,7 +125,6 @@
 		5A347D19272343D4002BD16C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5A347D0A27234325002BD16C /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -131,7 +132,6 @@
 		5A347D1A272343EA002BD16C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A347D0C27234325002BD16C /* LaunchScreen.storyboard */,
 				5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */,
 				5A347D3B27241953002BD16C /* CoreDataService.swift */,
 				5A347D3D27242011002BD16C /* TodoListService.swift */,
