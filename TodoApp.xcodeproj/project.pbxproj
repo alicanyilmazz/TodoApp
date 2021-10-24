@@ -39,7 +39,7 @@
 		5A347D0827234324002BD16C /* TodoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoApp.xcdatamodel; sourceTree = "<group>"; };
 		5A347D0A27234325002BD16C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A347D0D27234325002BD16C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5A347D0F27234325002BD16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
+		5A347D0F27234325002BD16C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A347D1E27234478002BD16C /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		5A347D2027234486002BD16C /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		5A347D232723E1D1002BD16C /* TodoListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListBuilder.swift; sourceTree = "<group>"; };
@@ -75,6 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				5A347CFD27234324002BD16C /* TodoApp */,
+				5A347D0F27234325002BD16C /* Info.plist */,
+				5A347D0C27234325002BD16C /* LaunchScreen.storyboard */,
+				5A347D0A27234325002BD16C /* Assets.xcassets */,
 				5A347CFC27234324002BD16C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,9 +93,6 @@
 		5A347CFD27234324002BD16C /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
-				5A347D0A27234325002BD16C /* Assets.xcassets */,
-				5A347D0C27234325002BD16C /* LaunchScreen.storyboard */,
-				5A347D0F27234325002BD16C /* Info.plist */,
 				5A347D17272343BF002BD16C /* App */,
 				5A347D18272343C9002BD16C /* Scenes */,
 				5A347D1B2723440C002BD16C /* Presentations */,
