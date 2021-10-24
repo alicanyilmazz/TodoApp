@@ -31,6 +31,27 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
             self.todos = todos
         }
     }
+}
+
+
+extension TodoListViewController : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath)
+        let todo = todos[indexPath.row]
+        cell.textLabel?.text = todo.title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return todos.count
+    }
+}
+
+extension TodoListViewController : UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("")
+    }
     
     @IBAction func AddTodoButtonClicked(_ sender: UIButton) {
         var textField = UITextField()
@@ -99,27 +120,6 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
 
         return swipeActions
     }
-}
-
-
-extension TodoListViewController : UITableViewDataSource{
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath)
-        let todo = todos[indexPath.row]
-        cell.textLabel?.text = todo.title
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count
-    }  
-}
-
-extension TodoListViewController : UITableViewDelegate{
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("")
-    }   
 }
 
 extension TodoListViewController : UISearchBarDelegate{
