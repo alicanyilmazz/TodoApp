@@ -12,3 +12,9 @@ struct TodoDetailPresentation: Equatable {
     let explanation : String
     let date : Date
 }
+
+extension TodoDetailPresentation{
+    init(todoDetail : TodoDetail){
+        self.init(detailTitle: todoDetail.title!, explanation: todoDetail.explation!, date: todoDetail.date!)
+    }
+}

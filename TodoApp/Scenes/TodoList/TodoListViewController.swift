@@ -50,7 +50,8 @@ extension TodoListViewController : UITableViewDataSource{
 extension TodoListViewController : UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("")
+        tableView.deselectRow(at: indexPath, animated: false)
+        presenter.selectedTodo(at: indexPath.row)
     }
     
     @IBAction func AddTodoButtonClicked(_ sender: UIButton) {
