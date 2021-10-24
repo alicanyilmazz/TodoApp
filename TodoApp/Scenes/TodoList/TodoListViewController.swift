@@ -17,7 +17,7 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.load()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         // Do any additional setup after loading the view.
     }
     
@@ -112,10 +112,11 @@ extension TodoListViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
-    }
+    }  
 }
 
 extension TodoListViewController : UITableViewDelegate{
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("")
     }   

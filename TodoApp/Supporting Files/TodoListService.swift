@@ -48,7 +48,7 @@ class TodoListService : TodoListServiceProtocol {
     func deleteTodo(index : Int){
         let allTodos = fetchTodos()
         context.delete(allTodos[index])
-
+        save()
     }
     
     func editTodo(index : Int,todo : String){

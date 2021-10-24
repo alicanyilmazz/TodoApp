@@ -104,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				5A347D222723E193002BD16C /* TodoList */,
+				5A347D4127257C08002BD16C /* TodoDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -157,6 +158,13 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5A347D4127257C08002BD16C /* TodoDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodoDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
