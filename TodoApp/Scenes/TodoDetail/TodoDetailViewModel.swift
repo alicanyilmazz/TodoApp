@@ -11,10 +11,10 @@ import CoreData
 final class TodoDetailViewModel: TodoDetailViewModelProtocol {
     
     weak var delegate: TodoDetailViewModelDelegate?
-    private let presentation: TodoDetailPresentation
+    private let presentation: [TodoDetailPresentation]
     
-    init(todoDetail : TodoDetail) {
-        self.presentation = TodoDetailPresentation(todoDetail: todoDetail)
+    init(todoDetail : [TodoDetail]) {
+        self.presentation = todoDetail.map(TodoDetailPresentation.init)
     }
     
     func load() {

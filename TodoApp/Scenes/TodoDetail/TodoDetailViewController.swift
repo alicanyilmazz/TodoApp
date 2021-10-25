@@ -21,7 +21,8 @@ class TodoDetailViewController: UIViewController {
 }
 
 extension TodoDetailViewController: TodoDetailViewModelDelegate{
-    func showDetail(_ presentation: TodoDetailPresentation) {
+    func showDetail(_ presentation: [TodoDetailPresentation]) {
         
     }
 }
+

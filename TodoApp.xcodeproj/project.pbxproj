@@ -31,6 +31,7 @@
 		5A347D49272584A7002BD16C /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D48272584A7002BD16C /* TodoDetailViewController.swift */; };
 		5A347D4B272584C9002BD16C /* TodoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D4A272584C9002BD16C /* TodoDetailViewModel.swift */; };
 		5A347D4D2726B4AE002BD16C /* TodoDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D4C2726B4AE002BD16C /* TodoDetailCell.swift */; };
+		5A347D4F2726F21F002BD16C /* TodoDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D4E2726F21F002BD16C /* TodoDetailService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		5A347D48272584A7002BD16C /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 		5A347D4A272584C9002BD16C /* TodoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewModel.swift; sourceTree = "<group>"; };
 		5A347D4C2726B4AE002BD16C /* TodoDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailCell.swift; sourceTree = "<group>"; };
+		5A347D4E2726F21F002BD16C /* TodoDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */,
 				5A347D3B27241953002BD16C /* CoreDataService.swift */,
 				5A347D3D27242011002BD16C /* TodoListService.swift */,
+				5A347D4E2726F21F002BD16C /* TodoDetailService.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				5A347D4B272584C9002BD16C /* TodoDetailViewModel.swift in Sources */,
 				5A347D1F27234478002BD16C /* AppContainer.swift in Sources */,
 				5A347D49272584A7002BD16C /* TodoDetailViewController.swift in Sources */,
+				5A347D4F2726F21F002BD16C /* TodoDetailService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

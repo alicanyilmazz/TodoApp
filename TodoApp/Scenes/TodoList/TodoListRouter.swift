@@ -16,6 +16,11 @@ final class TodoListRouter : TodoListRouterProtocol{
      }
 
     func navigate(to route: TodoListRoute) {
-        // TODO
+        switch route {
+        case .detail(let todo):
+            
+            let detailView = TodoDetailBuilder.make(with: todo)
+            view.show(detailView, sender: nil)
+        }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TodoDetailViewModelDelegate: class {
-    func showDetail(_ presentation: TodoDetailPresentation)
+    func showDetail(_ presentation: [TodoDetailPresentation])
 }
 
 protocol TodoDetailViewModelProtocol {
