@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--TodoDetailViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController title="TodoDetailViewController" id="Y6W-OH-hqX" customClass="TodoDetailViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="158" id="9KM-PB-dib">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoDetailCell" rowHeight="158" id="9KM-PB-dib" customClass="TodoDetailCell" customModule="TodoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9KM-PB-dib" id="npn-45-uWI">
@@ -40,12 +40,41 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8YR-z3-on5">
                                                     <rect key="frame" x="2" y="2" width="410" height="154"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green" translatesAutoresizingMaskIntoConstraints="NO" id="UTF-Z2-4wE">
-                                                            <rect key="frame" x="8" y="50" width="53" height="54"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paperplane" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTF-Z2-4wE">
+                                                            <rect key="frame" x="8" y="47.5" width="60" height="59.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="60" id="Zct-Vp-mbl"/>
+                                                                <constraint firstAttribute="width" constant="60" id="zNH-0c-w9w"/>
+                                                            </constraints>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-02-03 23:18:03" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bh-EY-Zz9">
+                                                            <rect key="frame" x="196" y="109" width="206" height="43"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="206" id="F1s-V0-8S0"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2g-y0-2od">
+                                                            <rect key="frame" x="83" y="47" width="319" height="60"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="6bh-EY-Zz9" firstAttribute="top" secondItem="T2g-y0-2od" secondAttribute="bottom" constant="2" id="0Wn-lh-y2u"/>
+                                                        <constraint firstItem="T2g-y0-2od" firstAttribute="top" secondItem="UTF-Z2-4wE" secondAttribute="top" id="1Kl-lI-bY9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="T2g-y0-2od" secondAttribute="trailing" constant="8" id="DMc-Bm-ZfW"/>
+                                                        <constraint firstItem="T2g-y0-2od" firstAttribute="leading" secondItem="UTF-Z2-4wE" secondAttribute="trailing" constant="15" id="RO2-xA-VZ1"/>
+                                                        <constraint firstItem="UTF-Z2-4wE" firstAttribute="leading" secondItem="8YR-z3-on5" secondAttribute="leading" constant="8" id="gEd-3A-twI"/>
+                                                        <constraint firstItem="UTF-Z2-4wE" firstAttribute="centerY" secondItem="8YR-z3-on5" secondAttribute="centerY" id="gv4-wo-g5F"/>
+                                                        <constraint firstItem="6bh-EY-Zz9" firstAttribute="trailing" secondItem="T2g-y0-2od" secondAttribute="trailing" id="h4v-3C-i4I"/>
+                                                        <constraint firstItem="T2g-y0-2od" firstAttribute="bottom" secondItem="UTF-Z2-4wE" secondAttribute="bottom" id="lsd-os-CBA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="6bh-EY-Zz9" secondAttribute="bottom" constant="2" id="yzT-0q-Met"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -55,8 +84,18 @@
                                                 <constraint firstItem="8YR-z3-on5" firstAttribute="top" secondItem="npn-45-uWI" secondAttribute="top" constant="2" id="phi-dH-xJZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarLbl" destination="UTF-Z2-4wE" id="A4k-jk-ONq"/>
+                                            <outlet property="customView" destination="npn-45-uWI" id="ZCB-rX-HBz"/>
+                                            <outlet property="dateLbl" destination="6bh-EY-Zz9" id="9es-LN-QfV"/>
+                                            <outlet property="detailLbl" destination="T2g-y0-2od" id="02P-C0-HsE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="7Lm-mL-qar"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="vOc-CU-BHN"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -76,6 +115,9 @@
                             <constraint firstItem="pIY-K0-WEH" firstAttribute="top" secondItem="Chd-xl-SvA" secondAttribute="top" id="sgG-K8-qWJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="IOg-MT-Q8b" id="pvC-1i-esK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +125,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="green" width="64" height="64"/>
+        <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
