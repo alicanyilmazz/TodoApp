@@ -14,6 +14,8 @@ class TodoDetailCell: UITableViewCell {
     @IBOutlet weak var detailLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var avatarLbl: UIImageView!
+    @IBOutlet weak var isCompletedLbl: UIImageView!
+    @IBOutlet weak var detailTitleLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

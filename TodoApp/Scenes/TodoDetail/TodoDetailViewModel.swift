@@ -9,11 +9,12 @@ import Foundation
 import CoreData
 
 final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
+    
     weak var delegate: TodoDetailListViewModelDelegate?
     private let service : TodoDetailListServiceProtocol
     private var todoDetails: [TodoDetail] = []
     private var todo : Todo
-    
+    private var todoDetail : TodoDetail = TodoDetail()
 
     init(service : TodoDetailListServiceProtocol,todo : Todo){
         self.service = service
@@ -23,33 +24,32 @@ final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
     func load() {
         notify(.updateTitle("TodoDetails"))
         notify(.setLoading(true))
-        let result = service.fetchTodos(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todo: todo, predicate: nil)
+        let result = service.fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todo: todo, predicate: nil)
         if result != nil{
             self.todoDetails = result
             let presentation = result.map({TodoDetailPresentation(todoDetail: $0)})
             self.notify(.showTodoDetailList(presentation))
         }
-    
     }
     
     func selectedTodoDetail(at index: Int) {
-        <#code#>
+        let todoDetail = todoDetails[index]
+        let viewModel = TodoExplanationViewModel(service: service, todoDetail: todoDetail, todo: todo, index: index)
+        delegate?.navigate(to: .detail(viewModel))
     }
-    
-    func addTodoDetail(todoDetail: String) {
-        <#code#>
-    }
-    
+   
     func searchTodoDetail(todoDetail: String) {
-        <#code#>
+        // TODO
     }
     
     func deleteTodoDetail(index: Int) {
-        <#code#>
+        service.deleteTodoDetail(index: index)
     }
     
-    func EditTodoDetail(index: Int, todoDetail: String) {
-        <#code#>
+    func addTodoDetail() {
+        var _todoDetail = service.returnTodoDetail()
+        let viewModel = TodoExplanationViewModel(service: service, todoDetail: _todoDetail, todo: todo, index: 0)
+        delegate?.navigate(to: .detail(viewModel))
     }
     
     private func notify(_ output: TodoDetailListViewModelOutput) {

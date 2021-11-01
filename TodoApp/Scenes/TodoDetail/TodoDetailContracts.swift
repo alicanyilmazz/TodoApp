@@ -11,10 +11,9 @@ protocol TodoDetailListViewModelProtocol {
     var delegate: TodoDetailListViewModelDelegate? { get set }
     func load()
     func selectedTodoDetail(at index : Int)
-    func addTodoDetail(todoDetail : String)
     func searchTodoDetail(todoDetail : String)
     func deleteTodoDetail(index : Int)
-    func EditTodoDetail(index : Int , todoDetail : String)
+    func addTodoDetail()
 }
 
 enum TodoDetailListViewModelOutput: Equatable {

@@ -37,7 +37,7 @@ class TodoListService : TodoListServiceProtocol {
         data.append(newTodo)
         save()
     }
-    
+        
     func searchTodo(todo : String) -> [Todo]{
         let request : NSFetchRequest<Todo> = Todo.fetchRequest()
         request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", todo)
