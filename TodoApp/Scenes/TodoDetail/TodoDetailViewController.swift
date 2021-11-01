@@ -36,6 +36,11 @@ extension TodoDetailViewController : TodoDetailListViewModelDelegate{
         switch output {
         case .updateTitle(let title):
             self.title = title
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemOrange]
+            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
+            navigationController?.navigationBar.tintColor = .systemOrange
+           // UINavigationBar.appearance().tintColor = UIColor.white
+           // UINavigationBar.appearance().barTintColor = UIColor.magenta
         case .setLoading(let isLoading):
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoDetailList(let todoDetailList):
@@ -74,10 +79,10 @@ extension TodoDetailViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoDetailList.count
     }
-    /*
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
-    }*/
+        return 130
+    }
 }
   extension TodoDetailViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,6 +95,7 @@ extension TodoDetailViewController : UITableViewDataSource{
             self.viewModel.deleteTodoDetail(index: indexPath.row)
             self.todoDetailList.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
+            //tableView.reloadData()
             boolValue(true)
            }
         deleteAction.backgroundColor = .systemPink

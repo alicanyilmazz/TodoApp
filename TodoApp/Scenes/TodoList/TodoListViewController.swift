@@ -124,7 +124,6 @@ extension TodoListViewController : UITableViewDelegate{
 }
 
 extension TodoListViewController : UISearchBarDelegate{
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             return

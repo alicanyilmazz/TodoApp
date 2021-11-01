@@ -43,7 +43,7 @@ final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
     }
     
     func deleteTodoDetail(index: Int) {
-        service.deleteTodoDetail(index: index)
+        service.deleteTodoDetail(index: index, todo: todo)
     }
     
     func addTodoDetail() {

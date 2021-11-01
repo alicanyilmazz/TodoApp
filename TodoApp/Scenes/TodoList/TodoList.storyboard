@@ -54,6 +54,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemYellowColor"/>
                         <constraints>
                             <constraint firstItem="bZR-Az-NaV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1jJ-Bo-rjs"/>
                             <constraint firstItem="fWd-R4-S6z" firstAttribute="top" secondItem="3FO-vx-9Zw" secondAttribute="bottom" id="6Hq-Z4-0u7"/>
@@ -85,6 +86,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

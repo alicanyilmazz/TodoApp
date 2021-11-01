@@ -14,7 +14,7 @@ protocol TodoDetailListServiceProtocol {
   func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> ,todo : Todo , predicate: NSPredicate?) -> [TodoDetail]
   func fetchTodoDetails(with request : NSFetchRequest<TodoDetail>) -> [TodoDetail]
   func save()
-  func deleteTodoDetail(index : Int)
+  func deleteTodoDetail(index : Int, todo : Todo)
   func returnTodoDetail() -> TodoDetail
   func addTodoDetail(todoDetail : TodoDetail, todo : Todo)
 }
@@ -56,8 +56,8 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
         return newTodoDetail
     }
 
-    func deleteTodoDetail(index : Int){
-        let allTodoDetails = fetchTodoDetails()
+    func deleteTodoDetail(index : Int, todo : Todo){
+        let allTodoDetails = fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todo: todo, predicate: nil)
         context.delete(allTodoDetails[index])
         save()
     }
