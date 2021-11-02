@@ -22,7 +22,7 @@ class TodoExplanationViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.load()
-        todoExplanationImage.image = UIImage(named: "study")
+        todoExplanationImage.image = UIImage(named: "ex")
         // Do any additional setup after loading the view.
     }
     

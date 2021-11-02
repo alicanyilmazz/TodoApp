@@ -38,6 +38,7 @@
 		5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */; };
 		5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */; };
 		5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */; };
+		5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653EF2731609B00D4BABF /* TodoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewController.swift; sourceTree = "<group>"; };
 		5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewModel.swift; sourceTree = "<group>"; };
 		5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationPresentation.swift; sourceTree = "<group>"; };
+		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				5A347D2B2723F4FC002BD16C /* TodoListInteractor.swift */,
 				5A347D2D2723F517002BD16C /* TodoListPresenter.swift */,
 				5A347D2F2723F528002BD16C /* TodoListRouter.swift */,
+				5AA653EF2731609B00D4BABF /* TodoCell.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				5A347D282723E7EE002BD16C /* TodoListViewController.swift in Sources */,
 				5A347D452725841C002BD16C /* TodoDetailBuilder.swift in Sources */,
 				5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */,
+				5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */,
 				5A347D2A2723F4E4002BD16C /* TodoListContracts.swift in Sources */,
 				5A347D3C27241953002BD16C /* CoreDataService.swift in Sources */,
 				5A347D3E27242011002BD16C /* TodoListService.swift in Sources */,

@@ -22,7 +22,7 @@ final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
     }
     
     func load() {
-        notify(.updateTitle("TodoDetails"))
+        notify(.updateTitle(todo.title?.uppercased() ?? "TodoDetails"))
         notify(.setLoading(true))
         let result = service.fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todo: todo, predicate: nil)
         if result != nil{

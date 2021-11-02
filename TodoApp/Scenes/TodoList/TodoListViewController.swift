@@ -10,6 +10,7 @@ import UIKit
 class TodoListViewController: UIViewController , TodoListViewProtocol {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var todoSearchBar: UISearchBar!
     
     var presenter : TodoListPresenterProtocol!
     private var todos : [TodoPresentation] = []
@@ -21,10 +22,23 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if #available(iOS 13.0, *) {
+            todoSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search your todo", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+           } else {
+               if let searchField = todoSearchBar.value(forKey: "searchField") as? UITextField {
+                   searchField.attributedPlaceholder = NSAttributedString(string: "Search your todo", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+               }
+           }
+    }
+    
     func handleOutput(_ output: TodoListPresenterOutput) {
         switch output {
         case .updateTitle(let title):
             self.title = title
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemOrange]
+            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
+            navigationController?.navigationBar.tintColor = .systemOrange
         case .setLoading(let isLoading):
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoList(let todos):
@@ -36,14 +50,21 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
 
 extension TodoListViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath)
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath)
+        //cell.textLabel?.text = todo.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell") as! TodoCell
         let todo = todos[indexPath.row]
-        cell.textLabel?.text = todo.title
+        cell.todoTitleLbl.text = todo.title
+        cell.avatarImage.image =  UIImage(systemName: "circle.inset.filled")?.withTintColor(UIColor.getRandomColor(),renderingMode: .alwaysOriginal)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 
@@ -95,8 +116,20 @@ extension TodoListViewController : UITableViewDelegate{
         
         let editAction = UIContextualAction(style: .destructive, title: "Edit") {  (contextualAction, view, boolValue) in
 
-            let alert = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Save", style: .default) { (action) in
+            let attributedString = NSAttributedString(string: "Edit", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15),NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)])
+            let MessageString = NSAttributedString(string: "Please enter your todo title.", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)])
+            
+            let alert = UIAlertController(title: "Edit", message: "Please enter your todo title.", preferredStyle: .alert)
+            alert.setValue(attributedString, forKey: "attributedTitle")
+            alert.setValue(MessageString, forKey: "attributedMessage")
+            
+            let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
+            subview.layer.cornerRadius = 0
+            subview.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
+            subview.tintColor = .yellow
+            // #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            //let dismissAction = UIAlertAction(title: "Dismiss", style: .destructive, handler: nil)
+            let actionSave = UIAlertAction(title: "Save", style: .default) { (action) in
 
                 guard let text = textField.text, !text.isEmpty else {
                     return
@@ -105,12 +138,30 @@ extension TodoListViewController : UITableViewDelegate{
                 self.presenter.load()
                 self.tableView.reloadData()
             }
+            actionSave.setValue(#colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), forKey: "titleTextColor")
+            
             alert.addTextField { (alertTextField) in
                 alertTextField.placeholder = "Edit item"
-                alertTextField.textColor = .systemPink
+                alertTextField.textColor = #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)
+                alertTextField.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1)
+                alertTextField.attributedPlaceholder = NSAttributedString(string: "Enter your todo title.",attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)])
+                alertTextField.tintColor = .orange
+                alertTextField.borderStyle = .roundedRect
+                let container = alertTextField.superview
+                let effectView = container?.superview?.subviews[0]
+                container?.backgroundColor = .clear
+                effectView?.removeFromSuperview()
+                //alertTextField.background = UIImage(systemName: "bell")
+                
                 textField = alertTextField
             }
-            alert.addAction(action)
+            let actionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+            actionCancel.setValue( #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), forKey: "titleTextColor")
+            
+            alert.addAction(actionSave)
+            alert.addAction(actionCancel)
+            //alert.addAction(dismissAction)
+            
             self.present(alert, animated: true, completion: nil)
             
             boolValue(true)
@@ -143,5 +194,6 @@ extension TodoListViewController : UISearchBarDelegate{
         }
     }
 }
+
 
 
