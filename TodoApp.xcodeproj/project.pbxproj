@@ -38,7 +38,10 @@
 		5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */; };
 		5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */; };
 		5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */; };
+		5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DAC27340741001D587A /* BaseCustomAlertController.swift */; };
+		5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB027341258001D587A /* UIColorExtensions.swift */; };
 		5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653EF2731609B00D4BABF /* TodoCell.swift */; };
+		5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653F12731C71800D4BABF /* CustomAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +78,10 @@
 		5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewController.swift; sourceTree = "<group>"; };
 		5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewModel.swift; sourceTree = "<group>"; };
 		5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationPresentation.swift; sourceTree = "<group>"; };
+		5A951DAC27340741001D587A /* BaseCustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomAlertController.swift; sourceTree = "<group>"; };
+		5A951DB027341258001D587A /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		5AA653F12731C71800D4BABF /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 				5A347D17272343BF002BD16C /* App */,
 				5A347D18272343C9002BD16C /* Scenes */,
 				5A347D1B2723440C002BD16C /* Presentations */,
+				5A951DA9273403FE001D587A /* Core */,
 				5A347D1A272343EA002BD16C /* Supporting Files */,
 				5A347D19272343D4002BD16C /* Resources */,
 			);
@@ -217,6 +224,48 @@
 			path = TodoExplanation;
 			sourceTree = "<group>";
 		};
+		5A951DA9273403FE001D587A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5A951DAE27341231001D587A /* Extensions */,
+				5A951DAA27340456001D587A /* CustomUIComponents */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5A951DAA27340456001D587A /* CustomUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5A951DAB273405ED001D587A /* CustomAlertController */,
+			);
+			path = CustomUIComponents;
+			sourceTree = "<group>";
+		};
+		5A951DAB273405ED001D587A /* CustomAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				5AA653F12731C71800D4BABF /* CustomAlertController.swift */,
+				5A951DAC27340741001D587A /* BaseCustomAlertController.swift */,
+			);
+			path = CustomAlertController;
+			sourceTree = "<group>";
+		};
+		5A951DAE27341231001D587A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A951DAF27341241001D587A /* UIColorExtensions */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5A951DAF27341241001D587A /* UIColorExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A951DB027341258001D587A /* UIColorExtensions.swift */,
+			);
+			path = UIColorExtensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,8 +345,10 @@
 				5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */,
 				5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */,
 				5A347D2A2723F4E4002BD16C /* TodoListContracts.swift in Sources */,
+				5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */,
 				5A347D3C27241953002BD16C /* CoreDataService.swift in Sources */,
 				5A347D3E27242011002BD16C /* TodoListService.swift in Sources */,
+				5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */,
 				5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */,
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
 				5A347D4D2726B4AE002BD16C /* TodoDetailCell.swift in Sources */,
@@ -306,6 +357,7 @@
 				5A347D2E2723F517002BD16C /* TodoListPresenter.swift in Sources */,
 				5A347D302723F528002BD16C /* TodoListRouter.swift in Sources */,
 				5A347D2127234486002BD16C /* AppRouter.swift in Sources */,
+				5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */,
 				5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */,
 				5A347D2C2723F4FC002BD16C /* TodoListInteractor.swift in Sources */,
 				5A347D5627272962002BD16C /* TodoExplanationContracts.swift in Sources */,
