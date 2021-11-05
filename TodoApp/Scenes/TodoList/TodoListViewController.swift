@@ -22,15 +22,17 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
         
     override func viewDidAppear(_ animated: Bool) {
         setSearchBar()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UINavigationController().setNavigationController(nav: navigationController!, foregroundColor: .systemOrange, barTintColor: ColorPalette.darkBackground, tintColor: .systemOrange)
     }
     
     func handleOutput(_ output: TodoListPresenterOutput) {
         switch output {
         case .updateTitle(let title):
             self.title = title
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemOrange]
-            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
-            navigationController?.navigationBar.tintColor = .systemOrange
         case .setLoading(let isLoading):
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoList(let todos):
@@ -139,4 +141,10 @@ extension TodoListViewController : UISearchBarDelegate{
 }
 
 
-
+extension UINavigationController{
+    func setNavigationController(nav : UINavigationController , foregroundColor : UIColor, barTintColor : UIColor, tintColor : UIColor ){
+        nav.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: foregroundColor]
+        nav.navigationBar.barTintColor = barTintColor
+        nav.navigationBar.tintColor = tintColor
+    }
+}

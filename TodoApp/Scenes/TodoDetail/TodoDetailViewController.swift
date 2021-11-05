@@ -31,6 +31,7 @@ class TodoDetailViewController: UIViewController {
         setSearchBar()
         viewModel.load()
         tableView.reloadData()
+        UINavigationController().setNavigationController(nav: navigationController!, foregroundColor: .systemOrange, barTintColor: ColorPalette.darkBackground, tintColor: .systemOrange)
     }
 }
 
@@ -39,9 +40,6 @@ extension TodoDetailViewController : TodoDetailListViewModelDelegate{
         switch output {
         case .updateTitle(let title):
             self.title = title
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemOrange]
-            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
-            navigationController?.navigationBar.tintColor = .systemOrange
         case .setLoading(let isLoading):
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoDetailList(let todoDetailList):
@@ -69,7 +67,7 @@ extension TodoDetailViewController : UITableViewDataSource{
         cell.isCompletedLbl.image = todoDetail.isCompleted ? UIImage(systemName: "checkmark.seal.fill") : UIImage(systemName: "xmark.seal.fill")
 
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm" // yyyy-MM-dd-HH-mm-ss
+        dateFormatter.dateFormat = "MMM d, h:mm a" // yyyy-MM-dd-HH-mm-ss or MM-dd-yyyy HH:mm
         var date = dateFormatter.string(from: todoDetail.date as Date)
         cell.dateLbl.text = date
         //cell.avatarLbl.image =UIImage(named: <#T##String#>)

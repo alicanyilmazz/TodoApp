@@ -38,8 +38,10 @@
 		5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */; };
 		5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */; };
 		5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */; };
+		5A80E7E72735CBF4006C623B /* ColourPaletteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A80E7E62735CBF4006C623B /* ColourPaletteConstants.swift */; };
 		5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DAC27340741001D587A /* BaseCustomAlertController.swift */; };
 		5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB027341258001D587A /* UIColorExtensions.swift */; };
+		5A951DB427343924001D587A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB327343924001D587A /* DateExtensions.swift */; };
 		5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653EF2731609B00D4BABF /* TodoCell.swift */; };
 		5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653F12731C71800D4BABF /* CustomAlertController.swift */; };
 /* End PBXBuildFile section */
@@ -78,8 +80,10 @@
 		5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewController.swift; sourceTree = "<group>"; };
 		5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewModel.swift; sourceTree = "<group>"; };
 		5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationPresentation.swift; sourceTree = "<group>"; };
+		5A80E7E62735CBF4006C623B /* ColourPaletteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourPaletteConstants.swift; sourceTree = "<group>"; };
 		5A951DAC27340741001D587A /* BaseCustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomAlertController.swift; sourceTree = "<group>"; };
 		5A951DB027341258001D587A /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		5A951DB327343924001D587A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		5AA653F12731C71800D4BABF /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,9 +228,18 @@
 			path = TodoExplanation;
 			sourceTree = "<group>";
 		};
+		5A80E7E52735CBC1006C623B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5A80E7E62735CBF4006C623B /* ColourPaletteConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		5A951DA9273403FE001D587A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5A80E7E52735CBC1006C623B /* Constants */,
 				5A951DAE27341231001D587A /* Extensions */,
 				5A951DAA27340456001D587A /* CustomUIComponents */,
 			);
@@ -253,6 +266,7 @@
 		5A951DAE27341231001D587A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5A951DB227343907001D587A /* DateTimePickerExtensions */,
 				5A951DAF27341241001D587A /* UIColorExtensions */,
 			);
 			path = Extensions;
@@ -264,6 +278,14 @@
 				5A951DB027341258001D587A /* UIColorExtensions.swift */,
 			);
 			path = UIColorExtensions;
+			sourceTree = "<group>";
+		};
+		5A951DB227343907001D587A /* DateTimePickerExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A951DB327343924001D587A /* DateExtensions.swift */,
+			);
+			path = DateTimePickerExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,12 +384,14 @@
 				5A347D2C2723F4FC002BD16C /* TodoListInteractor.swift in Sources */,
 				5A347D5627272962002BD16C /* TodoExplanationContracts.swift in Sources */,
 				5A347D242723E1D1002BD16C /* TodoListBuilder.swift in Sources */,
+				5A80E7E72735CBF4006C623B /* ColourPaletteConstants.swift in Sources */,
 				5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */,
 				5A347D4B272584C9002BD16C /* TodoDetailViewModel.swift in Sources */,
 				5A347D1F27234478002BD16C /* AppContainer.swift in Sources */,
 				5A347D49272584A7002BD16C /* TodoDetailViewController.swift in Sources */,
 				5A347D4F2726F21F002BD16C /* TodoDetailService.swift in Sources */,
 				5A347D542727293A002BD16C /* TodoExplanationBuilder.swift in Sources */,
+				5A951DB427343924001D587A /* DateExtensions.swift in Sources */,
 				5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

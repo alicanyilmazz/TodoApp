@@ -8,7 +8,6 @@
 import UIKit
 
 class TodoExplanationViewController: UIViewController {
-
     
     @IBOutlet weak var todoExplanationImage: UIImageView!
     @IBOutlet weak var todoExplanationTitleLbl: UITextField!
@@ -17,29 +16,23 @@ class TodoExplanationViewController: UIViewController {
     @IBOutlet weak var todoExplanationCompletedSwitch: UISwitch!
     
     var viewModel: TodoExplanationViewModelProtocol!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        todoExplanationDateLbl.delegate = self
         viewModel.delegate = self
         viewModel.load()
-        todoExplanationImage.image = UIImage(named: "ex")
-        // Do any additional setup after loading the view.
+        setUIComponents()
     }
-    
     
     @IBAction func switchChanged(_ sender: UISwitch) {
     }
     
     @IBAction func saveButtonClicked(_ sender: UIButton) {
-        let date = "2016-04-14T10:44:00+0000"
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let dateTime = dateFormatter.date(from:date)!
-        viewModel.addTodoDetail(title: todoExplanationTitleLbl.text!, explanation: todoExplanationDetailLbl.text!, date: dateTime, iscCompleted: todoExplanationCompletedSwitch.isOn)
+        let date = DateFormatter().convertStringToDate(date: todoExplanationDateLbl.text)
+        viewModel.addTodoDetail(title: todoExplanationTitleLbl.text!, explanation: todoExplanationDetailLbl.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
         _ = navigationController?.popViewController(animated: true)
     }
-    
 }
 
 extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
@@ -47,10 +40,36 @@ extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
     func showDetail(_ presentation: TodoExplanationPresentation) {
         todoExplanationTitleLbl.text = presentation.detailTitle
         todoExplanationDetailLbl.text = presentation.explanation
-        var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd-HH-mm-ss"
-        var date = dateFormatter.string(from: presentation.date as Date)
-        todoExplanationDateLbl.text = date
+        todoExplanationDateLbl.text = DateFormatter().convertDateToString(date: presentation.date)
         todoExplanationCompletedSwitch.isOn = presentation.isCompleted
+    }
+}
+
+extension TodoExplanationViewController{
+    func setUIComponents() {
+        todoExplanationImage.image = UIImage(named: "ex")
+        todoExplanationCompletedSwitch.onTintColor = #colorLiteral(red: 0.9956704974, green: 0.6578197479, blue: 0.2000168562, alpha: 1)
+        todoExplanationCompletedSwitch.thumbTintColor = #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1)
+    }
+}
+
+extension TodoExplanationViewController : UITextFieldDelegate{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIDatePicker().createDatePicker(_vc: self, textField: &todoExplanationDateLbl)
+    }
+    
+    @objc func cancelButtonClick(){
+        self.todoExplanationDateLbl.resignFirstResponder()
+    }
+   
+    @objc func doneButtonClick(){
+        if let dateAndTimePicker = self.todoExplanationDateLbl.inputView as? UIDatePicker{
+            self.todoExplanationDateLbl.text = DateFormatter().convertDateToString(date: dateAndTimePicker.date)
+        }
+        self.todoExplanationDateLbl.resignFirstResponder()
+    }
+    
+    @objc func datePickerHandler(datePicker : UIDatePicker){
+        // You can use it to capture changes.
     }
 }
