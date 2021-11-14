@@ -11,6 +11,7 @@ class TodoDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var todoDetailSearchBar: UISearchBar!
+    @IBOutlet weak var addTodoDetailButton: UIButton!
     
     private var todoDetailList: [TodoDetailPresentation] = []
     var textField = UITextField()
@@ -24,14 +25,14 @@ class TodoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.load()
-        // Do any additional setup after loading the view.
+        setTheme()
     }
             
     override func viewWillAppear(_ animated: Bool) {
         setSearchBar()
         viewModel.load()
         tableView.reloadData()
-        UINavigationController().setNavigationController(nav: navigationController!, foregroundColor: .systemOrange, barTintColor: ColorPalette.darkBackground, tintColor: .systemOrange)
+        UINavigationController().setNavigationController(nav: navigationController!)
     }
 }
 
@@ -60,18 +61,13 @@ extension TodoDetailViewController : TodoDetailListViewModelDelegate{
 extension TodoDetailViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoDetailCell") as! TodoDetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReservedStrings.TodoDetailCell.asString) as! TodoDetailCell
         let todoDetail = todoDetailList[indexPath.row]
         cell.detailLbl.text = todoDetail.explanation
         cell.detailTitleLbl.text = todoDetail.detailTitle
-        cell.isCompletedLbl.image = todoDetail.isCompleted ? UIImage(systemName: "checkmark.seal.fill") : UIImage(systemName: "xmark.seal.fill")
-
-        var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, h:mm a" // yyyy-MM-dd-HH-mm-ss or MM-dd-yyyy HH:mm
-        var date = dateFormatter.string(from: todoDetail.date as Date)
-        cell.dateLbl.text = date
-        //cell.avatarLbl.image =UIImage(named: <#T##String#>)
-        cell.avatarLbl.image = UIImage(systemName: "circle.inset.filled")?.withTintColor(UIColor.getRandomColor(),renderingMode: .alwaysOriginal)
+        cell.isCompletedLbl.image = todoDetail.isCompleted ? CustomImage.checkmark : CustomImage.xmark
+        cell.dateLbl.text = DateFormatter().convertDateToString(date: todoDetail.date)
+        cell.avatarLbl.image = CustomImage.circle
         return cell
     }
     
@@ -80,7 +76,7 @@ extension TodoDetailViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 150
     }
 }
   extension TodoDetailViewController : UITableViewDelegate{
@@ -90,7 +86,7 @@ extension TodoDetailViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+        let deleteAction = UIContextualAction(style: .destructive, title: LocalizableStrings.delete.description.localized()) { (contextualAction, view, boolValue) in
             self.viewModel.deleteTodoDetail(index: indexPath.row)
             self.todoDetailList.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -112,11 +108,23 @@ extension TodoDetailViewController : UITableViewDataSource{
 extension TodoDetailViewController : UISearchBarDelegate{
     func setSearchBar() {
         if #available(iOS 13.0, *) {
-            todoDetailSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search your todo", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+            todoDetailSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         } else {
-            if let searchField = todoDetailSearchBar.value(forKey: "searchField") as? UITextField {
-                searchField.attributedPlaceholder = NSAttributedString(string: "Search your todo", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            if let searchField = todoDetailSearchBar.value(forKey: ReservedStrings.searchField.asString) as? UITextField {
+                searchField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             }
         }
+    }
+}
+
+extension TodoDetailViewController{
+     func setTheme() {
+        tableView.theme.backgroundColor = themed { $0.tableViewBackgroundColor }
+        tableView.theme.tintColor = themed { $0.tableViewTintColor }
+        todoDetailSearchBar.theme.backgroundColor = themed { $0.searchBarBackgroundColor }
+        todoDetailSearchBar.theme.barTintColor = themed { $0.searchBarBarTintColor }
+        todoDetailSearchBar.theme.tintColor = themed { $0.searchBarTintColor }
+        addTodoDetailButton.theme.backgroundColor = themed { $0.addButtonBackgroundColor }
+        addTodoDetailButton.theme.tintColor = themed { $0.addButtonTintColor }
     }
 }

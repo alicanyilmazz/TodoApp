@@ -7,6 +7,10 @@
 
 import Foundation
 import UIKit
+import RxTheme
+import RxSwift
+
+// ThemeAttribute<Color>
 
 enum actionTypes{
     case save
@@ -30,6 +34,7 @@ struct CustomUI{
     }
 }
 
+
 struct CustomUIAlertTextField{
     let placeholderText : String
     let placeholderTextColor : UIColor
@@ -37,9 +42,13 @@ struct CustomUIAlertTextField{
     let textFieldBackgroundColor : UIColor
     let textFieldTintColor : UIColor
     
-    static let add : CustomUIAlertTextField = .init(placeholderText: "Enter your todo", placeholderTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textfieldTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textFieldBackgroundColor: #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1), textFieldTintColor: .orange)
+    static let add : CustomUIAlertTextField = .init(placeholderText: "Enter your todo", placeholderTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1) , textfieldTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textFieldBackgroundColor: #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1), textFieldTintColor: .orange)
     
     static let edit : CustomUIAlertTextField = .init(placeholderText: "Enter your todo", placeholderTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textfieldTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textFieldBackgroundColor: #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1), textFieldTintColor: .orange)
+    
+    static let addLight : CustomUIAlertTextField = .init(placeholderText: "Enter your todo", placeholderTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1) , textfieldTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textFieldBackgroundColor: ColorPalette.pureWhite, textFieldTintColor: .orange)
+    
+    static let editLight : CustomUIAlertTextField = .init(placeholderText: "Enter your todo", placeholderTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textfieldTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), textFieldBackgroundColor: ColorPalette.pureWhite, textFieldTintColor: .orange)
 }
 
 struct CustomUIAlertAction{
@@ -53,6 +62,12 @@ struct CustomUIAlertAction{
     static let add : CustomUIAlertAction = CustomUIAlertAction(title: "Add", style: UIAlertAction.Style.default, titleTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), actionType: actionTypes.add)
     
     static let cancel : CustomUIAlertAction = CustomUIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, titleTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), actionType: actionTypes.cancel)
+    
+    static let editLigth : CustomUIAlertAction = CustomUIAlertAction(title: "Edit", style: UIAlertAction.Style.default, titleTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), actionType: actionTypes.edit)
+    
+    static let addLight : CustomUIAlertAction = CustomUIAlertAction(title: "Add", style: UIAlertAction.Style.default, titleTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), actionType: actionTypes.add)
+    
+    static let cancelLight : CustomUIAlertAction = CustomUIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, titleTextColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), actionType: actionTypes.cancel)
 }
 
 struct CustomUIAlertController{
@@ -69,4 +84,8 @@ struct CustomUIAlertController{
     static let edit : CustomUIAlertController = .init(title: "Edit", message: "Please enter your todo title.", titleColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), messageColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), titleFontSize: 15, messageFontSize: 14, backgroundColor: #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 0.8501358537), cornerRadius: 1, tintColor: .yellow)
     
     static let add : CustomUIAlertController = .init(title: "Add", message: "Please enter your todo title.", titleColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), messageColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), titleFontSize: 15, messageFontSize: 14, backgroundColor: #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 0.8501358537), cornerRadius: 1, tintColor: .yellow)
+    
+    static let editLight : CustomUIAlertController = .init(title: "Edit", message: "Please enter your todo title.", titleColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), messageColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), titleFontSize: 15, messageFontSize: 14, backgroundColor: ColorPalette.pureWhite, cornerRadius: 1, tintColor: .yellow)
+    
+    static let addLight : CustomUIAlertController = .init(title: "Add", message: "Please enter your todo title.", titleColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), messageColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), titleFontSize: 15, messageFontSize: 14, backgroundColor: ColorPalette.pureWhite, cornerRadius: 1, tintColor: .yellow)
 }

@@ -49,10 +49,10 @@ typealias basicAlertResult = (actionTypes?,textFieldStatusTypes,[UITextField]) -
 fileprivate  func setAlertTextField(alertController: inout UIAlertController, customUIAlertTextField : CustomUIAlertTextField) {
     alertController.addTextField { textField in
         textField.placeholder = customUIAlertTextField.placeholderText
-        textField.textColor = customUIAlertTextField.textfieldTextColor
-        textField.backgroundColor = customUIAlertTextField.textFieldBackgroundColor
+        textField.theme.textColor = themed { $0.alertControllerTextFieldTextColor }
+        textField.theme.backgroundColor = themed { $0.alertControllerTextFieldBackgroundColor }
         textField.attributedPlaceholder = NSAttributedString(string: customUIAlertTextField.placeholderText, attributes: [NSAttributedString.Key.foregroundColor: customUIAlertTextField.placeholderTextColor])
-        textField.tintColor = customUIAlertTextField.textFieldTintColor
+        textField.theme.tintColor = themed { $0.alertControllerTextFieldTintColor }
         textField.borderStyle = .roundedRect
         let container = textField.superview
         let effectView = container?.superview?.subviews[0]
@@ -60,7 +60,6 @@ fileprivate  func setAlertTextField(alertController: inout UIAlertController, cu
         effectView?.removeFromSuperview()
     }
 }
-
 
 func setAttributes(alertController : inout UIAlertController , customUIAlertController : CustomUIAlertController){
     let titleKey = "attributedTitle" , messageKey = "attributedMessage"
@@ -74,6 +73,6 @@ func setAttributes(alertController : inout UIAlertController , customUIAlertCont
 func setSubView(alertController : inout UIAlertController , customUIAlertController : CustomUIAlertController){
     let subview = (alertController.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
     subview.layer.cornerRadius = 1
-    subview.backgroundColor = customUIAlertController.backgroundColor
-    subview.tintColor = customUIAlertController.tintColor
+    subview.theme.backgroundColor = themed { $0.alertControllerSubviewBackgroundColor }
+    subview.theme.tintColor = themed { $0.alertControllerSubviewTintColor }
 }

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  TodoApp
+
+  Created by alican on 12.11.2021.
+  
+*/
+
+"NavigationBar.Title" = "Todos";
+"SearchBar.PlaceHolder" = "Search your todo";
+"UIAlertController.Cancel.Button" = "Cancel";
+"UIAlertController.Add.Button" = "Add";
+"UIAlertController.Edit.Button" = "Edit";
+"UIAlertController.Delete.Button" = "Delete";
