@@ -6,31 +6,49 @@
 //
 
 import UIKit
+import Lottie
 
 class TodoExplanationViewController: UIViewController {
     
-    @IBOutlet weak var todoExplanationImage: UIImageView!
-    @IBOutlet weak var todoExplanationTitleLbl: UITextField!
-    @IBOutlet weak var todoExplanationDetailLbl: UITextField!
-    @IBOutlet weak var todoExplanationDateLbl: UITextField!
+    @IBOutlet var customView: UIView!
+    
+    @IBOutlet weak var animationView: AnimationView!
+    
+    @IBOutlet weak var todoExplanationTitleTextField: UITextField!
+    
+    @IBOutlet weak var todoExplanationTitleLbl: UILabel!
+    
+    @IBOutlet weak var todoExplanationDetailTextField: UITextField!
+    
+    @IBOutlet weak var todoExplanationDetailLbl: UILabel!
+    
+    @IBOutlet weak var todoExplanationDateTextField: UITextField!
+    
+    @IBOutlet weak var todoExplanationDateLbl: UILabel!
+    
     @IBOutlet weak var todoExplanationCompletedSwitch: UISwitch!
     
+    @IBOutlet weak var todoExplanationCompletedSwitchLbl: UILabel!
+    
+    @IBOutlet weak var todoExplanationSaveBtn: UIButton!
+        
     var viewModel: TodoExplanationViewModelProtocol!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        todoExplanationDateLbl.delegate = self
+        todoExplanationDateTextField.delegate = self
         viewModel.delegate = self
         viewModel.load()
-        setUIComponents()
+        setAnimation()
+        setTheme()
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
     }
     
     @IBAction func saveButtonClicked(_ sender: UIButton) {
-        let date = DateFormatter().convertStringToDate(date: todoExplanationDateLbl.text)
-        viewModel.addTodoDetail(title: todoExplanationTitleLbl.text!, explanation: todoExplanationDetailLbl.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
+        let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
+        viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
         _ = navigationController?.popViewController(animated: true)
     }
 }
@@ -38,35 +56,58 @@ class TodoExplanationViewController: UIViewController {
 extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
     
     func showDetail(_ presentation: TodoExplanationPresentation) {
-        todoExplanationTitleLbl.text = presentation.detailTitle
-        todoExplanationDetailLbl.text = presentation.explanation
-        todoExplanationDateLbl.text = DateFormatter().convertDateToString(date: presentation.date)
+        todoExplanationTitleTextField.text = presentation.detailTitle
+        todoExplanationDetailTextField.text = presentation.explanation
+        todoExplanationDateTextField.text = DateFormatter().convertDateToString(date: presentation.date)
         todoExplanationCompletedSwitch.isOn = presentation.isCompleted
     }
 }
 
 extension TodoExplanationViewController{
-    func setUIComponents() {
-        todoExplanationImage.image = UIImage(named: "ex")
-        todoExplanationCompletedSwitch.onTintColor = #colorLiteral(red: 0.9956704974, green: 0.6578197479, blue: 0.2000168562, alpha: 1)
-        todoExplanationCompletedSwitch.thumbTintColor = #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1)
+    
+    fileprivate func setTheme() {
+        todoExplanationTitleTextField.theme.backgroundColor = themed { $0.todoExplanationTitleTextFieldBackgroundColor }
+        todoExplanationTitleTextField.theme.textColor = themed { $0.todoExplanationTitleTextFieldTextColor }
+        todoExplanationTitleLbl.theme.backgroundColor = themed { $0.todoExplanationTitleLblBackgroundColor }
+        todoExplanationTitleLbl.theme.textColor = themed { $0.todoExplanationTitleLblTextColor }
+        todoExplanationDetailTextField.theme.backgroundColor = themed { $0.todoExplanationDetailTextFieldBackgroundColor }
+        todoExplanationDetailTextField.theme.textColor = themed { $0.todoExplanationDetailTextFieldTextColor }
+        todoExplanationDetailLbl.theme.backgroundColor = themed { $0.todoExplanationDetailLblBackgroundColor }
+        todoExplanationDetailLbl.theme.textColor = themed { $0.todoExplanationDetailLblTextColor }
+        todoExplanationDateTextField.theme.backgroundColor = themed { $0.todoExplanationDateTextFieldBackgroundColor }
+        todoExplanationDateTextField.theme.textColor = themed { $0.todoExplanationDateTextFieldTextColor }
+        todoExplanationDateLbl.theme.backgroundColor = themed { $0.todoExplanationDateLblBackgroundColor }
+        todoExplanationDateLbl.theme.textColor = themed { $0.todoExplanationDateLblTextColor }
+        todoExplanationCompletedSwitch.theme.backgroundColor = themed { $0.todoExplanationCompletedSwitchLblBackgroundColor }
+        todoExplanationCompletedSwitch.theme.onTintColor = themed { $0.todoExplanationCompletedSwitchOnTintColor }
+        todoExplanationCompletedSwitch.theme.thumbTintColor = themed { $0.todoExplanationCompletedSwitchThumbTintColor }
+        todoExplanationCompletedSwitchLbl.theme.textColor = themed { $0.todoExplanationCompletedSwitchLblTextColor }
+        todoExplanationSaveBtn.theme.backgroundColor = themed { $0.todoExplanationSaveBtnBackgroundColor }
+        todoExplanationSaveBtn.theme.tintColor = themed { $0.todoExplanationSaveBtnTextColor }
+        customView.theme.backgroundColor = themed { $0.todoExplanationTitleLblBackgroundColor }
+    }
+    
+    fileprivate func setAnimation() {
+        animationView.backgroundColor = .clear
+        animationView.loopMode = .loop
+        animationView.play()
     }
 }
 
 extension TodoExplanationViewController : UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIDatePicker().createDatePicker(_vc: self, textField: &todoExplanationDateLbl)
+        UIDatePicker().createDatePicker(_vc: self, textField: &todoExplanationDateTextField)
     }
     
     @objc func cancelButtonClick(){
-        self.todoExplanationDateLbl.resignFirstResponder()
+        self.todoExplanationDateTextField.resignFirstResponder()
     }
    
     @objc func doneButtonClick(){
-        if let dateAndTimePicker = self.todoExplanationDateLbl.inputView as? UIDatePicker{
-            self.todoExplanationDateLbl.text = DateFormatter().convertDateToString(date: dateAndTimePicker.date)
+        if let dateAndTimePicker = self.todoExplanationDateTextField.inputView as? UIDatePicker{
+            self.todoExplanationDateTextField.text = DateFormatter().convertDateToString(date: dateAndTimePicker.date)
         }
-        self.todoExplanationDateLbl.resignFirstResponder()
+        self.todoExplanationDateTextField.resignFirstResponder()
     }
     
     @objc func datePickerHandler(datePicker : UIDatePicker){
