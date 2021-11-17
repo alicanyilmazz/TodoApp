@@ -33,7 +33,7 @@ class TodoExplanationViewController: UIViewController {
     @IBOutlet weak var todoExplanationSaveBtn: UIButton!
         
     var viewModel: TodoExplanationViewModelProtocol!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         todoExplanationDateTextField.delegate = self
@@ -41,7 +41,7 @@ class TodoExplanationViewController: UIViewController {
         viewModel.load()
         setAnimation()
         setTheme()
-        todoExplanationSaveBtn.layer.cornerRadius = 15
+        setUIComponent()
     }
 }
 
@@ -52,15 +52,6 @@ extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
         todoExplanationDetailTextField.text = presentation.explanation
         todoExplanationDateTextField.text = DateFormatter().convertDateToString(date: presentation.date)
         todoExplanationCompletedSwitch.isOn = presentation.isCompleted
-    }
-    
-    @IBAction func switchChanged(_ sender: UISwitch) {
-    }
-    
-    @IBAction func saveButtonClicked(_ sender: UIButton) {
-        let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
-        viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
-        _ = navigationController?.popViewController(animated: true)
     }
 }
 
@@ -92,6 +83,19 @@ extension TodoExplanationViewController{
         animationView.backgroundColor = .clear
         animationView.loopMode = .loop
         animationView.play()
+    }
+    
+    fileprivate func setUIComponent() {
+        todoExplanationSaveBtn.layer.cornerRadius = 15
+    }
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+    }
+    
+    @IBAction func saveButtonClicked(_ sender: UIButton) {
+        let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
+        viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
