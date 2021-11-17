@@ -12,6 +12,7 @@ class TodoDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var todoDetailSearchBar: UISearchBar!
     @IBOutlet weak var addTodoDetailButton: UIButton!
+    var addButton : FloatingButton!
     
     private var todoDetailList: [TodoDetailPresentation] = []
     var textField = UITextField()
@@ -26,6 +27,7 @@ class TodoDetailViewController: UIViewController {
         super.viewDidLoad()
         viewModel.load()
         setTheme()
+        setUIComponent()
     }
             
     override func viewWillAppear(_ animated: Bool) {
@@ -99,13 +101,29 @@ extension TodoDetailViewController : UITableViewDataSource{
 
         return swipeActions
     }
-
-    @IBAction func addDetailButtonClicked(_ sender: UIButton) {
-        viewModel.addTodoDetail()
-    }
 }
 
 extension TodoDetailViewController : UISearchBarDelegate{
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        viewModel.searchTodoDetail(todoDetail: text)
+        self.tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            self.viewModel.load()
+            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+    
     func setSearchBar() {
         if #available(iOS 13.0, *) {
             todoDetailSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
@@ -118,13 +136,25 @@ extension TodoDetailViewController : UISearchBarDelegate{
 }
 
 extension TodoDetailViewController{
+    fileprivate func setUIComponent() {
+        let screenWidth = view.frame.size.width
+        let screenHeight = view.frame.size.height
+        let safeArea = view.safeAreaInsets.bottom
+        addButton = FloatingButton(frame: CGRect().setBaseButtonPosition(screenWidth, screenHeight, safeArea))
+        view.addSubview(addButton)
+        addButton.customConfigure(with: CustomFloatingButtonViewModel.add)
+        addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func addButtonClicked(){
+        viewModel.addTodoDetail()
+    }
+    
      func setTheme() {
         tableView.theme.backgroundColor = themed { $0.tableViewBackgroundColor }
         tableView.theme.tintColor = themed { $0.tableViewTintColor }
         todoDetailSearchBar.theme.backgroundColor = themed { $0.searchBarBackgroundColor }
         todoDetailSearchBar.theme.barTintColor = themed { $0.searchBarBarTintColor }
         todoDetailSearchBar.theme.tintColor = themed { $0.searchBarTintColor }
-        addTodoDetailButton.theme.backgroundColor = themed { $0.addButtonBackgroundColor }
-        addTodoDetailButton.theme.tintColor = themed { $0.addButtonTintColor }
     }
 }
