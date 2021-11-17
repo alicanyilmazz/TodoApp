@@ -25,11 +25,9 @@ final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
         notify(.updateTitle(todo.title?.uppercased() ?? "TodoDetails"))
         notify(.setLoading(true))
         let result = service.fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todoTitle: todo.title!, predicate: nil)
-        if result != nil{
             self.todoDetails = result
             let presentation = result.map({TodoDetailPresentation(todoDetail: $0)})
             self.notify(.showTodoDetailList(presentation))
-        }
     }
     
     func selectedTodoDetail(at index: Int) {
