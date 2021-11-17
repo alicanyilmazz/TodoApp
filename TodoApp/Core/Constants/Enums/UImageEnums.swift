@@ -12,6 +12,8 @@ enum ImageName : CustomStringConvertible {
   case moon
   case checkmark
   case xmark
+  case sun
+  case plus
   
   var description : String {
     switch self {
@@ -19,6 +21,8 @@ enum ImageName : CustomStringConvertible {
     case .moon: return "moon"
     case .checkmark: return "checkmark.seal.fill"
     case .xmark: return "xmark.seal.fill"
+    case .sun: return "sun.max"
+    case .plus: return "plus"
     }
   }
 }
