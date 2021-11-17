@@ -41,15 +41,7 @@ class TodoExplanationViewController: UIViewController {
         viewModel.load()
         setAnimation()
         setTheme()
-    }
-    
-    @IBAction func switchChanged(_ sender: UISwitch) {
-    }
-    
-    @IBAction func saveButtonClicked(_ sender: UIButton) {
-        let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
-        viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
-        _ = navigationController?.popViewController(animated: true)
+        todoExplanationSaveBtn.layer.cornerRadius = 15
     }
 }
 
@@ -60,6 +52,15 @@ extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
         todoExplanationDetailTextField.text = presentation.explanation
         todoExplanationDateTextField.text = DateFormatter().convertDateToString(date: presentation.date)
         todoExplanationCompletedSwitch.isOn = presentation.isCompleted
+    }
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+    }
+    
+    @IBAction func saveButtonClicked(_ sender: UIButton) {
+        let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
+        viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 

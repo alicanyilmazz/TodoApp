@@ -175,7 +175,7 @@ struct LightTheme: Theme {
 
     var todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.shadowWhite
+    var todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
     
     var todoExplanationSaveBtnTextColor: Color = ColorPalette.yellow
     
