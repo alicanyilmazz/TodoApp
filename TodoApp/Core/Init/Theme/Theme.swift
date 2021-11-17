@@ -52,10 +52,29 @@ protocol Theme {
     var alertControllerTextFieldTintColor : Color { get }
     var alertControllerSubviewBackgroundColor : Color { get }
     var alertControllerSubviewTintColor : Color { get }
+    var todoExplanationTitleTextFieldBackgroundColor : Color { get }
+    var todoExplanationTitleTextFieldTextColor : Color { get }
+    var todoExplanationTitleLblBackgroundColor : Color { get }
+    var todoExplanationTitleLblTextColor : Color { get }
+    var todoExplanationDetailTextFieldBackgroundColor : Color { get }
+    var todoExplanationDetailTextFieldTextColor : Color { get }
+    var todoExplanationDetailLblBackgroundColor : Color { get }
+    var todoExplanationDetailLblTextColor : Color { get }
+    var todoExplanationDateTextFieldBackgroundColor : Color { get }
+    var todoExplanationDateTextFieldTextColor : Color { get }
+    var todoExplanationDateLblBackgroundColor : Color { get }
+    var todoExplanationDateLblTextColor : Color { get }
+    var todoExplanationCompletedSwitchOnTintColor : Color { get }
+    var todoExplanationCompletedSwitchThumbTintColor : Color { get }
+    var todoExplanationCompletedSwitchLblBackgroundColor : Color { get }
+    var todoExplanationCompletedSwitchLblTextColor : Color { get }
+    var todoExplanationSaveBtnBackgroundColor : Color { get }
+    var todoExplanationSaveBtnTextColor : Color { get }
+
 }
 
 struct LightTheme: Theme {
-     
+
     let customCellBackgroundColor: Color = ColorPalette.shadowWhite
     
     let customCellTintColor: Color = ColorPalette.yellow
@@ -104,9 +123,9 @@ struct LightTheme: Theme {
     
     let searchBarTintColor : Color = ColorPalette.darkGray
     
-    let addButtonBackgroundColor : Color = ColorPalette.yellow
+    let addButtonBackgroundColor : Color = ColorPalette.darkpink
     
-    let addButtonTintColor : Color = ColorPalette.darkGray
+    let addButtonTintColor : Color = ColorPalette.pureWhite
     
     let uiNavigationControllerForegroundColor : Color = ColorPalette.pureWhite
     
@@ -114,15 +133,52 @@ struct LightTheme: Theme {
     
     let uiNavigationControllerTintColor : Color = ColorPalette.pureWhite
     
-    var alertControllerTextFieldTextColor: Color = ColorPalette.lightGray
+    let alertControllerTextFieldTextColor: Color = ColorPalette.lightGray
     
-    var alertControllerTextFieldBackgroundColor: Color = ColorPalette.pureWhite
+    let alertControllerTextFieldBackgroundColor: Color = ColorPalette.pureWhite
     
-    var alertControllerTextFieldTintColor: Color = ColorPalette.lightGray
+    let alertControllerTextFieldTintColor: Color = ColorPalette.lightGray
     
-    var alertControllerSubviewBackgroundColor: Color = ColorPalette.smokeWhite
+    let alertControllerSubviewBackgroundColor: Color = ColorPalette.smokeWhite
     
-    var alertControllerSubviewTintColor: Color = ColorPalette.lightGray
+    let alertControllerSubviewTintColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationTitleTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
+    
+    var todoExplanationTitleTextFieldTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationTitleLblBackgroundColor: Color = ColorPalette.smokeWhite
+    
+    var todoExplanationTitleLblTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
+    
+    var todoExplanationDetailTextFieldTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationDetailLblBackgroundColor: Color = ColorPalette.smokeWhite
+    
+    var todoExplanationDetailLblTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationDateTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
+    
+    var todoExplanationDateTextFieldTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationDateLblBackgroundColor: Color = ColorPalette.smokeWhite
+    
+    var todoExplanationDateLblTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationCompletedSwitchOnTintColor: Color = ColorPalette.yellow
+    
+    var todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.smokeWhite
+
+    var todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.shadowWhite
+    
+    var todoExplanationSaveBtnTextColor: Color = ColorPalette.yellow
+    
 }
 
 struct DarkTheme: Theme {
@@ -174,25 +230,61 @@ struct DarkTheme: Theme {
     
     let searchBarTintColor : Color = ColorPalette.yellow
     
-    let addButtonBackgroundColor : Color = ColorPalette.yellow
+    let addButtonBackgroundColor : Color = ColorPalette.black
     
-    let addButtonTintColor : Color = ColorPalette.lightGray
+    let addButtonTintColor : Color = ColorPalette.pureWhite
     
-    var uiNavigationControllerForegroundColor : Color = ColorPalette.lightBlue
+    let uiNavigationControllerForegroundColor : Color = ColorPalette.lightBlue
     
-    var uiNavigationControllerBarTintColor : Color = ColorPalette.lightBlue
+    let uiNavigationControllerBarTintColor : Color = ColorPalette.lightBlue
     
-    var uiNavigationControllerTintColor : Color = ColorPalette.yellow
+    let uiNavigationControllerTintColor : Color = ColorPalette.yellow
     
-    var alertControllerTextFieldTextColor: Color = ColorPalette.yellow
+    let alertControllerTextFieldTextColor: Color = ColorPalette.yellow
     
-    var alertControllerTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    let alertControllerTextFieldBackgroundColor: Color = ColorPalette.lightGray
     
-    var alertControllerTextFieldTintColor: Color = ColorPalette.yellow
+    let alertControllerTextFieldTintColor: Color = ColorPalette.yellow
     
-    var alertControllerSubviewBackgroundColor: Color = ColorPalette.darkGray
+    let alertControllerSubviewBackgroundColor: Color = ColorPalette.darkGray
     
-    var alertControllerSubviewTintColor: Color = ColorPalette.yellow
+    let alertControllerSubviewTintColor: Color = ColorPalette.yellow
+    
+    var todoExplanationTitleTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationTitleTextFieldTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationTitleLblBackgroundColor: Color = ColorPalette.darkGray
+    
+    var todoExplanationTitleLblTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationDetailTextFieldTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationDetailLblBackgroundColor: Color = ColorPalette.darkGray
+    
+    var todoExplanationDetailLblTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationDateTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    
+    var todoExplanationDateTextFieldTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationDateLblBackgroundColor: Color = ColorPalette.darkGray
+    
+    var todoExplanationDateLblTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationCompletedSwitchOnTintColor: Color = ColorPalette.yellow
+    
+    var todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.softYellow
+    
+    var todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.darkGray
+    
+    var todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.yellow
+    
+    var todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
+    
+    var todoExplanationSaveBtnTextColor: Color = ColorPalette.pureWhite
 }
 
 enum ThemeType: ThemeProvider {
