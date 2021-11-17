@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxTheme
-import RxSwift
 
 class TodoListViewController: UIViewController , TodoListViewProtocol {
     
@@ -137,15 +135,15 @@ extension TodoListViewController : UISearchBarDelegate{
 extension TodoListViewController{
     
     fileprivate func setUIComponent() {
-        let x = view.frame.size.width
-        let y = view.frame.size.height
+        let screenWidth = view.frame.size.width
+        let screenHeight = view.frame.size.height
         let safeArea = view.safeAreaInsets.bottom
-        addButton = FloatingButton(frame: CGRect(x: x - 60 - 18, y: y - 70 - 8 - safeArea, width: 60, height: 60))
+        addButton = FloatingButton(frame: CGRect().setBaseButtonPosition(screenWidth, screenHeight, safeArea))
         view.addSubview(addButton)
-        themeButton = FloatingButton(frame: CGRect(x: x - 52 - 18, y: y - 125 - 8 - safeArea, width: 45, height: 45))
+        themeButton = FloatingButton(frame: CGRect().setChildButtonPosition(screenWidth, screenHeight, safeArea))
         view.addSubview(themeButton)
-        addButton.configure(with: FloatingButtonViewModel.add)
-        themeButton.configure(with: FloatingButtonViewModel.settings)
+        addButton.customConfigure(with: CustomFloatingButtonViewModel.add)
+        themeButton.customConfigure(with: CustomFloatingButtonViewModel.settings)
         addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
         themeButton.addTarget(self, action: #selector(changeThemeClicked), for: .touchUpInside)
     }
@@ -165,14 +163,11 @@ extension TodoListViewController{
        let type = themeService.type
         if type == .dark{
             themeService.switch(.light)
-            themeButton.backgroundColor = UIColor.systemPink
-            addButton.backgroundColor = UIColor.systemPink
+            setLigthModeIcon(themeButton)
         }else{
             themeService.switch(.dark)
-            themeButton.backgroundColor = UIColor.black
-            addButton.backgroundColor = .black
+            setDarkModeIcon(themeButton)
         }
-        
     }
     
     fileprivate func setTheme() {
@@ -183,3 +178,4 @@ extension TodoListViewController{
         todoSearchBar.theme.tintColor = themed { $0.searchBarTintColor }
     }
 }
+
