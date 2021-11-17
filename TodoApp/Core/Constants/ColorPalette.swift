@@ -30,6 +30,7 @@ import UIKit
    static let cleanWhite = #colorLiteral(red: 0.9999127984, green: 1, blue: 0.9998814464, alpha: 1)
    static let shadowWhite = #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.937254902, alpha: 1)
    static let blueWhite = #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.937254902, alpha: 1)
+   static let softYellow = #colorLiteral(red: 0.8823529412, green: 0.4392156863, blue: 0.1019607843, alpha: 1)
 }
 
 

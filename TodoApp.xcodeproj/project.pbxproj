@@ -40,8 +40,11 @@
 		5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */; };
 		5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC22740020C002573EB /* UIImageExtensions.swift */; };
 		5A7FDEC627400E29002573EB /* UImageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC527400E29002573EB /* UImageEnums.swift */; };
+		5A80787A2743F1F200926A2A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8078792743F1F200926A2A /* Lottie */; };
+		5A80787E2743F3CC00926A2A /* study.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A80787D2743F3CC00926A2A /* study.json */; };
 		5A80E7E72735CBF4006C623B /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A80E7E62735CBF4006C623B /* ColorPalette.swift */; };
 		5A8CC734273FCAE5002D746E /* NavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8CC733273FCAE5002D746E /* NavigationControllerExtensions.swift */; };
+		5A8D66252742A80800311423 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8D66242742A80800311423 /* CustomExtensions.swift */; };
 		5A8F295A273EF66C0033BABE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A8F295C273EF66C0033BABE /* Localizable.strings */; };
 		5A90EBF8274136C80066C7B2 /* StringEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A90EBF7274136C80066C7B2 /* StringEnums.swift */; };
 		5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DAC27340741001D587A /* BaseCustomAlertController.swift */; };
@@ -91,8 +94,10 @@
 		5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationPresentation.swift; sourceTree = "<group>"; };
 		5A7FDEC22740020C002573EB /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		5A7FDEC527400E29002573EB /* UImageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageEnums.swift; sourceTree = "<group>"; };
+		5A80787D2743F3CC00926A2A /* study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = study.json; sourceTree = "<group>"; };
 		5A80E7E62735CBF4006C623B /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		5A8CC733273FCAE5002D746E /* NavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		5A8D66242742A80800311423 /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		5A8F295B273EF66C0033BABE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A8F295D273EF6920033BABE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A90EBF7274136C80066C7B2 /* StringEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEnums.swift; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AD7DE932738670A004CA8AC /* RxTheme in Frameworks */,
+				5A80787A2743F1F200926A2A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +149,7 @@
 				5A951DA9273403FE001D587A /* Core */,
 				5A347D1A272343EA002BD16C /* Supporting Files */,
 				5A347D19272343D4002BD16C /* Resources */,
+				5A80787D2743F3CC00926A2A /* study.json */,
 				5A8F295C273EF66C0033BABE /* Localizable.strings */,
 			);
 			path = TodoApp;
@@ -282,6 +289,14 @@
 			path = ControllerExtensions;
 			sourceTree = "<group>";
 		};
+		5A8D66232742A7AE00311423 /* CustomExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A8D66242742A80800311423 /* CustomExtensions.swift */,
+			);
+			path = CustomExtensions;
+			sourceTree = "<group>";
+		};
 		5A951DA9273403FE001D587A /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +330,7 @@
 		5A951DAE27341231001D587A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5A8D66232742A7AE00311423 /* CustomExtensions */,
 				5A8CC732273FCABF002D746E /* ControllerExtensions */,
 				5ADE98B3273D952A00FC8AE3 /* StringExtensions */,
 				5A951DB227343907001D587A /* DateTimePickerExtensions */,
@@ -397,6 +413,7 @@
 			name = TodoApp;
 			packageProductDependencies = (
 				5AD7DE922738670A004CA8AC /* RxTheme */,
+				5A8078792743F1F200926A2A /* Lottie */,
 			);
 			productName = TodoApp;
 			productReference = 5A347CFB27234324002BD16C /* TodoApp.app */;
@@ -429,6 +446,7 @@
 			mainGroup = 5A347CF227234324002BD16C;
 			packageReferences = (
 				5AD7DE912738670A004CA8AC /* XCRemoteSwiftPackageReference "RxTheme" */,
+				5A8078782743F1F200926A2A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 5A347CFC27234324002BD16C /* Products */;
 			projectDirPath = "";
@@ -447,6 +465,7 @@
 				5A347D0E27234325002BD16C /* LaunchScreen.storyboard in Resources */,
 				5A8F295A273EF66C0033BABE /* Localizable.strings in Resources */,
 				5A347D4327258400002BD16C /* TodoDetail.storyboard in Resources */,
+				5A80787E2743F3CC00926A2A /* study.json in Resources */,
 				5A347D5227272921002BD16C /* TodoExplanation.storyboard in Resources */,
 				5A347D262723E38D002BD16C /* TodoList.storyboard in Resources */,
 				5A347D0B27234325002BD16C /* Assets.xcassets in Resources */,
@@ -476,6 +495,7 @@
 				5A347D4D2726B4AE002BD16C /* TodoDetailCell.swift in Sources */,
 				5A347D352723F9BC002BD16C /* TodoDetailPresentation.swift in Sources */,
 				5A347D472725847A002BD16C /* TodoDetailContracts.swift in Sources */,
+				5A8D66252742A80800311423 /* CustomExtensions.swift in Sources */,
 				5A90EBF8274136C80066C7B2 /* StringEnums.swift in Sources */,
 				5A7FDEC627400E29002573EB /* UImageEnums.swift in Sources */,
 				5AD7DE9727387478004CA8AC /* Theme.swift in Sources */,
@@ -721,6 +741,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5A8078782743F1F200926A2A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		5AD7DE912738670A004CA8AC /* XCRemoteSwiftPackageReference "RxTheme" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxTheme";
@@ -732,6 +760,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5A8078792743F1F200926A2A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A8078782743F1F200926A2A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		5AD7DE922738670A004CA8AC /* RxTheme */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5AD7DE912738670A004CA8AC /* XCRemoteSwiftPackageReference "RxTheme" */;
