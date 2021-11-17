@@ -122,10 +122,10 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="search todo detail" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-xl-SvA">
-                                <rect key="frame" x="0.0" y="44" width="377" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="O51-J4-d4g"/>
+                                    <constraint firstAttribute="height" constant="50" id="J3W-ac-h6o"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" red="0.9882352941176471" green="0.74901960784313726" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,41 +139,21 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="LDl-Lm-SZJ"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIY-K0-WEH">
-                                <rect key="frame" x="378" y="44" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.74901960784313726" blue="0.28627450980392155" alpha="0.88344225346647354" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="fd2-rs-28g"/>
-                                </constraints>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="plus" catalog="system">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addDetailButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2BC-Wa-yrX"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.1215686275" green="0.16078431369999999" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" systemColor="systemPinkColor"/>
                         <constraints>
-                            <constraint firstItem="IOg-MT-Q8b" firstAttribute="leading" secondItem="Chd-xl-SvA" secondAttribute="leading" id="9tc-BI-Zt4"/>
-                            <constraint firstItem="pIY-K0-WEH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="T5y-yA-92m"/>
-                            <constraint firstItem="pIY-K0-WEH" firstAttribute="bottom" secondItem="Chd-xl-SvA" secondAttribute="bottom" id="UhR-SY-0Xj"/>
-                            <constraint firstItem="IOg-MT-Q8b" firstAttribute="trailing" secondItem="pIY-K0-WEH" secondAttribute="trailing" id="aDO-Hm-b98"/>
+                            <constraint firstItem="Chd-xl-SvA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="35f-l6-K2f"/>
+                            <constraint firstItem="Chd-xl-SvA" firstAttribute="trailing" secondItem="IOg-MT-Q8b" secondAttribute="trailing" id="PSq-tc-2rv"/>
+                            <constraint firstItem="Chd-xl-SvA" firstAttribute="leading" secondItem="IOg-MT-Q8b" secondAttribute="leading" id="YOy-1R-rAJ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="IOg-MT-Q8b" secondAttribute="bottom" constant="-34" id="aIJ-nW-J9j"/>
-                            <constraint firstItem="IOg-MT-Q8b" firstAttribute="top" secondItem="Chd-xl-SvA" secondAttribute="bottom" id="ay7-nk-5n6"/>
-                            <constraint firstItem="Chd-xl-SvA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="chF-EB-DcK"/>
-                            <constraint firstItem="pIY-K0-WEH" firstAttribute="leading" secondItem="Chd-xl-SvA" secondAttribute="trailing" constant="1" id="o0K-ft-y0c"/>
-                            <constraint firstItem="Chd-xl-SvA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="p2a-Es-ieO"/>
+                            <constraint firstItem="IOg-MT-Q8b" firstAttribute="top" secondItem="Chd-xl-SvA" secondAttribute="bottom" id="h85-Hu-ftj"/>
                             <constraint firstItem="IOg-MT-Q8b" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pwD-Hn-qQd"/>
+                            <constraint firstItem="Chd-xl-SvA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="q47-ru-RX4"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addTodoDetailButton" destination="pIY-K0-WEH" id="JYH-3n-pZp"/>
                         <outlet property="tableView" destination="IOg-MT-Q8b" id="pvC-1i-esK"/>
                         <outlet property="todoDetailSearchBar" destination="Chd-xl-SvA" id="TJZ-xe-mcH"/>
                     </connections>
@@ -187,7 +167,6 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark.seal.fill" catalog="system" width="128" height="128"/>
         <image name="circle.inset.filled" catalog="system" width="128" height="121"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
