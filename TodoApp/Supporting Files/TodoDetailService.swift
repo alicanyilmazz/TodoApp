@@ -11,12 +11,13 @@ import CoreData
 import UIKit
 
 protocol TodoDetailListServiceProtocol {
-  func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> ,todo : Todo , predicate: NSPredicate?) -> [TodoDetail]
+  func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> ,todoTitle : String , predicate: NSPredicate?) -> [TodoDetail]
   func fetchTodoDetails(with request : NSFetchRequest<TodoDetail>) -> [TodoDetail]
   func save()
-  func deleteTodoDetail(index : Int, todo : Todo)
+  func deleteTodoDetail(index : Int, todoDetailTitle : String)
   func returnTodoDetail() -> TodoDetail
   func addTodoDetail(todoDetail : TodoDetail, todo : Todo)
+   func searchTodoDetail(todoDetail : String , todoTitle : String) -> [TodoDetail]
 }
 
 class TodoDetailListService : TodoDetailListServiceProtocol {
@@ -25,9 +26,15 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
     var data = [TodoDetail]()
     private var todoDetail : TodoDetail = TodoDetail()
     
-    func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> = TodoDetail.fetchRequest() ,todo : Todo ,predicate: NSPredicate? = nil) -> [TodoDetail]{
-        let predicate = NSPredicate(format: "parentTodo.title MATCHES %@" , todo.title!)
-        request.predicate = predicate
+    func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> = TodoDetail.fetchRequest() ,todoTitle : String ,predicate: NSPredicate? = nil) -> [TodoDetail]{
+        let detailPredicate = NSPredicate(format: "parentTodo.title MATCHES %@" , todoTitle)
+        
+        if let additionalPredicate = predicate{
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [detailPredicate , additionalPredicate])
+        }else{
+            request.predicate = detailPredicate
+        }
+
         do {
             data = try context.fetch(request)
         } catch  {
@@ -45,6 +52,13 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
         return data
     }
     
+    func searchTodoDetail(todoDetail : String , todoTitle : String) -> [TodoDetail]{
+        let request : NSFetchRequest<TodoDetail> = TodoDetail.fetchRequest()
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", todoDetail)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        return fetchTodoDetails(with: request,todoTitle: todoTitle,predicate: predicate)
+    }
+    
     func addTodoDetail(todoDetail : TodoDetail, todo : Todo){
         todoDetail.parentTodo = todo
         data.append(todoDetail)
@@ -56,11 +70,12 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
         return newTodoDetail
     }
 
-    func deleteTodoDetail(index : Int, todo : Todo){
-        let allTodoDetails = fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todo: todo, predicate: nil)
+    func deleteTodoDetail(index : Int, todoDetailTitle : String){
+        let allTodoDetails = fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todoTitle: todoDetailTitle, predicate: nil)
         context.delete(allTodoDetails[index])
         save()
     }
+    
 
     func save(){
         do {
