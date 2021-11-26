@@ -15,7 +15,6 @@ protocol TodoListServiceProtocol {
   func searchTodo(todo : String) -> [Todo]
   func deleteTodo(index : Int)
   func editTodo(index : Int,todo : String)
-  func save()
 }
 
 class TodoListService : TodoListServiceProtocol {
@@ -26,13 +25,13 @@ class TodoListService : TodoListServiceProtocol {
         do {
             data = try context.fetch(request)
         } catch  {
-            print("Error fetching data from context \(error)")
+            print("\(CoreDataErrors.fetchingDataError.description) \(error)")
         }
         return data
     }
     
     func addTodo(todo : String){
-        let newTodo = Todo(context: CoreDataService.getContext())
+        let newTodo = Todo(context: context)
         newTodo.title = todo
         data.append(newTodo)
         save()
@@ -40,8 +39,8 @@ class TodoListService : TodoListServiceProtocol {
         
     func searchTodo(todo : String) -> [Todo]{
         let request : NSFetchRequest<Todo> = Todo.fetchRequest()
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", todo)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        request.predicate = NSPredicate(format: TodoQuery.contains.description, todo)
+        request.sortDescriptors = [NSSortDescriptor(key: TodoKeys.title.description, ascending: true)]
         return fetchTodos(with: request)
     }
     
@@ -53,15 +52,15 @@ class TodoListService : TodoListServiceProtocol {
     
     func editTodo(index : Int,todo : String){
         let allTodos = fetchTodos()
-        allTodos[index].setValue(todo, forKey: "title")
+        allTodos[index].setValue(todo, forKey: TodoKeys.title.description)
         save()
     }
     
-    func save(){
+    fileprivate func save(){
         do {
            try context.save()
         } catch {
-            print("Error saving context \(error)")
+            print("\(CoreDataErrors.contextError) \(error)")
         }
     }
 }
