@@ -13,21 +13,19 @@ import UIKit
 protocol TodoDetailListServiceProtocol {
   func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> ,todoTitle : String , predicate: NSPredicate?) -> [TodoDetail]
   func fetchTodoDetails(with request : NSFetchRequest<TodoDetail>) -> [TodoDetail]
-  func save()
   func deleteTodoDetail(index : Int, todoDetailTitle : String)
   func returnTodoDetail() -> TodoDetail
   func addTodoDetail(todoDetail : TodoDetail, todo : Todo)
-   func searchTodoDetail(todoDetail : String , todoTitle : String) -> [TodoDetail]
+  func searchTodoDetail(todoDetail : String , todoTitle : String) -> [TodoDetail]
 }
 
 class TodoDetailListService : TodoDetailListServiceProtocol {
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var data = [TodoDetail]()
     private var todoDetail : TodoDetail = TodoDetail()
     
     func fetchTodoDetails(with request : NSFetchRequest<TodoDetail> = TodoDetail.fetchRequest() ,todoTitle : String ,predicate: NSPredicate? = nil) -> [TodoDetail]{
-        let detailPredicate = NSPredicate(format: "parentTodo.title MATCHES %@" , todoTitle)
+        let detailPredicate = NSPredicate(format: TodoDetailQuery.matches.description , todoTitle)
         
         if let additionalPredicate = predicate{
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [detailPredicate , additionalPredicate])
@@ -38,7 +36,7 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
         do {
             data = try context.fetch(request)
         } catch  {
-            print("Error fetching data from context \(error)")
+            print("\(CoreDataErrors.fetchingDataError) \(error)")
         }
         return data
     }
@@ -47,15 +45,15 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
         do {
             data = try context.fetch(request)
         } catch  {
-            print("Error fetching data from context \(error)")
+            print("\(CoreDataErrors.fetchingDataError) \(error)")
         }
         return data
     }
     
     func searchTodoDetail(todoDetail : String , todoTitle : String) -> [TodoDetail]{
         let request : NSFetchRequest<TodoDetail> = TodoDetail.fetchRequest()
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", todoDetail)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        let predicate = NSPredicate(format: TodoDetailQuery.contains.description, todoDetail)
+        request.sortDescriptors = [NSSortDescriptor(key: TodoDetailKey.title.description, ascending: true)]
         return fetchTodoDetails(with: request,todoTitle: todoTitle,predicate: predicate)
     }
     
@@ -66,22 +64,21 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
     }
     
     func returnTodoDetail() -> TodoDetail {
-        let newTodoDetail = TodoDetail(context: CoreDataService.getContext())
+        let newTodoDetail = TodoDetail(context: context)
         return newTodoDetail
     }
 
     func deleteTodoDetail(index : Int, todoDetailTitle : String){
-        let allTodoDetails = fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todoTitle: todoDetailTitle, predicate: nil)
+        let allTodoDetails = fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: TodoDetailKey.todoDetail.description), todoTitle: todoDetailTitle, predicate: nil)
         context.delete(allTodoDetails[index])
         save()
     }
     
-
-    func save(){
+    fileprivate func save(){
         do {
            try context.save()
         } catch {
-            print("Error saving context \(error)")
+            print("\(CoreDataErrors.contextError.description) \(error)")
         }
     }
 }
