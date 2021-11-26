@@ -143,41 +143,41 @@ struct LightTheme: Theme {
     
     let alertControllerSubviewTintColor: Color = ColorPalette.lightGray
     
-    var todoExplanationTitleTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
+    let todoExplanationTitleTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
     
-    var todoExplanationTitleTextFieldTextColor: Color = ColorPalette.lightGray
+    let todoExplanationTitleTextFieldTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationTitleLblBackgroundColor: Color = ColorPalette.smokeWhite
+    let todoExplanationTitleLblBackgroundColor: Color = ColorPalette.smokeWhite
     
-    var todoExplanationTitleLblTextColor: Color = ColorPalette.lightGray
+    let todoExplanationTitleLblTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
+    let todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
     
-    var todoExplanationDetailTextFieldTextColor: Color = ColorPalette.lightGray
+    let todoExplanationDetailTextFieldTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationDetailLblBackgroundColor: Color = ColorPalette.smokeWhite
+    let todoExplanationDetailLblBackgroundColor: Color = ColorPalette.smokeWhite
     
-    var todoExplanationDetailLblTextColor: Color = ColorPalette.lightGray
+    let todoExplanationDetailLblTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationDateTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
+    let todoExplanationDateTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
     
-    var todoExplanationDateTextFieldTextColor: Color = ColorPalette.lightGray
+    let todoExplanationDateTextFieldTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationDateLblBackgroundColor: Color = ColorPalette.smokeWhite
+    let todoExplanationDateLblBackgroundColor: Color = ColorPalette.smokeWhite
     
-    var todoExplanationDateLblTextColor: Color = ColorPalette.lightGray
+    let todoExplanationDateLblTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationCompletedSwitchOnTintColor: Color = ColorPalette.yellow
+    let todoExplanationCompletedSwitchOnTintColor: Color = ColorPalette.yellow
     
-    var todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.lightGray
+    let todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.lightGray
     
-    var todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.smokeWhite
+    let todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.smokeWhite
 
-    var todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.lightGray
+    let todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.lightGray
     
-    var todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
+    let todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
     
-    var todoExplanationSaveBtnTextColor: Color = ColorPalette.yellow
+    let todoExplanationSaveBtnTextColor: Color = ColorPalette.yellow
     
 }
 
@@ -250,41 +250,41 @@ struct DarkTheme: Theme {
     
     let alertControllerSubviewTintColor: Color = ColorPalette.yellow
     
-    var todoExplanationTitleTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    let todoExplanationTitleTextFieldBackgroundColor: Color = ColorPalette.lightGray
     
-    var todoExplanationTitleTextFieldTextColor: Color = ColorPalette.yellow
+    let todoExplanationTitleTextFieldTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationTitleLblBackgroundColor: Color = ColorPalette.darkGray
+    let todoExplanationTitleLblBackgroundColor: Color = ColorPalette.darkGray
     
-    var todoExplanationTitleLblTextColor: Color = ColorPalette.yellow
+    let todoExplanationTitleLblTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    let todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.lightGray
     
-    var todoExplanationDetailTextFieldTextColor: Color = ColorPalette.yellow
+    let todoExplanationDetailTextFieldTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationDetailLblBackgroundColor: Color = ColorPalette.darkGray
+    let todoExplanationDetailLblBackgroundColor: Color = ColorPalette.darkGray
     
-    var todoExplanationDetailLblTextColor: Color = ColorPalette.yellow
+    let todoExplanationDetailLblTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationDateTextFieldBackgroundColor: Color = ColorPalette.lightGray
+    let todoExplanationDateTextFieldBackgroundColor: Color = ColorPalette.lightGray
     
-    var todoExplanationDateTextFieldTextColor: Color = ColorPalette.yellow
+    let todoExplanationDateTextFieldTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationDateLblBackgroundColor: Color = ColorPalette.darkGray
+    let todoExplanationDateLblBackgroundColor: Color = ColorPalette.darkGray
     
-    var todoExplanationDateLblTextColor: Color = ColorPalette.yellow
+    let todoExplanationDateLblTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationCompletedSwitchOnTintColor: Color = ColorPalette.yellow
+    let todoExplanationCompletedSwitchOnTintColor: Color = ColorPalette.yellow
     
-    var todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.softYellow
+    let todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.softYellow
     
-    var todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.darkGray
+    let todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.darkGray
     
-    var todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.yellow
+    let todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.yellow
     
-    var todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
+    let todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
     
-    var todoExplanationSaveBtnTextColor: Color = ColorPalette.pureWhite
+    let todoExplanationSaveBtnTextColor: Color = ColorPalette.pureWhite
 }
 
 enum ThemeType: ThemeProvider {
