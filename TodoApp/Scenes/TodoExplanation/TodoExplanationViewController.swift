@@ -87,6 +87,8 @@ extension TodoExplanationViewController{
     
     fileprivate func setUIComponent() {
         todoExplanationSaveBtn.layer.cornerRadius = 15
+        todoExplanationSaveBtn.layer.borderWidth = 1
+        todoExplanationSaveBtn.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
@@ -95,6 +97,7 @@ extension TodoExplanationViewController{
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
         viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
+        LocalNotificationManager.setNotification(10, of: .seconds, repeats: false, title: "Your todo is ready", body: "Your must come true your todo.", userInfo: ["aps": ["hello":"world"]])
         _ = navigationController?.popViewController(animated: true)
     }
 }
