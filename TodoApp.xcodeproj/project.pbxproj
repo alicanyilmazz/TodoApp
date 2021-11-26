@@ -38,6 +38,7 @@
 		5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */; };
 		5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */; };
 		5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */; };
+		5A5C74302747DB0500AF4BA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */; };
 		5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC22740020C002573EB /* UIImageExtensions.swift */; };
 		5A7FDEC627400E29002573EB /* UImageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC527400E29002573EB /* UImageEnums.swift */; };
 		5A80787A2743F1F200926A2A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8078792743F1F200926A2A /* Lottie */; };
@@ -50,6 +51,7 @@
 		5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DAC27340741001D587A /* BaseCustomAlertController.swift */; };
 		5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB027341258001D587A /* UIColorExtensions.swift */; };
 		5A951DB427343924001D587A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB327343924001D587A /* DateExtensions.swift */; };
+		5A9B46382746658E00EF39DA /* CoreDataEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B46372746658E00EF39DA /* CoreDataEnums.swift */; };
 		5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653EF2731609B00D4BABF /* TodoCell.swift */; };
 		5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653F12731C71800D4BABF /* CustomAlertController.swift */; };
 		5AD7DE932738670A004CA8AC /* RxTheme in Frameworks */ = {isa = PBXBuildFile; productRef = 5AD7DE922738670A004CA8AC /* RxTheme */; };
@@ -92,6 +94,7 @@
 		5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewController.swift; sourceTree = "<group>"; };
 		5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewModel.swift; sourceTree = "<group>"; };
 		5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationPresentation.swift; sourceTree = "<group>"; };
+		5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5A7FDEC22740020C002573EB /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		5A7FDEC527400E29002573EB /* UImageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageEnums.swift; sourceTree = "<group>"; };
 		5A80787D2743F3CC00926A2A /* study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = study.json; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		5A951DAC27340741001D587A /* BaseCustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomAlertController.swift; sourceTree = "<group>"; };
 		5A951DB027341258001D587A /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		5A951DB327343924001D587A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		5A9B46372746658E00EF39DA /* CoreDataEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnums.swift; sourceTree = "<group>"; };
 		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		5AA653F12731C71800D4BABF /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		5AD7DE9627387478004CA8AC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		5A347CFD27234324002BD16C /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				5A9B46362746633E00EF39DA /* Services */,
 				5A347D17272343BF002BD16C /* App */,
 				5A347D18272343C9002BD16C /* Scenes */,
 				5A347D1B2723440C002BD16C /* Presentations */,
@@ -151,6 +156,7 @@
 				5A347D19272343D4002BD16C /* Resources */,
 				5A80787D2743F3CC00926A2A /* study.json */,
 				5A8F295C273EF66C0033BABE /* Localizable.strings */,
+				5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -190,9 +196,6 @@
 				5A347D0F27234325002BD16C /* Info.plist */,
 				5A347D0C27234325002BD16C /* LaunchScreen.storyboard */,
 				5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */,
-				5A347D3B27241953002BD16C /* CoreDataService.swift */,
-				5A347D3D27242011002BD16C /* TodoListService.swift */,
-				5A347D4E2726F21F002BD16C /* TodoDetailService.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			children = (
 				5A7FDEC527400E29002573EB /* UImageEnums.swift */,
 				5A90EBF7274136C80066C7B2 /* StringEnums.swift */,
+				5A9B46372746658E00EF39DA /* CoreDataEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -353,6 +357,16 @@
 				5A951DB327343924001D587A /* DateExtensions.swift */,
 			);
 			path = DateTimePickerExtensions;
+			sourceTree = "<group>";
+		};
+		5A9B46362746633E00EF39DA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5A347D3B27241953002BD16C /* CoreDataService.swift */,
+				5A347D3D27242011002BD16C /* TodoListService.swift */,
+				5A347D4E2726F21F002BD16C /* TodoDetailService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5AD7DE9427386957004CA8AC /* Init */ = {
@@ -497,6 +511,7 @@
 				5A347D472725847A002BD16C /* TodoDetailContracts.swift in Sources */,
 				5A8D66252742A80800311423 /* CustomExtensions.swift in Sources */,
 				5A90EBF8274136C80066C7B2 /* StringEnums.swift in Sources */,
+				5A5C74302747DB0500AF4BA0 /* NotificationManager.swift in Sources */,
 				5A7FDEC627400E29002573EB /* UImageEnums.swift in Sources */,
 				5AD7DE9727387478004CA8AC /* Theme.swift in Sources */,
 				5ADE98B5273D954B00FC8AE3 /* StringExtensions.swift in Sources */,
@@ -508,6 +523,7 @@
 				5A8CC734273FCAE5002D746E /* NavigationControllerExtensions.swift in Sources */,
 				5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */,
 				5A347D2C2723F4FC002BD16C /* TodoListInteractor.swift in Sources */,
+				5A9B46382746658E00EF39DA /* CoreDataEnums.swift in Sources */,
 				5A347D5627272962002BD16C /* TodoExplanationContracts.swift in Sources */,
 				5A347D242723E1D1002BD16C /* TodoListBuilder.swift in Sources */,
 				5A80E7E72735CBF4006C623B /* ColorPalette.swift in Sources */,
