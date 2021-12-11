@@ -10,7 +10,6 @@
 		5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347CFE27234324002BD16C /* AppDelegate.swift */; };
 		5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0027234324002BD16C /* SceneDelegate.swift */; };
 		5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */; };
-		5A347D0B27234325002BD16C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0A27234325002BD16C /* Assets.xcassets */; };
 		5A347D0E27234325002BD16C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0C27234325002BD16C /* LaunchScreen.storyboard */; };
 		5A347D1F27234478002BD16C /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D1E27234478002BD16C /* AppContainer.swift */; };
 		5A347D2127234486002BD16C /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D2027234486002BD16C /* AppRouter.swift */; };
@@ -52,8 +51,12 @@
 		5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB027341258001D587A /* UIColorExtensions.swift */; };
 		5A951DB427343924001D587A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A951DB327343924001D587A /* DateExtensions.swift */; };
 		5A9B46382746658E00EF39DA /* CoreDataEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B46372746658E00EF39DA /* CoreDataEnums.swift */; };
+		5A9D2D43275A73AF007E304E /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D2D42275A73AF007E304E /* SnackbarView.swift */; };
+		5A9D2D45275A73BD007E304E /* SnackbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D2D44275A73BD007E304E /* SnackbarViewModel.swift */; };
 		5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653EF2731609B00D4BABF /* TodoCell.swift */; };
 		5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653F12731C71800D4BABF /* CustomAlertController.swift */; };
+		5AB01AFB2760B28F00F5E2B8 /* todolist.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB01AFA2760B28F00F5E2B8 /* todolist.png */; };
+		5AB01AFF2760CF0C00F5E2B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0A27234325002BD16C /* Assets.xcassets */; };
 		5AD7DE932738670A004CA8AC /* RxTheme in Frameworks */ = {isa = PBXBuildFile; productRef = 5AD7DE922738670A004CA8AC /* RxTheme */; };
 		5AD7DE9727387478004CA8AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7DE9627387478004CA8AC /* Theme.swift */; };
 		5ADE98B1273D406400FC8AE3 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */; };
@@ -108,8 +111,11 @@
 		5A951DB027341258001D587A /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		5A951DB327343924001D587A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		5A9B46372746658E00EF39DA /* CoreDataEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEnums.swift; sourceTree = "<group>"; };
+		5A9D2D42275A73AF007E304E /* SnackbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
+		5A9D2D44275A73BD007E304E /* SnackbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarViewModel.swift; sourceTree = "<group>"; };
 		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		5AA653F12731C71800D4BABF /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		5AB01AFA2760B28F00F5E2B8 /* todolist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todolist.png; sourceTree = "<group>"; };
 		5AD7DE9627387478004CA8AC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		5ADE98B4273D954B00FC8AE3 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -154,9 +160,9 @@
 				5A951DA9273403FE001D587A /* Core */,
 				5A347D1A272343EA002BD16C /* Supporting Files */,
 				5A347D19272343D4002BD16C /* Resources */,
+				5AB01AFA2760B28F00F5E2B8 /* todolist.png */,
 				5A80787D2743F3CC00926A2A /* study.json */,
 				5A8F295C273EF66C0033BABE /* Localizable.strings */,
-				5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 		5A951DAA27340456001D587A /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5A9D2D41275A738C007E304E /* SnackBar */,
 				5A7FDEC1274001E1002573EB /* Images */,
 				5ADE98AF273D402A00FC8AE3 /* Buttons */,
 				5A951DAB273405ED001D587A /* CustomAlertController */,
@@ -369,9 +376,35 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		5A9D2D41275A738C007E304E /* SnackBar */ = {
+			isa = PBXGroup;
+			children = (
+				5A9D2D42275A73AF007E304E /* SnackbarView.swift */,
+				5A9D2D44275A73BD007E304E /* SnackbarViewModel.swift */,
+			);
+			path = SnackBar;
+			sourceTree = "<group>";
+		};
+		5ABA00002757E1B10008D7D5 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5ABA00012757E1C00008D7D5 /* LocalNotification */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		5ABA00012757E1C00008D7D5 /* LocalNotification */ = {
+			isa = PBXGroup;
+			children = (
+				5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */,
+			);
+			path = LocalNotification;
+			sourceTree = "<group>";
+		};
 		5AD7DE9427386957004CA8AC /* Init */ = {
 			isa = PBXGroup;
 			children = (
+				5ABA00002757E1B10008D7D5 /* Notification */,
 				5ADE98B2273D94B500FC8AE3 /* Localization */,
 				5AD7DE9527386968004CA8AC /* Theme */,
 			);
@@ -477,12 +510,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A347D0E27234325002BD16C /* LaunchScreen.storyboard in Resources */,
+				5AB01AFB2760B28F00F5E2B8 /* todolist.png in Resources */,
 				5A8F295A273EF66C0033BABE /* Localizable.strings in Resources */,
 				5A347D4327258400002BD16C /* TodoDetail.storyboard in Resources */,
 				5A80787E2743F3CC00926A2A /* study.json in Resources */,
 				5A347D5227272921002BD16C /* TodoExplanation.storyboard in Resources */,
+				5AB01AFF2760CF0C00F5E2B8 /* Assets.xcassets in Resources */,
 				5A347D262723E38D002BD16C /* TodoList.storyboard in Resources */,
-				5A347D0B27234325002BD16C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +542,7 @@
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
 				5A347D4D2726B4AE002BD16C /* TodoDetailCell.swift in Sources */,
 				5A347D352723F9BC002BD16C /* TodoDetailPresentation.swift in Sources */,
+				5A9D2D43275A73AF007E304E /* SnackbarView.swift in Sources */,
 				5A347D472725847A002BD16C /* TodoDetailContracts.swift in Sources */,
 				5A8D66252742A80800311423 /* CustomExtensions.swift in Sources */,
 				5A90EBF8274136C80066C7B2 /* StringEnums.swift in Sources */,
@@ -519,6 +554,7 @@
 				5A347D302723F528002BD16C /* TodoListRouter.swift in Sources */,
 				5A347D2127234486002BD16C /* AppRouter.swift in Sources */,
 				5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */,
+				5A9D2D45275A73BD007E304E /* SnackbarViewModel.swift in Sources */,
 				5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */,
 				5A8CC734273FCAE5002D746E /* NavigationControllerExtensions.swift in Sources */,
 				5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */,
