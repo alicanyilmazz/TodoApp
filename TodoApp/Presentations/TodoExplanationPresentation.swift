@@ -12,12 +12,14 @@ final class TodoExplanationPresentation: NSObject {
     let explanation : String
     let date : Date
     let isCompleted : Bool
+    let notificationId : String
     
-    init(detailTitle: String,explanation : String ,date : Date ,isCompleted : Bool ){
+    init(detailTitle: String,explanation : String ,date : Date ,isCompleted : Bool , notificationId : String){
         self.detailTitle = detailTitle
         self.explanation = explanation
         self.date = date
         self.isCompleted = isCompleted
+        self.notificationId = notificationId
         super.init()
     }
     
@@ -29,6 +31,6 @@ final class TodoExplanationPresentation: NSObject {
 
 extension TodoExplanationPresentation{
     convenience init(todoDetail : TodoDetail){
-        self.init(detailTitle: todoDetail.title!, explanation: todoDetail.explation!, date: todoDetail.date!, isCompleted: todoDetail.isCompleted)
+        self.init(detailTitle: todoDetail.title!, explanation: todoDetail.explation!, date: todoDetail.date!, isCompleted: todoDetail.isCompleted,notificationId: todoDetail.notificationId!)
     }
 }

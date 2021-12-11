@@ -65,6 +65,7 @@ class TodoDetailListService : TodoDetailListServiceProtocol {
     
     func returnTodoDetail() -> TodoDetail {
         let newTodoDetail = TodoDetail(context: context)
+        newTodoDetail.notificationId = UUID().uuidString
         return newTodoDetail
     }
 

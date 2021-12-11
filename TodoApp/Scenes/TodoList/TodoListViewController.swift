@@ -13,17 +13,21 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     @IBOutlet weak var todoSearchBar: UISearchBar!
     var addButton : FloatingButton!
     var themeButton : FloatingButton!
+    
+    var searching = false
+    var workItemReference : DispatchWorkItem? = nil
 
     var presenter : TodoListPresenterProtocol!
     private var todos : [TodoPresentation] = []
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.load()
         setTheme()
         setUIComponent()
+        //setCancelButton()
     }
-        
+         
     override func viewDidAppear(_ animated: Bool) {
         setSearchBar()
     }
@@ -102,6 +106,8 @@ extension TodoListViewController : UITableViewDelegate{
 }
 
 extension TodoListViewController : UISearchBarDelegate{
+    // This code structure is designed to search when the enter button is pressed.
+    /*
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             return
@@ -110,6 +116,7 @@ extension TodoListViewController : UISearchBarDelegate{
         self.tableView.reloadData()
     }
     
+    // If you press the x icon, the searchTextField was reset, and we were checking its element count and reloading the entire list.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
             self.presenter.load()
@@ -119,6 +126,49 @@ extension TodoListViewController : UISearchBarDelegate{
                 searchBar.resignFirstResponder()
             }
         }
+    }
+    */
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != ""{
+            workItemReference?.cancel()
+            
+            let workItem = DispatchWorkItem{
+                self.searchtodo(text: searchText)
+            }
+            
+            workItemReference = workItem
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: workItem)
+        }else{
+            self.presenter.load()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func searchtodo(text : String){
+        self.presenter.searchTodo(todo: text)
+        self.searching = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // You can also use the cancel button if you want, but we currently use the x icon to end the search.
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.presenter.load()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // If you want to use cancel button for searchbar you must be active the code on line 28.
+    fileprivate func setCancelButton() {
+        todoSearchBar.showsCancelButton = true
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
     }
     
     func setSearchBar() {

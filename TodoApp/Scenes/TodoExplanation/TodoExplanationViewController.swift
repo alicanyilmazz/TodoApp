@@ -31,9 +31,15 @@ class TodoExplanationViewController: UIViewController {
     @IBOutlet weak var todoExplanationCompletedSwitchLbl: UILabel!
     
     @IBOutlet weak var todoExplanationSaveBtn: UIButton!
+    
+    private var notificationDate : DateComponents!
+    
+    var snackbarViewModel : SnackbarViewModel!
         
     var viewModel: TodoExplanationViewModelProtocol!
-        
+    
+    var notificationId : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         todoExplanationDateTextField.delegate = self
@@ -42,6 +48,7 @@ class TodoExplanationViewController: UIViewController {
         setAnimation()
         setTheme()
         setUIComponent()
+        setInitialValues()
     }
 }
 
@@ -52,6 +59,7 @@ extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
         todoExplanationDetailTextField.text = presentation.explanation
         todoExplanationDateTextField.text = DateFormatter().convertDateToString(date: presentation.date)
         todoExplanationCompletedSwitch.isOn = presentation.isCompleted
+        notificationId = presentation.notificationId
     }
 }
 
@@ -91,14 +99,55 @@ extension TodoExplanationViewController{
         todoExplanationSaveBtn.layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    fileprivate func setInitialValues() {
+        notificationDate = Calendar.current.dateComponents([.minute , .hour , .day , .month , .year], from: DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text!))
+    }
+    
     @IBAction func switchChanged(_ sender: UISwitch) {
+        if sender.isOn == true{
+            snackbarViewModel = SnackbarViewModel(type: .info, text: "You turned off notifications.", image: UIImage(systemName: "bell"))
+            let frame = CGRect(x: 0, y: 0, width: view.frame.size.width/1.2, height: 60)
+            let snackbar = SnackbarView(viewModel: snackbarViewModel , frame: frame)
+            showSnackbar(snackBar: snackbar)
+        }else{
+            snackbarViewModel = SnackbarViewModel(type: .info, text: "You turned on notifications.", image: UIImage(systemName: "bell"))
+            let frame = CGRect(x: 0, y: 0, width: view.frame.size.width/1.2, height: 60)
+            let snackbar = SnackbarView(viewModel: snackbarViewModel , frame: frame)
+            showSnackbar(snackBar: snackbar)
+        }
     }
     
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
         viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
-        LocalNotificationManager.setNotification(10, of: .seconds, repeats: false, title: "Your todo is ready", body: "Your must come true your todo.", userInfo: ["aps": ["hello":"world"]])
+        if todoExplanationCompletedSwitch.isOn{
+            LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationDetailTextField.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
+        }else{
+            LocalNotificationManager.cancelThisNotification(notificationId)
+        }
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    public func showSnackbar(snackBar : SnackbarView){
+        let width = view.frame.size.width/1.2
+        snackBar.frame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height - 110, width: width, height: 60)
+        view.addSubview(snackBar)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            snackBar.frame = CGRect(x: (self.view.frame.size.width-width)/2, y: self.view.frame.size.height - 110, width: width, height: 60)
+        },completion: { done in
+            if done{
+                DispatchQueue.main.asyncAfter(deadline: .now()+4, execute: {
+                    UIView.animate(withDuration: 0.5) {
+                        snackBar.frame = CGRect(x: (self.view.frame.size.width-width)/2, y: self.view.frame.size.height, width: width, height: 60)
+                    } completion: { finished in
+                        if finished{
+                            snackBar.removeFromSuperview()
+                        }
+                    }
+                })
+            }
+        })
     }
 }
 
@@ -114,6 +163,7 @@ extension TodoExplanationViewController : UITextFieldDelegate{
     @objc func doneButtonClick(){
         if let dateAndTimePicker = self.todoExplanationDateTextField.inputView as? UIDatePicker{
             self.todoExplanationDateTextField.text = DateFormatter().convertDateToString(date: dateAndTimePicker.date)
+            self.notificationDate = Calendar.current.dateComponents([.minute , .hour , .day , .month , .year], from: dateAndTimePicker.date)
         }
         self.todoExplanationDateTextField.resignFirstResponder()
     }
