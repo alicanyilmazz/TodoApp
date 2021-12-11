@@ -21,7 +21,7 @@ final class TodoListPresenter : TodoListPresenterProtocol{
     }
     
     func load() {
-        view.handleOutput(.updateTitle("Todos"))
+        view.handleOutput(.updateTitle("NavigationBar.Title".localized()))
         interactor.load()
     }
     

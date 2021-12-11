@@ -24,12 +24,10 @@ final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
     func load() {
         notify(.updateTitle(todo.title?.uppercased() ?? "TodoDetails"))
         notify(.setLoading(true))
-        let result = service.fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todo: todo, predicate: nil)
-        if result != nil{
+        let result = service.fetchTodoDetails(with: NSFetchRequest<TodoDetail>(entityName: "TodoDetail"), todoTitle: todo.title!, predicate: nil)
             self.todoDetails = result
             let presentation = result.map({TodoDetailPresentation(todoDetail: $0)})
             self.notify(.showTodoDetailList(presentation))
-        }
     }
     
     func selectedTodoDetail(at index: Int) {
@@ -39,11 +37,13 @@ final class TodoDetailViewModel: TodoDetailListViewModelProtocol {
     }
    
     func searchTodoDetail(todoDetail: String) {
-        // TODO
+        var result = service.searchTodoDetail(todoDetail: todoDetail, todoTitle: todo.title!)
+        let presentation = result.map({TodoDetailPresentation(todoDetail: $0)})
+        self.notify(.showTodoDetailList(presentation))
     }
     
     func deleteTodoDetail(index: Int) {
-        service.deleteTodoDetail(index: index, todo: todo)
+        service.deleteTodoDetail(index: index, todoDetailTitle: todo.title!)
     }
     
     func addTodoDetail() {

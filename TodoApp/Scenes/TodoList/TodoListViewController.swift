@@ -11,34 +11,35 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var todoSearchBar: UISearchBar!
+    var addButton : FloatingButton!
+    var themeButton : FloatingButton!
     
+    var searching = false
+    var workItemReference : DispatchWorkItem? = nil
+
     var presenter : TodoListPresenterProtocol!
     private var todos : [TodoPresentation] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.load()
-        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        // Do any additional setup after loading the view.
+        setTheme()
+        setUIComponent()
+        //setCancelButton()
+    }
+         
+    override func viewDidAppear(_ animated: Bool) {
+        setSearchBar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if #available(iOS 13.0, *) {
-            todoSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search your todo", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
-           } else {
-               if let searchField = todoSearchBar.value(forKey: "searchField") as? UITextField {
-                   searchField.attributedPlaceholder = NSAttributedString(string: "Search your todo", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-               }
-           }
+    override func viewWillAppear(_ animated: Bool) {
+        UINavigationController().setNavigationController(nav: navigationController!)
     }
     
     func handleOutput(_ output: TodoListPresenterOutput) {
         switch output {
         case .updateTitle(let title):
             self.title = title
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.systemOrange]
-            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
-            navigationController?.navigationBar.tintColor = .systemOrange
         case .setLoading(let isLoading):
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showTodoList(let todos):
@@ -47,15 +48,14 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     }
 }
 
-
 extension TodoListViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell", for: indexPath)
         //cell.textLabel?.text = todo.title
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListCell") as! TodoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReservedStrings.TodoListCell.asString) as! TodoCell
         let todo = todos[indexPath.row]
         cell.todoTitleLbl.text = todo.title
-        cell.avatarImage.image =  UIImage(systemName: "circle.inset.filled")?.withTintColor(UIColor.getRandomColor(),renderingMode: .alwaysOriginal)
+        cell.avatarImage.image = UIImage().getSystemUIImage(systemName: ImageName.circle.description)
         return cell
     }
     
@@ -75,95 +75,26 @@ extension TodoListViewController : UITableViewDelegate{
         presenter.selectedTodo(at: indexPath.row)
     }
     
-    @IBAction func AddTodoButtonClicked(_ sender: UIButton) {
-        var textField = UITextField()
-        
-        let alert = UIAlertController(title: "Add New Todo", message: "", preferredStyle: .alert)
-        let actionAdd = UIAlertAction(title: "Add", style: .default) { (action) in
-            // what will happed once the user clicks the Add Item button our UIAlert
-            guard let _text = textField.text, !_text.isEmpty else {
-                return
-            }
-            self.presenter.addTodo(todo: _text)
-            self.presenter.load()
-            self.tableView.reloadData()
-        }
-        
-        let actionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-                
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Add New Todo :D"
-            alertTextField.textColor = .systemPink
-            textField = alertTextField
-        }
-        
-        alert.addAction(actionAdd)
-        alert.addAction(actionCancel)
-        present(alert, animated: true, completion: nil)
-
-    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        var textField = UITextField()
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+        let deleteAction = UIContextualAction(style: .destructive, title: LocalizableStrings.delete.description.localized()) {  (contextualAction, view, boolValue) in
             self.presenter.deleteTodo(index: indexPath.row)
             self.todos.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             boolValue(true)
            }
         deleteAction.backgroundColor = .systemPink
-        
-        let editAction = UIContextualAction(style: .destructive, title: "Edit") {  (contextualAction, view, boolValue) in
 
-            let attributedString = NSAttributedString(string: "Edit", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15),NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)])
-            let MessageString = NSAttributedString(string: "Please enter your todo title.", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)])
-            
-            let alert = UIAlertController(title: "Edit", message: "Please enter your todo title.", preferredStyle: .alert)
-            alert.setValue(attributedString, forKey: "attributedTitle")
-            alert.setValue(MessageString, forKey: "attributedMessage")
-            
-            let subview = (alert.view.subviews.first?.subviews.first?.subviews.first!)! as UIView
-            subview.layer.cornerRadius = 0
-            subview.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
-            subview.tintColor = .yellow
-            // #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-            //let dismissAction = UIAlertAction(title: "Dismiss", style: .destructive, handler: nil)
-            let actionSave = UIAlertAction(title: "Save", style: .default) { (action) in
+        let editAction = UIContextualAction(style: .destructive, title: LocalizableStrings.edit.description.localized()) {  (contextualAction, view, boolValue) in
 
-                guard let text = textField.text, !text.isEmpty else {
-                    return
+            let customUI = CustomUI(customUIAlertTextField: [.edit], customUIAlertAction: [.edit,.cancel])
+            showBasicAlert(on: self, customUI: customUI, customUIAlertController: CustomUIAlertController.edit) { _actionTypes, _textFieldStatusTypes, _uiTextFields in
+                if(_actionTypes == actionTypes.edit && _textFieldStatusTypes == textFieldStatusTypes.acceptable){
+                    self.presenter.EditTodo(index: indexPath.row,todo: _uiTextFields[0].text!)
+                    self.presenter.load()
+                    self.tableView.reloadData()
                 }
-                self.presenter.EditTodo(index: indexPath.row,todo: text)
-                self.presenter.load()
-                self.tableView.reloadData()
             }
-            actionSave.setValue(#colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), forKey: "titleTextColor")
-            
-            alert.addTextField { (alertTextField) in
-                alertTextField.placeholder = "Edit item"
-                alertTextField.textColor = #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)
-                alertTextField.backgroundColor = #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1)
-                alertTextField.attributedPlaceholder = NSAttributedString(string: "Enter your todo title.",attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)])
-                alertTextField.tintColor = .orange
-                alertTextField.borderStyle = .roundedRect
-                let container = alertTextField.superview
-                let effectView = container?.superview?.subviews[0]
-                container?.backgroundColor = .clear
-                effectView?.removeFromSuperview()
-                //alertTextField.background = UIImage(systemName: "bell")
-                
-                textField = alertTextField
-            }
-            let actionCancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-            actionCancel.setValue( #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1), forKey: "titleTextColor")
-            
-            alert.addAction(actionSave)
-            alert.addAction(actionCancel)
-            //alert.addAction(dismissAction)
-            
-            self.present(alert, animated: true, completion: nil)
-            
             boolValue(true)
            }
         editAction.backgroundColor = .systemOrange
@@ -175,6 +106,8 @@ extension TodoListViewController : UITableViewDelegate{
 }
 
 extension TodoListViewController : UISearchBarDelegate{
+    // This code structure is designed to search when the enter button is pressed.
+    /*
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             return
@@ -183,6 +116,7 @@ extension TodoListViewController : UISearchBarDelegate{
         self.tableView.reloadData()
     }
     
+    // If you press the x icon, the searchTextField was reset, and we were checking its element count and reloading the entire list.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
             self.presenter.load()
@@ -193,7 +127,105 @@ extension TodoListViewController : UISearchBarDelegate{
             }
         }
     }
+    */
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != ""{
+            workItemReference?.cancel()
+            
+            let workItem = DispatchWorkItem{
+                self.searchtodo(text: searchText)
+            }
+            
+            workItemReference = workItem
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: workItem)
+        }else{
+            self.presenter.load()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func searchtodo(text : String){
+        self.presenter.searchTodo(todo: text)
+        self.searching = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // You can also use the cancel button if you want, but we currently use the x icon to end the search.
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        self.presenter.load()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    // If you want to use cancel button for searchbar you must be active the code on line 28.
+    fileprivate func setCancelButton() {
+        todoSearchBar.showsCancelButton = true
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
+    }
+    
+    func setSearchBar() {
+        if #available(iOS 13.0, *) {
+            todoSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+        } else {
+            if let searchField = todoSearchBar.value(forKey: ReservedStrings.searchField.asString) as? UITextField {
+                searchField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            }
+        }
+    }
 }
 
-
+extension TodoListViewController{
+    
+    fileprivate func setUIComponent() {
+        let screenWidth = view.frame.size.width
+        let screenHeight = view.frame.size.height
+        let safeArea = view.safeAreaInsets.bottom
+        addButton = FloatingButton(frame: CGRect().setBaseButtonPosition(screenWidth, screenHeight, safeArea))
+        view.addSubview(addButton)
+        themeButton = FloatingButton(frame: CGRect().setChildButtonPosition(screenWidth, screenHeight, safeArea))
+        view.addSubview(themeButton)
+        addButton.customConfigure(with: CustomFloatingButtonViewModel.add)
+        themeButton.customConfigure(with: CustomFloatingButtonViewModel.settings)
+        addButton.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+        themeButton.addTarget(self, action: #selector(changeThemeClicked), for: .touchUpInside)
+    }
+    
+    @objc private func addButtonClicked(){
+            let customUI = CustomUI(customUIAlertTextField: [.add], customUIAlertAction: [.add,.cancel])
+            showBasicAlert(on: self, customUI: customUI, customUIAlertController: CustomUIAlertController.add) { _actionTypes, _textFieldStatusTypes, _uiTextFields in
+                if(_actionTypes == actionTypes.add && _textFieldStatusTypes == textFieldStatusTypes.acceptable){
+                    self.presenter.addTodo(todo: _uiTextFields[0].text!)
+                    self.presenter.load()
+                    self.tableView.reloadData()
+                }
+            }
+    }
+    
+    @objc private func changeThemeClicked(){
+       let type = themeService.type
+        if type == .dark{
+            themeService.switch(.light)
+            setLigthModeIcon(themeButton)
+        }else{
+            themeService.switch(.dark)
+            setDarkModeIcon(themeButton)
+        }
+    }
+    
+    fileprivate func setTheme() {
+        tableView.theme.backgroundColor = themed { $0.tableViewBackgroundColor }
+        tableView.theme.tintColor = themed { $0.tableViewTintColor }
+        todoSearchBar.theme.backgroundColor = themed { $0.searchBarBackgroundColor }
+        todoSearchBar.theme.barTintColor = themed { $0.searchBarBarTintColor }
+        todoSearchBar.theme.tintColor = themed { $0.searchBarTintColor }
+    }
+}
 
