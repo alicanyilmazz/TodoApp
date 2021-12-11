@@ -120,7 +120,7 @@ extension TodoExplanationViewController{
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
         viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
-        if todoExplanationCompletedSwitch.isOn{
+        if !todoExplanationCompletedSwitch.isOn{
             LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationDetailTextField.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
         }else{
             LocalNotificationManager.cancelThisNotification(notificationId)
