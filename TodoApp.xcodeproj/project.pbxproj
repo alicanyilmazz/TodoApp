@@ -61,6 +61,7 @@
 		5AD7DE9727387478004CA8AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7DE9627387478004CA8AC /* Theme.swift */; };
 		5ADE98B1273D406400FC8AE3 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */; };
 		5ADE98B5273D954B00FC8AE3 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE98B4273D954B00FC8AE3 /* StringExtensions.swift */; };
+		5AE313D62766A6EC00D0FADD /* FormValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE313D52766A6EC00D0FADD /* FormValidationExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		5AD7DE9627387478004CA8AC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		5ADE98B4273D954B00FC8AE3 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		5AE313D52766A6EC00D0FADD /* FormValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +343,7 @@
 		5A951DAE27341231001D587A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5AE313D42766A6C300D0FADD /* ValidationExtension */,
 				5A8D66232742A7AE00311423 /* CustomExtensions */,
 				5A8CC732273FCABF002D746E /* ControllerExtensions */,
 				5ADE98B3273D952A00FC8AE3 /* StringExtensions */,
@@ -442,6 +445,14 @@
 			path = StringExtensions;
 			sourceTree = "<group>";
 		};
+		5AE313D42766A6C300D0FADD /* ValidationExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5AE313D52766A6EC00D0FADD /* FormValidationExtension.swift */,
+			);
+			path = ValidationExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -538,6 +549,7 @@
 				5A347D3C27241953002BD16C /* CoreDataService.swift in Sources */,
 				5A347D3E27242011002BD16C /* TodoListService.swift in Sources */,
 				5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */,
+				5AE313D62766A6EC00D0FADD /* FormValidationExtension.swift in Sources */,
 				5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */,
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
 				5A347D4D2726B4AE002BD16C /* TodoDetailCell.swift in Sources */,
