@@ -34,9 +34,16 @@ class TodoExplanationViewController: UIViewController {
     
     private var notificationDate : DateComponents!
     
+    @IBOutlet weak var titleValidationLabel: UILabel!
+    
+    @IBOutlet weak var detailValidationLabel: UILabel!
+    
     var snackbarViewModel : SnackbarViewModel!
         
     var viewModel: TodoExplanationViewModelProtocol!
+    
+    let titleValidityType : String.ValidityType = .between3to25
+    let detailValidityType : String.ValidityType = .between8to42
     
     var notificationId : String = ""
     
@@ -97,6 +104,7 @@ extension TodoExplanationViewController{
         todoExplanationSaveBtn.layer.cornerRadius = 15
         todoExplanationSaveBtn.layer.borderWidth = 1
         todoExplanationSaveBtn.layer.borderColor = UIColor.lightGray.cgColor
+        titleValidationLabel.textColor = .systemGreen
     }
     
     fileprivate func setInitialValues() {
@@ -120,12 +128,39 @@ extension TodoExplanationViewController{
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
         viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationDetailTextField.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn)
-        if todoExplanationCompletedSwitch.isOn{
+        if !todoExplanationCompletedSwitch.isOn{
             LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationDetailTextField.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
         }else{
             LocalNotificationManager.cancelThisNotification(notificationId)
         }
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func titleTextFieldEdited(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        if text.isValid(titleValidityType){
+            titleValidationLabel.text = "Everything seems ok."
+            titleValidationLabel.textColor = .systemGreen
+            todoExplanationSaveBtn.isEnabled = true
+            
+        }else{
+            titleValidationLabel.text = "The title must contain at least 3 characters and at most 10 characters."
+            titleValidationLabel.textColor = .systemPink
+            todoExplanationSaveBtn.isEnabled = false
+        }
+    }
+        
+    @IBAction func detailTextFieldEdited(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        if text.isValid(detailValidityType){
+            detailValidationLabel.text = "Everything seems ok."
+            detailValidationLabel.textColor = .systemGreen
+            todoExplanationSaveBtn.isEnabled = true
+        }else{
+            detailValidationLabel.text = "The detail must contain at least 8 characters and at most 25 characters."
+            detailValidationLabel.textColor = .systemPink
+            todoExplanationSaveBtn.isEnabled = false
+        }
     }
     
     public func showSnackbar(snackBar : SnackbarView){

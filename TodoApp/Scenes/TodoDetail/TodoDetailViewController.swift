@@ -17,6 +17,9 @@ class TodoDetailViewController: UIViewController {
     private var todoDetailList: [TodoDetailPresentation] = []
     var textField = UITextField()
     
+    var searching = false
+    var workItemReference : DispatchWorkItem? = nil
+    
     var viewModel : TodoDetailListViewModelProtocol!{
         didSet{
             viewModel.delegate = self
@@ -104,7 +107,8 @@ extension TodoDetailViewController : UITableViewDataSource{
 }
 
 extension TodoDetailViewController : UISearchBarDelegate{
-    
+    // This code structure is designed to search when the enter button is pressed.
+    /*
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else {
             return
@@ -112,7 +116,8 @@ extension TodoDetailViewController : UISearchBarDelegate{
         viewModel.searchTodoDetail(todoDetail: text)
         self.tableView.reloadData()
     }
-    
+     
+    // If you press the x icon, the searchTextField was reset, and we were checking its element count and reloading the entire list.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
             self.viewModel.load()
@@ -121,6 +126,33 @@ extension TodoDetailViewController : UISearchBarDelegate{
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
+        }
+    }
+    */
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != ""{
+            workItemReference?.cancel()
+            
+            let workItem = DispatchWorkItem{
+                self.searchtodoDetail(text: searchText)
+            }
+            
+            workItemReference = workItem
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: workItem)
+        }else{
+            self.viewModel.load()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func searchtodoDetail(text : String){
+        viewModel.searchTodoDetail(todoDetail: text)
+        self.searching = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     
