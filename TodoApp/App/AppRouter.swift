@@ -15,12 +15,15 @@ final class AppRouter {
         window = UIWindow(frame: UIScreen.main.bounds)
     }
     
-    func start() {
+    func start(scene: UIWindowScene? = nil) {
         let viewController = TodoListBuilder.make()
         //viewController.view.backgroundColor = .systemPink
         //viewController.title = "Replace Me"
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
+        if scene != nil{
+            window.windowScene = scene
+        }
         window.makeKeyAndVisible()
     }
 }
