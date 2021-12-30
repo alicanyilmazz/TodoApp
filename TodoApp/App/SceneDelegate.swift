@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/*
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -16,7 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        //guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        app.router.start(scene: windowScene)
+        self.window = app.router.window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -39,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        NotificationCenter.default.post(name: .switchUINotification, object: nil, userInfo: [:])
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -48,9 +52,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
-
-
 }
- */
 
+extension Notification.Name{
+    static let switchUINotification = Notification.Name("switchUINotification")
+}
