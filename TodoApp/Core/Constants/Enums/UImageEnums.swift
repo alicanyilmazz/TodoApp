@@ -10,8 +10,8 @@ import Foundation
 enum ImageName : CustomStringConvertible {
   case circle
   case moon
-  case checkmark
-  case xmark
+  case bell
+  case bellslash
   case sun
   case plus
   
@@ -19,8 +19,8 @@ enum ImageName : CustomStringConvertible {
     switch self {
     case .circle: return "circle.inset.filled"
     case .moon: return "moon"
-    case .checkmark: return "checkmark.seal.fill"
-    case .xmark: return "xmark.seal.fill"
+    case .bell: return "bell"   //"checkmark.seal.fill"
+    case .bellslash: return "bell.slash"  // "xmark.seal" // "xmark.circle"
     case .sun: return "sun.max"
     case .plus: return "plus"
     }
