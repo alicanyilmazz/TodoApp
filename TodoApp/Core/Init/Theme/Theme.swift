@@ -54,8 +54,6 @@ protocol Theme {
     var alertControllerSubviewTintColor : Color { get }
     var todoExplanationTitleTextFieldBackgroundColor : Color { get }
     var todoExplanationTitleTextFieldTextColor : Color { get }
-    var todoExplanationTitleLblBackgroundColor : Color { get }
-    var todoExplanationTitleLblTextColor : Color { get }
     var todoExplanationDetailTextFieldBackgroundColor : Color { get }
     var todoExplanationDetailTextFieldTextColor : Color { get }
     var todoExplanationDetailLblBackgroundColor : Color { get }
@@ -67,9 +65,9 @@ protocol Theme {
     var todoExplanationCompletedSwitchOnTintColor : Color { get }
     var todoExplanationCompletedSwitchThumbTintColor : Color { get }
     var todoExplanationCompletedSwitchLblBackgroundColor : Color { get }
-    var todoExplanationCompletedSwitchLblTextColor : Color { get }
     var todoExplanationSaveBtnBackgroundColor : Color { get }
     var todoExplanationSaveBtnTextColor : Color { get }
+    var todoExplanationCustomViewThemeBackgroundColor : Color { get }
 
 }
 
@@ -147,10 +145,6 @@ struct LightTheme: Theme {
     
     let todoExplanationTitleTextFieldTextColor: Color = ColorPalette.lightGray
     
-    let todoExplanationTitleLblBackgroundColor: Color = ColorPalette.smokeWhite
-    
-    let todoExplanationTitleLblTextColor: Color = ColorPalette.lightGray
-    
     let todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.shadowWhite
     
     let todoExplanationDetailTextFieldTextColor: Color = ColorPalette.lightGray
@@ -172,12 +166,12 @@ struct LightTheme: Theme {
     let todoExplanationCompletedSwitchThumbTintColor: Color = ColorPalette.lightGray
     
     let todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.smokeWhite
-
-    let todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.lightGray
     
     let todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
     
     let todoExplanationSaveBtnTextColor: Color = ColorPalette.yellow
+    
+    let todoExplanationCustomViewThemeBackgroundColor: Color = ColorPalette.smokeWhite
     
 }
 
@@ -254,10 +248,6 @@ struct DarkTheme: Theme {
     
     let todoExplanationTitleTextFieldTextColor: Color = ColorPalette.yellow
     
-    let todoExplanationTitleLblBackgroundColor: Color = ColorPalette.darkGray
-    
-    let todoExplanationTitleLblTextColor: Color = ColorPalette.yellow
-    
     let todoExplanationDetailTextFieldBackgroundColor: Color = ColorPalette.lightGray
     
     let todoExplanationDetailTextFieldTextColor: Color = ColorPalette.yellow
@@ -280,11 +270,11 @@ struct DarkTheme: Theme {
     
     let todoExplanationCompletedSwitchLblBackgroundColor: Color = ColorPalette.darkGray
     
-    let todoExplanationCompletedSwitchLblTextColor: Color = ColorPalette.yellow
-    
     let todoExplanationSaveBtnBackgroundColor: Color = ColorPalette.yellow
     
     let todoExplanationSaveBtnTextColor: Color = ColorPalette.pureWhite
+    
+    let todoExplanationCustomViewThemeBackgroundColor: Color = ColorPalette.darkGray
 }
 
 enum ThemeType: ThemeProvider {
