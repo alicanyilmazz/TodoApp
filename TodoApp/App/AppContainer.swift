@@ -10,7 +10,7 @@ import CoreData
 
 let app = AppContainer()
 
-final class AppContainer {
+class AppContainer {
     
     let router = AppRouter()
     let service = TodoListService()
