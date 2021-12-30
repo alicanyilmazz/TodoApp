@@ -23,15 +23,78 @@ enum LocalNotificationDurationType{
 }
 
 struct LocalNotificationManager{
-    static private var notifications = [LocalNotification]()
-    static private func requestPermission() -> Void{
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge , .alert]) { granted, error in
-            if granted == true && error == nil{
-                // We have a permission
-            }
+    
+ static private var permissionStatus : Bool = false
+    
+    static var current : UNAuthorizationStatus = {
+    var res : UNAuthorizationStatus = .notDetermined
+    UNUserNotificationCenter.current().getNotificationSettings{ (settings) in
+        switch settings.authorizationStatus  {
+        case .authorized:
+            res = .authorized
+            print("User granted permission for notification")
+        case .denied:
+            res = .denied
+            print("User denied notification permission")
+        case .notDetermined:
+            res = .notDetermined
+            print("Notification permission haven't been asked yet")
+        case .provisional:
+            // @available(iOS 12.0, *)
+            res = .provisional
+            print("The application is authorized to post non-interruptive user notifications.")
+        case .ephemeral:
+            // @available(iOS 14.0, *)
+            res = .ephemeral
+            print("The application is temporarily authorized to post notifications. Only available to app clips.")
+        @unknown default:
+            res = .denied
+            print("Unknow Status")
         }
     }
-    
+     return res
+}()
+ 
+ static private var notifications = [LocalNotification]()
+ static private func requestPermission() -> Bool{
+     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge , .alert]) { granted, error in
+         if granted == true && error == nil{
+             print("status \(granted)")
+             permissionStatus = true
+         }else{
+             permissionStatus = false
+         }
+     }
+     return permissionStatus
+ }
+ 
+ static func getNotificationPermissionStatus(checkNotificationStatus isEnable : ((Bool)->())? = nil){
+     let current = UNUserNotificationCenter.current()
+     current.getNotificationSettings(completionHandler: { permission in
+         switch permission.authorizationStatus  {
+         case .authorized:
+             isEnable?(true)
+             print("User granted permission for notification")
+         case .denied:
+             isEnable?(false)
+             print("User denied notification permission")
+         case .notDetermined:
+             isEnable?(false)
+             print("Notification permission haven't been asked yet")
+         case .provisional:
+             // @available(iOS 12.0, *)
+             isEnable?(false)
+             print("The application is authorized to post non-interruptive user notifications.")
+         case .ephemeral:
+             // @available(iOS 14.0, *)
+             isEnable?(false)
+             print("The application is temporarily authorized to post notifications. Only available to app clips.")
+         @unknown default:
+             isEnable?(false)
+             print("Unknow Status")
+         }
+     })
+ }
     
 static private func scheduleNotifications(_ durationInSeconds: Int , repeats: Bool , userInfo: [AnyHashable : Any],notificationId : String , title : String , body : String){
     UIApplication.shared.applicationIconBadgeNumber = 0
@@ -114,14 +177,24 @@ static private func scheduleNotifications(_ duration: Int , of type: LocalNotifi
         print("Removed scheduling notification with id: \(notificationId)")
     }
     
+    static func cancelThisNotifications( _ notificationIds : [String]){
+        //UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [notificationId])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationIds)
+        for notificationId in notificationIds {
+            print("Removed scheduling notification with id: \(notificationId)")
+        }
+    }
+    
     static func setNotification(_ duration: Int , _ notificationId : String , of type: LocalNotificationDurationType , repeats : Bool , title :  String , body : String , userInfo: [AnyHashable : Any]){
-        requestPermission()
-        scheduleNotifications(duration, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+        if requestPermission(){
+            scheduleNotifications(duration, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+        } 
     }
     
     static func setNotification(_ dateComponent: DateComponents , _ notificationId : String , repeats : Bool , title :  String , body : String , userInfo: [AnyHashable : Any]){
-        requestPermission()
-        scheduleNotifications(dateComponent, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+        if  requestPermission(){
+            scheduleNotifications(dateComponent, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+        }
     }
     
     fileprivate static func setNotificationImage(_ notificationId: String, _ content: UNMutableNotificationContent) {
