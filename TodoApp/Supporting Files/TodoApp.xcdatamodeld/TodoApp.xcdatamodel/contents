@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Todo" representedClassName=".Todo" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="todoDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TodoDetail" inverseName="parentTodo" inverseEntity="TodoDetail"/>
     </entity>
     <entity name="TodoDetail" representedClassName=".TodoDetail" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="657284520" usesScalarValueType="NO"/>
-        <attribute name="explation" optional="YES" attributeType="String" defaultValueString="Let's make a todo!"/>
-        <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="explation" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isTheNotificationScheduled" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="notificationId" optional="YES" attributeType="String" defaultValueString="id"/>
-        <attribute name="title" optional="YES" attributeType="String" defaultValueString="My Todo"/>
+        <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
         <relationship name="parentTodo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Todo" inverseName="todoDetails" inverseEntity="Todo"/>
     </entity>
     <elements>
         <element name="Todo" positionX="-161.027099609375" positionY="11.51828002929688" width="128" height="73"/>
-        <element name="TodoDetail" positionX="64.6190185546875" positionY="41.76611328125" width="128" height="28"/>
+        <element name="TodoDetail" positionX="64.6190185546875" positionY="41.76611328125" width="128" height="148"/>
     </elements>
 </model>

@@ -44,6 +44,10 @@ final class TodoListPresenter : TodoListPresenterProtocol{
     func EditTodo(index: Int, todo: String) {
         interactor.EditTodo(index: index, todo: todo)
     }
+    
+    func removeNotifications(todo: String) {
+        interactor.removeNotifications(todo: todo)
+    }
 }
 
 extension TodoListPresenter : TodoListInteractorDelegate{

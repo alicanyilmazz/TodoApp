@@ -78,6 +78,7 @@ extension TodoListViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: LocalizableStrings.delete.description.localized()) {  (contextualAction, view, boolValue) in
+            self.presenter.removeNotifications(todo: self.todos[indexPath.row].title)
             self.presenter.deleteTodo(index: indexPath.row)
             self.todos.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -138,7 +139,7 @@ extension TodoListViewController : UISearchBarDelegate{
             }
             
             workItemReference = workItem
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: workItem)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: workItem)
         }else{
             self.presenter.load()
             DispatchQueue.main.async {

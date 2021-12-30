@@ -18,6 +18,7 @@ protocol TodoListInteractorProtocol : class {
     func searchTodo(todo : String)
     func deleteTodo(index : Int)
     func EditTodo(index : Int , todo : String)
+    func removeNotifications(todo : String)
 }
 
 enum TodoListInteractorOutput{
@@ -39,6 +40,7 @@ protocol TodoListPresenterProtocol : class {
     func searchTodo(todo : String)
     func deleteTodo(index : Int)
     func EditTodo(index : Int , todo : String)
+    func removeNotifications(todo : String)
 }
 
 enum TodoListPresenterOutput{

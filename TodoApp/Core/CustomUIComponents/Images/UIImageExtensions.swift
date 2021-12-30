@@ -28,9 +28,9 @@ extension UIImage{
 
 struct CustomImage{
     
-    static let xmark : UIImage = (UIImage(systemName: ImageName.xmark.description)?.withTintColor(ColorPalette.yellow,renderingMode: .alwaysOriginal))!
+    static let xmark : UIImage = (UIImage(systemName: ImageName.bellslash.description)?.withTintColor(ColorPalette.yellow,renderingMode: .alwaysOriginal))!
     
-    static let checkmark = (UIImage(systemName: ImageName.checkmark.description)?.withTintColor(ColorPalette.yellow ,renderingMode: .alwaysOriginal))!
+    static let checkmark = (UIImage(systemName: ImageName.bell.description)?.withTintColor(ColorPalette.yellow ,renderingMode: .alwaysOriginal))!
     
     static let circle = (UIImage(systemName: ImageName.circle.description)?.withTintColor(UIColor.getRandomColor() ,renderingMode: .alwaysOriginal))!
 }

@@ -25,7 +25,7 @@ extension String{
         case password = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
         case mustBeEightCharacter = ".{8}"
         case between3to25 = "^.{3,25}$"
-        case between8to42 = "^.{8,42}$"
+        case between8to42 = "^.{8,180}$"
     }
     
     func isValid(_ validityType : ValidityType) -> Bool{
@@ -66,4 +66,5 @@ extension String{
  $                         End anchor.
  
  */
+
 

@@ -70,7 +70,8 @@ extension TodoDetailViewController : UITableViewDataSource{
         let todoDetail = todoDetailList[indexPath.row]
         cell.detailLbl.text = todoDetail.explanation
         cell.detailTitleLbl.text = todoDetail.detailTitle
-        cell.isCompletedLbl.image = todoDetail.isCompleted ? CustomImage.checkmark : CustomImage.xmark
+        cell.isCompletedLbl.image = todoDetail.isCompleted ? CustomImage.checkmark.withTintColor(.systemGreen) : CustomImage.xmark.withTintColor(.systemPink)
+        cell.isCompletedLbl.tintColor = cell.isCompletedLbl.image == CustomImage.checkmark ? UIColor.green : UIColor.red
         cell.dateLbl.text = DateFormatter().convertDateToString(date: todoDetail.date)
         cell.avatarLbl.image = CustomImage.circle
         return cell
@@ -92,6 +93,8 @@ extension TodoDetailViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: LocalizableStrings.delete.description.localized()) { (contextualAction, view, boolValue) in
+            let todoDetail = self.todoDetailList[indexPath.row]
+            LocalNotificationManager.cancelThisNotification(todoDetail.notificationId)
             self.viewModel.deleteTodoDetail(index: indexPath.row)
             self.todoDetailList.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)

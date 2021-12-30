@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1D0874276A139D00F079BE /* study.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A1D0873276A139D00F079BE /* study.json */; };
 		5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347CFE27234324002BD16C /* AppDelegate.swift */; };
 		5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0027234324002BD16C /* SceneDelegate.swift */; };
 		5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */; };
@@ -41,7 +42,6 @@
 		5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC22740020C002573EB /* UIImageExtensions.swift */; };
 		5A7FDEC627400E29002573EB /* UImageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC527400E29002573EB /* UImageEnums.swift */; };
 		5A80787A2743F1F200926A2A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8078792743F1F200926A2A /* Lottie */; };
-		5A80787E2743F3CC00926A2A /* study.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A80787D2743F3CC00926A2A /* study.json */; };
 		5A80E7E72735CBF4006C623B /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A80E7E62735CBF4006C623B /* ColorPalette.swift */; };
 		5A8CC734273FCAE5002D746E /* NavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8CC733273FCAE5002D746E /* NavigationControllerExtensions.swift */; };
 		5A8D66252742A80800311423 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8D66242742A80800311423 /* CustomExtensions.swift */; };
@@ -57,6 +57,10 @@
 		5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653F12731C71800D4BABF /* CustomAlertController.swift */; };
 		5AB01AFB2760B28F00F5E2B8 /* todolist.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB01AFA2760B28F00F5E2B8 /* todolist.png */; };
 		5AB01AFF2760CF0C00F5E2B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0A27234325002BD16C /* Assets.xcassets */; };
+		5AB66FE1276A38E800996CE4 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB66FE0276A38E800996CE4 /* UITextFieldExtensions.swift */; };
+		5AB66FE3276A5CE000996CE4 /* clock.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AB66FE2276A5CDF00996CE4 /* clock.json */; };
+		5AB66FE7276A781500996CE4 /* time.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AB66FE6276A781500996CE4 /* time.json */; };
+		5AD62EA5276F26DB0014BDF6 /* CommonEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD62EA4276F26DB0014BDF6 /* CommonEnums.swift */; };
 		5AD7DE932738670A004CA8AC /* RxTheme in Frameworks */ = {isa = PBXBuildFile; productRef = 5AD7DE922738670A004CA8AC /* RxTheme */; };
 		5AD7DE9727387478004CA8AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7DE9627387478004CA8AC /* Theme.swift */; };
 		5ADE98B1273D406400FC8AE3 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */; };
@@ -65,6 +69,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A1D0873276A139D00F079BE /* study.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = study.json; sourceTree = "<group>"; };
 		5A347CFB27234324002BD16C /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A347CFE27234324002BD16C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A347D0027234324002BD16C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +106,6 @@
 		5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5A7FDEC22740020C002573EB /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		5A7FDEC527400E29002573EB /* UImageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageEnums.swift; sourceTree = "<group>"; };
-		5A80787D2743F3CC00926A2A /* study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = study.json; sourceTree = "<group>"; };
 		5A80E7E62735CBF4006C623B /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		5A8CC733273FCAE5002D746E /* NavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		5A8D66242742A80800311423 /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
@@ -117,6 +121,10 @@
 		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		5AA653F12731C71800D4BABF /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		5AB01AFA2760B28F00F5E2B8 /* todolist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todolist.png; sourceTree = "<group>"; };
+		5AB66FE0276A38E800996CE4 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		5AB66FE2276A5CDF00996CE4 /* clock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clock.json; sourceTree = "<group>"; };
+		5AB66FE6276A781500996CE4 /* time.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = time.json; sourceTree = "<group>"; };
+		5AD62EA4276F26DB0014BDF6 /* CommonEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEnums.swift; sourceTree = "<group>"; };
 		5AD7DE9627387478004CA8AC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		5ADE98B4273D954B00FC8AE3 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 		5A347CFD27234324002BD16C /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				5AB66FE6276A781500996CE4 /* time.json */,
 				5A9B46362746633E00EF39DA /* Services */,
 				5A347D17272343BF002BD16C /* App */,
 				5A347D18272343C9002BD16C /* Scenes */,
@@ -163,8 +172,9 @@
 				5A347D1A272343EA002BD16C /* Supporting Files */,
 				5A347D19272343D4002BD16C /* Resources */,
 				5AB01AFA2760B28F00F5E2B8 /* todolist.png */,
-				5A80787D2743F3CC00926A2A /* study.json */,
 				5A8F295C273EF66C0033BABE /* Localizable.strings */,
+				5A1D0873276A139D00F079BE /* study.json */,
+				5AB66FE2276A5CDF00996CE4 /* clock.json */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -280,6 +290,7 @@
 				5A7FDEC527400E29002573EB /* UImageEnums.swift */,
 				5A90EBF7274136C80066C7B2 /* StringEnums.swift */,
 				5A9B46372746658E00EF39DA /* CoreDataEnums.swift */,
+				5AD62EA4276F26DB0014BDF6 /* CommonEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -343,6 +354,7 @@
 		5A951DAE27341231001D587A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5AB66FDF276A38BF00996CE4 /* UITextFieldExtensions */,
 				5AE313D42766A6C300D0FADD /* ValidationExtension */,
 				5A8D66232742A7AE00311423 /* CustomExtensions */,
 				5A8CC732273FCABF002D746E /* ControllerExtensions */,
@@ -386,6 +398,14 @@
 				5A9D2D44275A73BD007E304E /* SnackbarViewModel.swift */,
 			);
 			path = SnackBar;
+			sourceTree = "<group>";
+		};
+		5AB66FDF276A38BF00996CE4 /* UITextFieldExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AB66FE0276A38E800996CE4 /* UITextFieldExtensions.swift */,
+			);
+			path = UITextFieldExtensions;
 			sourceTree = "<group>";
 		};
 		5ABA00002757E1B10008D7D5 /* Notification */ = {
@@ -522,12 +542,14 @@
 			files = (
 				5A347D0E27234325002BD16C /* LaunchScreen.storyboard in Resources */,
 				5AB01AFB2760B28F00F5E2B8 /* todolist.png in Resources */,
+				5AB66FE7276A781500996CE4 /* time.json in Resources */,
 				5A8F295A273EF66C0033BABE /* Localizable.strings in Resources */,
+				5A1D0874276A139D00F079BE /* study.json in Resources */,
 				5A347D4327258400002BD16C /* TodoDetail.storyboard in Resources */,
-				5A80787E2743F3CC00926A2A /* study.json in Resources */,
 				5A347D5227272921002BD16C /* TodoExplanation.storyboard in Resources */,
 				5AB01AFF2760CF0C00F5E2B8 /* Assets.xcassets in Resources */,
 				5A347D262723E38D002BD16C /* TodoList.storyboard in Resources */,
+				5AB66FE3276A5CE000996CE4 /* clock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,10 +563,12 @@
 				5A347D332723F993002BD16C /* TodoPresentation.swift in Sources */,
 				5ADE98B1273D406400FC8AE3 /* FloatingButton.swift in Sources */,
 				5A347D282723E7EE002BD16C /* TodoListViewController.swift in Sources */,
+				5AB66FE1276A38E800996CE4 /* UITextFieldExtensions.swift in Sources */,
 				5A347D452725841C002BD16C /* TodoDetailBuilder.swift in Sources */,
 				5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */,
 				5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */,
 				5A347D2A2723F4E4002BD16C /* TodoListContracts.swift in Sources */,
+				5AD62EA5276F26DB0014BDF6 /* CommonEnums.swift in Sources */,
 				5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */,
 				5A347D3C27241953002BD16C /* CoreDataService.swift in Sources */,
 				5A347D3E27242011002BD16C /* TodoListService.swift in Sources */,

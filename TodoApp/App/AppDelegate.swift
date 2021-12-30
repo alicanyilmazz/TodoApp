@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupNotifications(on: application)
         return true
     }
-
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("rtrrer")
+    }
+    
     // MARK: UISceneSession Lifecycle
 /*
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -83,7 +87,7 @@ extension AppDelegate{
     func setupNotifications(on application: UIApplication){
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self
-        notificationCenter.requestAuthorization(options: [.alert , .sound]) { granted, error in
+        notificationCenter.requestAuthorization(options: [.alert , .sound , .badge]) { granted, error in
             if let error = error{
                 print("Failed to request authorization for notification center: \(error.localizedDescription)")
                 return

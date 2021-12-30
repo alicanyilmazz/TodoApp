@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 final class TodoListInteractor : TodoListInteractorProtocol{
-    
+
     var delegate : TodoListInteractorDelegate?
     
     private let service: TodoListServiceProtocol
@@ -45,8 +45,18 @@ final class TodoListInteractor : TodoListInteractorProtocol{
     }
     
     func EditTodo(index: Int, todo: String) {
-        print("LEKE \(todo)")
         service.editTodo(index: index, todo: todo)
     }
     
+    func removeNotifications(todo: String) {
+        var todoDetails = service.fetchTodoDetails(with: TodoDetail.fetchRequest(), todoTitle: todo, predicate: nil)
+        if todoDetails.count != 0{
+            var notificationIds : [String] = [String]()
+            for todoDetail in todoDetails{
+                notificationIds.append(todoDetail.notificationId!)
+            }
+            LocalNotificationManager.cancelThisNotifications(notificationIds)
+        }
+    }
 }
+

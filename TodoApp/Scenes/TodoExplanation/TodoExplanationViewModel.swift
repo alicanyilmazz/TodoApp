@@ -30,11 +30,12 @@ final class TodoExplanationViewModel: TodoExplanationViewModelProtocol {
         delegate?.showDetail(presentation)
     }
     
-    func addTodoDetail(title : String , explanation : String , date : Date , iscCompleted : Bool) {
+    func addTodoDetail(title : String , explanation : String , date : Date , iscCompleted : Bool , isTheNotificationScheduled : Bool) {
         todoDetail.title = title
         todoDetail.explation = explanation
         todoDetail.date = date
         todoDetail.isCompleted = iscCompleted
+        todoDetail.isTheNotificationScheduled = isTheNotificationScheduled
         service.addTodoDetail(todoDetail: todoDetail, todo: todo)
     }
 }
