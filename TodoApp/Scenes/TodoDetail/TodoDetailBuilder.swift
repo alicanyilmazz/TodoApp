@@ -11,7 +11,7 @@ import CoreData
 
 final class TodoDetailBuilder {
 
-    static func make(with viewModel: TodoDetailListViewModelProtocol , todo : Todo) -> TodoDetailViewController {
+    static func make(with viewModel: TodoDetailListViewModelProtocol) -> TodoDetailViewController {
         let storyboard = UIStoryboard(name: "TodoDetail", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "TodoDetailViewController") as! TodoDetailViewController
         viewController.viewModel = viewModel
