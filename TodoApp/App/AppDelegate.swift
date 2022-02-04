@@ -13,15 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: ColorPalette.yellow, NSAttributedString.Key.font: UIFont(name: "Chalkboard SE Bold", size: 15)!], for: UIControl.State.normal)
         app.router.start()
         setupNotifications(on: application)
         return true
     }
-    
+    /*
     func applicationWillEnterForeground(_ application: UIApplication) {
-        print("rtrrer")
+        
     }
-    
+    */
     // MARK: UISceneSession Lifecycle
 /*
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

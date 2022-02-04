@@ -16,7 +16,8 @@ extension String{
         case password
         case mustBeEightCharacter
         case between3to25
-        case between8to42
+        case between8to150
+        case between3to40
     }
     
     enum Regex:String{
@@ -25,7 +26,8 @@ extension String{
         case password = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
         case mustBeEightCharacter = ".{8}"
         case between3to25 = "^.{3,25}$"
-        case between8to42 = "^.{8,180}$"
+        case between8to150 = "^.{8,151}$"
+        case between3to40 = "^.{3,40}$"
     }
     
     func isValid(_ validityType : ValidityType) -> Bool{
@@ -43,8 +45,10 @@ extension String{
             regex = Regex.mustBeEightCharacter.rawValue
         case .between3to25:
             regex = Regex.between3to25.rawValue
-        case .between8to42:
-            regex = Regex.between8to42.rawValue
+        case .between8to150:
+            regex = Regex.between8to150.rawValue
+        case .between3to40:
+            regex = Regex.between3to40.rawValue
         }
         
         return NSPredicate(format: format , regex).evaluate(with: self)

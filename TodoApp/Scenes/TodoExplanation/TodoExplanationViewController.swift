@@ -244,10 +244,19 @@ extension TodoExplanationViewController{
             if todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == false {
                 viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: true)
                 LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationTextArea.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
-            }else if !todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == true{
+            }
+            else if todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == true{
+                viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: true)
+                    LocalNotificationManager.cancelThisNotification(notificationId)
+                    LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationTextArea.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
+            }
+            else if !todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == true{
                 viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: false)
                 LocalNotificationManager.cancelThisNotification(notificationId)
+            }else if !todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == false{
+                viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: false)
             }
+
             _ = navigationController?.popViewController(animated: true)
         }
         else{
