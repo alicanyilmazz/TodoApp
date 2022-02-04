@@ -24,8 +24,6 @@ enum LocalNotificationDurationType{
 
 struct LocalNotificationManager{
     
- static private var permissionStatus : Bool = false
-    
     static var current : UNAuthorizationStatus = {
     var res : UNAuthorizationStatus = .notDetermined
     UNUserNotificationCenter.current().getNotificationSettings{ (settings) in
@@ -56,16 +54,12 @@ struct LocalNotificationManager{
 }()
  
  static private var notifications = [LocalNotification]()
- static private func requestPermission() -> Bool{
+ static private func requestPermission() {
      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge , .alert]) { granted, error in
          if granted == true && error == nil{
              print("status \(granted)")
-             permissionStatus = true
-         }else{
-             permissionStatus = false
          }
      }
-     return permissionStatus
  }
  
  static func getNotificationPermissionStatus(checkNotificationStatus isEnable : ((Bool)->())? = nil){
@@ -186,16 +180,20 @@ static private func scheduleNotifications(_ duration: Int , of type: LocalNotifi
     }
     
     static func setNotification(_ duration: Int , _ notificationId : String , of type: LocalNotificationDurationType , repeats : Bool , title :  String , body : String , userInfo: [AnyHashable : Any]){
-        if requestPermission(){
-            scheduleNotifications(duration, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
-        } 
-    }
-    
-    static func setNotification(_ dateComponent: DateComponents , _ notificationId : String , repeats : Bool , title :  String , body : String , userInfo: [AnyHashable : Any]){
-        if  requestPermission(){
-            scheduleNotifications(dateComponent, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+        getNotificationPermissionStatus { status in
+            if(status){
+                scheduleNotifications(duration, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+            }
         }
     }
+    
+   static func setNotification(_ dateComponent: DateComponents , _ notificationId : String , repeats : Bool , title :  String , body :   String , userInfo: [AnyHashable : Any]){
+       getNotificationPermissionStatus { status in
+           if(status){
+               scheduleNotifications(dateComponent, repeats: false, userInfo: userInfo, notificationId: notificationId, title: title, body: body)
+           }
+       }
+   }
     
     fileprivate static func setNotificationImage(_ notificationId: String, _ content: UNMutableNotificationContent) {
         let filePath = Bundle.main.path(forResource: "note", ofType: ".png")
