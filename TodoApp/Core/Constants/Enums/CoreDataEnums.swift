@@ -10,11 +10,13 @@ import Foundation
 enum TodoDetailQuery : CustomStringConvertible {
   case matches
   case contains
+  case matchesDetail
     
   var description : String {
     switch self {
-    case .matches: return "parentTodo.title MATCHES %@"
+    case .matches: return "parentTodo.id MATCHES %@"
     case .contains: return "title CONTAINS[cd] %@"
+    case .matchesDetail: return "id MATCHES %@"
     }
   }
 }
