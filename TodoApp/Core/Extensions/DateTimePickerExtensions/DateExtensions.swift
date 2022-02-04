@@ -15,15 +15,15 @@ extension UIDatePicker{
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(vc, action: #selector(vc.datePickerHandler(datePicker:)), for: .valueChanged)
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 0.8501358537)
-        datePicker.tintColor = #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)
+        datePicker.theme.backgroundColor = themed { $0.uiDatePickerFirtsColor }
+        datePicker.theme.tintColor = themed { $0.uiDatePickerThirdColor }
         datePicker.setValue(#colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1) , forKeyPath: "textColor")
         datePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 0, to: Date())
         textField.inputView = datePicker
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: vc.view.frame.width, height: 50))
         toolbar.tintColor = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 0.8501358537)
-        toolbar.barTintColor = #colorLiteral(red: 0.9882352941, green: 0.7490196078, blue: 0.2862745098, alpha: 1)
+        toolbar.theme.barTintColor = themed { $0.uiDatePickerSecondColor }
         toolbar.backgroundColor = .orange
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: vc, action: #selector(vc.cancelButtonClick))
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: vc, action: #selector(vc.doneButtonClick))
