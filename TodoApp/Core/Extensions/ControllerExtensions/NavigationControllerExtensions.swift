@@ -11,12 +11,11 @@ import UIKit
 extension UINavigationController{
     func setNavigationController(nav : UINavigationController){
         let appearance = UINavigationBarAppearance()
-        nav.navigationBar.theme.tintColor = themed { $0.uiNavigationControllerTintColor }
+        nav.navigationBar.theme.tintColor = themed { $0.uiNavigationControllerBarTintColor }
         nav.navigationBar.theme.barTintColor = themed { $0.uiNavigationControllerBarTintColor }
         nav.navigationBar.theme.backgroundColor = themed { $0.uiNavigationControllerTintColor }
-        nav.navigationBar.standardAppearance = appearance
-        nav.navigationBar.compactAppearance = appearance
-        nav.navigationBar.scrollEdgeAppearance = appearance
+        let textAttributes = [NSAttributedString.Key.foregroundColor:ColorPalette.yellow,NSAttributedString.Key.font:UIFont(name: "Chalkboard SE Bold", size: 15)!]
+        nav.navigationBar.titleTextAttributes = textAttributes
     }
 }
 
