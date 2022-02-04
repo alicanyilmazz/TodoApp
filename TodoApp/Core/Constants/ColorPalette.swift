@@ -10,7 +10,8 @@ import UIKit
 
  class ColorPalette{
    static let darkGray = #colorLiteral(red: 0.1215686275, green: 0.1607843137, blue: 0.2, alpha: 1)
-   static let lightGray = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)    
+   static let lightGray = #colorLiteral(red: 0.1960784314, green: 0.2470588235, blue: 0.2941176471, alpha: 1)
+   static let pureLightGray = #colorLiteral(red: 0.2745098039, green: 0.3215686275, blue: 0.3647058824, alpha: 1)
    static let yellow = #colorLiteral(red: 0.9891422391, green: 0.7494880557, blue: 0.2886847556, alpha: 1)
    static let lightYellow = #colorLiteral(red: 0.9529411765, green: 0.7764705882, blue: 0.4666666667, alpha: 1)
    static let white = #colorLiteral(red: 0.1411764706, green: 0.09803921569, blue: 0.1098039216, alpha: 0.3104040891)
@@ -31,6 +32,15 @@ import UIKit
    static let shadowWhite = #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.937254902, alpha: 1)
    static let blueWhite = #colorLiteral(red: 0.9137254902, green: 0.9254901961, blue: 0.937254902, alpha: 1)
    static let softYellow = #colorLiteral(red: 0.8823529412, green: 0.4392156863, blue: 0.1019607843, alpha: 1)
+     
+   static let iconBlue = #colorLiteral(red: 0.2941176471, green: 0.6941176471, blue: 0.9725490196, alpha: 1)
+   static let iconGreen = #colorLiteral(red: 0.3254901961, green: 0.8588235294, blue: 0.537254902, alpha: 1)
+   static let iconOrange = #colorLiteral(red: 0.9764705882, green: 0.5411764706, blue: 0.2941176471, alpha: 1)
+   static let iconRed = #colorLiteral(red: 1, green: 0.368627451, blue: 0.368627451, alpha: 1)
+   static let iconGray = #colorLiteral(red: 0.5137254902, green: 0.5607843137, blue: 0.6431372549, alpha: 1)
+   static let iconPurple = #colorLiteral(red: 0.3882352941, green: 0.2941176471, blue: 0.9803921569, alpha: 1)
+    
+   static let midGray = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
 }
 
 
