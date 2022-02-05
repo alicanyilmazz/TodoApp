@@ -32,16 +32,33 @@
 
 
 > MVVM
+
 > VIPER
+
 > Lottie
+
 > Swift Package Manager
+
 > RxSwift
+
 > RxTheme
-> Custom AlertControllers (Not used but source code includes)
+
+> Custom AlertControllers
+
 > Custom Buttons
+
 > Custom Snackbar
+
 > Custom Floating Buttons.
+
 > CoreData
+
 > Dark And Light Mode 
+
 > Localization (Turkish and English)
+
 > Regex
+
+> Local Notifications
+
+> Notification Center
