@@ -26,13 +26,10 @@ final class TodoListInteractor : TodoListInteractorProtocol{
         self.delegate?.handleOutput(.showTodoList(todos))
     }
     
-    func selectedTodo(at index: Int) {
-        let todo = todos[index]
-        delegate?.handleOutput(.showTodoDetail(todo))
-    }
-    
-    func addTodo(todo : String) {
-        service.addTodo(todo: todo)
+    func selectedTodo(id: String , title: String) {
+        //let todo = todos[index]
+        //delegate?.handleOutput(.showTodoDetail(todo))
+        delegate?.handleOutput(.showTodoDetail(id , title))
     }
     
     func searchTodo(todo: String) {
@@ -43,11 +40,15 @@ final class TodoListInteractor : TodoListInteractorProtocol{
     func deleteTodo(index: Int) {
         service.deleteTodo(index: index)
     }
-    
-    func EditTodo(index: Int, todo: String) {
-        service.editTodo(index: index, todo: todo)
+
+    func addPage(at id : String) {
+        self.delegate?.handleOutput(.showTodoAddOrUpdate(id , operationTypes.add))
     }
     
+    func editPage(at id: String) {
+        self.delegate?.handleOutput(.showTodoAddOrUpdate(id , operationTypes.edit))
+    }
+            
     func removeNotifications(todo: String) {
         var todoDetails = service.fetchTodoDetails(with: TodoDetail.fetchRequest(), todoTitle: todo, predicate: nil)
         if todoDetails.count != 0{
