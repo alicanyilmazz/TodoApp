@@ -11,8 +11,8 @@ protocol TodoExplanationViewModelDelegate: class {
     func showDetail(_ presentation: TodoExplanationPresentation)
 }
 
-protocol TodoExplanationViewModelProtocol {
+protocol TodoExplanationViewModelProtocol: class {
     var delegate: TodoExplanationViewModelDelegate? { get set }
     func load()
-    func addTodoDetail(title : String , explanation : String , date : Date , iscCompleted : Bool , isTheNotificationScheduled : Bool)
+    func insertData(title : String , explanation : String , date : Date , iscCompleted : Bool , isTheNotificationScheduled : Bool , colorType : Int)
 }
