@@ -12,6 +12,8 @@ class TodoListViewController: UIViewController , TodoListViewProtocol {
     @IBOutlet var customView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var todoSearchBar: UISearchBar!
+   // @IBOutlet weak var todoListCell: TodoCell!
+    
     var addButton : FloatingButton!
     var themeButton : FloatingButton!
     
@@ -260,6 +262,7 @@ extension TodoListViewController{
         todoSearchBar.theme.barTintColor = themed { $0.searchBarBarTintColor }
         todoSearchBar.theme.tintColor = themed { $0.searchBarTintColor }
         customView.theme.backgroundColor = themed { $0.todoExplanationCustomViewThemeBackgroundColor }
+       // todoListCell.theme.backgroundColor = themed { $0.todoListCustomCellBackgorundColor }
     }
 }
 

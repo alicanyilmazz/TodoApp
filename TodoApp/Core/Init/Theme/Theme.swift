@@ -101,6 +101,8 @@ protocol Theme {
     var uiDatePickerThirdColor : Color { get }
     var uiTableViewExtensionTitleColor : Color { get }
     var uiTableViewExtensionMessageColor : Color { get }
+    var todoListCustomViewBackgorundColor : Color { get }
+    var todoListCustomCellBackgorundColor : Color { get }
 }
 
 struct LightTheme: Theme {
@@ -270,9 +272,14 @@ struct LightTheme: Theme {
     let uiTableViewExtensionTitleColor: Color = UIColor.black
     
     let uiTableViewExtensionMessageColor: Color = UIColor.lightGray
+    
+    let todoListCustomViewBackgorundColor: Color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    
+    let todoListCustomCellBackgorundColor: Color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 }
 
 struct DarkTheme: Theme {
+
     let customCellBackgroundColor: Color = ColorPalette.darkGray
     
     let customCellTintColor: Color = ColorPalette.yellow
@@ -438,6 +445,11 @@ struct DarkTheme: Theme {
     let uiTableViewExtensionTitleColor: Color = ColorPalette.smokeWhite
     
     let uiTableViewExtensionMessageColor: Color = UIColor.lightGray
+    
+    let todoListCustomViewBackgorundColor: Color = ColorPalette.lightGray
+    
+    let todoListCustomCellBackgorundColor: Color = ColorPalette.darkGray
+    
 }
 
 enum ThemeType: ThemeProvider {
