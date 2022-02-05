@@ -14,6 +14,7 @@ class TodoCell: UITableViewCell {
     @IBOutlet weak var todoTitleLbl: UILabel!
     @IBOutlet weak var customView: UIView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setTheme()
@@ -26,24 +27,31 @@ class TodoCell: UITableViewCell {
     }
     
     fileprivate func setTheme() {
-        customCell.theme.backgroundColor = themed { $0.tableViewBackgroundColor } // customViewBackgroundColor
+        customCell.theme.backgroundColor = themed { $0.todoListCustomCellBackgorundColor } // customViewBackgroundColor
         customCell.theme.tintColor = themed { $0.customCellTintColor }
-        customView.theme.backgroundColor = themed { $0.todoTitleLblBackgroundColor } // todoTitleLblBackgroundColor
+        customView.theme.backgroundColor = themed { $0.todoListCustomViewBackgorundColor } // todoTitleLblBackgroundColor
         customView.theme.tintColor = themed { $0.customViewTintColor }
         avatarImage.theme.backgroundColor = themed { $0.customViewBackgroundColor }
-        avatarImage.tintColor = #colorLiteral(red: 0.9891422391, green: 0.7494880557, blue: 0.2886847556, alpha: 1)
+        
         todoTitleLbl.theme.backgroundColor = themed { $0.todoTitleLblBackgroundColor }
         todoTitleLbl.theme.textColor = themed { $0.todoTitleLblTextColor }
         
         customCell.clipsToBounds = true
-        
+        /*
         customCell.layer.cornerRadius = 20
         customView.clipsToBounds = false
         customView.layer.shadowOpacity = 0.2
         customView.layer.shadowColor = UIColor.black.withAlphaComponent(1.0).cgColor
         customView.layer.shadowRadius = 5
         customView.layer.shadowOffset = CGSize(width: 2, height: 1)
+        */
         //customView.layer.shouldRasterize = true
         
+        customView.layer.cornerRadius = 15
+        customView.clipsToBounds = false
+        customView.layer.shadowOpacity = 0.2
+        customView.layer.shadowColor = UIColor.black.withAlphaComponent(1.0).cgColor
+        customView.layer.shadowRadius = 5
+        customView.layer.shadowOffset = CGSize(width: 2, height: 1)
     }
 }
