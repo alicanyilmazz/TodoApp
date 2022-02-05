@@ -9,6 +9,7 @@ import UIKit
 
 class TodoDetailViewController: UIViewController {
 
+    @IBOutlet var customView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var todoDetailSearchBar: UISearchBar!
     @IBOutlet weak var addTodoDetailButton: UIButton!
@@ -29,12 +30,14 @@ class TodoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.load()
-        setTheme()
+        
         setUIComponent()
+        tableView.separatorStyle = .none
     }
             
     override func viewWillAppear(_ animated: Bool) {
         setSearchBar()
+        setTheme()
         viewModel.load()
         tableView.reloadData()
         UINavigationController().setNavigationController(nav: navigationController!)
@@ -73,11 +76,16 @@ extension TodoDetailViewController : UITableViewDataSource{
         cell.isCompletedLbl.image = todoDetail.isCompleted ? CustomImage.checkmark.withTintColor(.systemGreen) : CustomImage.xmark.withTintColor(.systemPink)
         cell.isCompletedLbl.tintColor = cell.isCompletedLbl.image == CustomImage.checkmark ? UIColor.green : UIColor.red
         cell.dateLbl.text = DateFormatter().convertDateToString(date: todoDetail.date)
-        cell.avatarLbl.image = CustomImage.circle
+        cell.avatarLbl.image = CustomImage.Image(tag: todoDetail.colorType)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if todoDetailList.count == 0 {
+            tableView.setEmptyView(title: LocalizableStrings.emptyTableViewBaseMessage.description.localized(), message: LocalizableStrings.emptyTableViewChildMessage.description.localized(),messageImage: UIImage(systemName: "exclamationmark.bubble")!)
+        }else{
+            tableView.restore()
+        }
         return todoDetailList.count
     }
     
@@ -88,14 +96,14 @@ extension TodoDetailViewController : UITableViewDataSource{
   extension TodoDetailViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.selectedTodoDetail(at: indexPath.row)
+        viewModel.editPage(id: todoDetailList[indexPath.row].id)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: LocalizableStrings.delete.description.localized()) { (contextualAction, view, boolValue) in
             let todoDetail = self.todoDetailList[indexPath.row]
             LocalNotificationManager.cancelThisNotification(todoDetail.notificationId)
-            self.viewModel.deleteTodoDetail(index: indexPath.row)
+            self.viewModel.deleteTodoDetail(todoDetailId: self.todoDetailList[indexPath.row].id)
             self.todoDetailList.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             //tableView.reloadData()
@@ -152,7 +160,7 @@ extension TodoDetailViewController : UISearchBarDelegate{
     }
     
     private func searchtodoDetail(text : String){
-        viewModel.searchTodoDetail(todoDetail: text)
+        viewModel.searchTodoDetail(searchText: text)
         self.searching = true
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -160,13 +168,14 @@ extension TodoDetailViewController : UISearchBarDelegate{
     }
     
     func setSearchBar() {
-        if #available(iOS 13.0, *) {
-            todoDetailSearchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
-        } else {
-            if let searchField = todoDetailSearchBar.value(forKey: ReservedStrings.searchField.asString) as? UITextField {
-                searchField.attributedPlaceholder = NSAttributedString(string: LocalizableStrings.searchbarPlaceHolder.description.localized(), attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            }
-        }
+        if let textfield = todoDetailSearchBar.value(forKey: "searchField") as? UITextField {
+                        let atrString = NSAttributedString(string: LocalizableStrings.searchbarPlaceholder.description.localized(),
+                                                           attributes: [.foregroundColor : UIColor.darkGray,
+                                                                        .font : UIFont(name: "Chalkboard SE Bold", size: 15)])
+                        textfield.attributedPlaceholder = atrString
+
+       }
+        todoDetailSearchBar[keyPath: \.searchTextField].font = UIFont(name: "Chalkboard SE Bold", size: 15)
     }
 }
 
@@ -182,7 +191,7 @@ extension TodoDetailViewController{
     }
     
     @objc private func addButtonClicked(){
-        viewModel.addTodoDetail()
+        viewModel.addPage(id: "")
     }
     
      func setTheme() {
@@ -191,5 +200,6 @@ extension TodoDetailViewController{
         todoDetailSearchBar.theme.backgroundColor = themed { $0.searchBarBackgroundColor }
         todoDetailSearchBar.theme.barTintColor = themed { $0.searchBarBarTintColor }
         todoDetailSearchBar.theme.tintColor = themed { $0.searchBarTintColor }
+        customView.theme.backgroundColor = themed { $0.todoExplanationCustomViewThemeBackgroundColor }
     }
 }
