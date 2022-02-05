@@ -36,8 +36,8 @@ What I used in the project
 
 
 <p>
- <img src="https://user-images.githubusercontent.com/49749125/152654745-1fc2d517-9e62-4ae2-a1d7-84dd0aba374b.gif" width="300">
-  
+ 
+   <img src="https://user-images.githubusercontent.com/49749125/152654771-b796d2be-ea9e-4faa-9c7b-cabda36d47cc.gif" width="300">
   <img src="https://user-images.githubusercontent.com/49749125/152654753-ebcdc11f-f63f-4313-af08-a5703970cd10.gif" width="300">
   
  
@@ -66,8 +66,8 @@ What I used in the project
    <img src="https://user-images.githubusercontent.com/49749125/152654770-7a93ab47-3e67-493a-b7c8-c5fdded73ee1.gif" width="300">
  </p>
 <p>   
-  <img src="https://user-images.githubusercontent.com/49749125/152654771-b796d2be-ea9e-4faa-9c7b-cabda36d47cc.gif" width="300">
-  
+ 
+  <img src="https://user-images.githubusercontent.com/49749125/152654745-1fc2d517-9e62-4ae2-a1d7-84dd0aba374b.gif" width="300">
   <img src="https://user-images.githubusercontent.com/49749125/152654772-139008ec-8676-4f6d-8119-52d17b506f62.gif" width="300">
 </p>
 
