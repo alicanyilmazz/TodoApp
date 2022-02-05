@@ -1,13 +1,13 @@
 //
-//  TodoPresentation.swift
+//  TodoAlertPresentation.swift
 //  TodoApp
 //
-//  Created by alican on 23.10.2021.
+//  Created by alican on 14.01.2022.
 //
 
 import Foundation
 
-final class TodoPresentation: NSObject {
+final class TodoAlertPresentation: NSObject {
     
     let title: String
     let colorType : Int
@@ -21,12 +21,12 @@ final class TodoPresentation: NSObject {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        guard let other = object as? TodoPresentation else { return false }
+        guard let other = object as? TodoAlertPresentation else { return false }
         return self.title == other.title && self.colorType == other.colorType && self.id == other.id
     }
 }
 
-extension TodoPresentation {
+extension TodoAlertPresentation {
     convenience init(todo: Todo) {
         self.init(title: todo.title!,colorType: Int(todo.colorType),id: todo.id!)
     }

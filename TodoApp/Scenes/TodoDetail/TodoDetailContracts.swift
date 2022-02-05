@@ -10,10 +10,10 @@ import Foundation
 protocol TodoDetailListViewModelProtocol {
     var delegate: TodoDetailListViewModelDelegate? { get set }
     func load()
-    func selectedTodoDetail(at index : Int)
-    func searchTodoDetail(todoDetail : String)
-    func deleteTodoDetail(index : Int)
-    func addTodoDetail()
+    func editPage(id : String)
+    func addPage(id : String)
+    func searchTodoDetail(searchText : String)
+    func deleteTodoDetail(todoDetailId : String)
 }
 
 enum TodoDetailListViewModelOutput: Equatable {

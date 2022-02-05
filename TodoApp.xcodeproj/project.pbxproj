@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A1D0874276A139D00F079BE /* study.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A1D0873276A139D00F079BE /* study.json */; };
 		5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347CFE27234324002BD16C /* AppDelegate.swift */; };
 		5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0027234324002BD16C /* SceneDelegate.swift */; };
 		5A347D0927234324002BD16C /* TodoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D0727234324002BD16C /* TodoApp.xcdatamodeld */; };
@@ -38,6 +37,8 @@
 		5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */; };
 		5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */; };
 		5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */; };
+		5A3CA17C278DE297003BD95E /* CustomizableAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CA17B278DE297003BD95E /* CustomizableAlertController.swift */; };
+		5A3CA17E278E2AE7003BD95E /* AdvanceAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3CA17D278E2AE7003BD95E /* AdvanceAlertController.swift */; };
 		5A5C74302747DB0500AF4BA0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */; };
 		5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC22740020C002573EB /* UIImageExtensions.swift */; };
 		5A7FDEC627400E29002573EB /* UImageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FDEC527400E29002573EB /* UImageEnums.swift */; };
@@ -55,21 +56,29 @@
 		5A9D2D45275A73BD007E304E /* SnackbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D2D44275A73BD007E304E /* SnackbarViewModel.swift */; };
 		5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653EF2731609B00D4BABF /* TodoCell.swift */; };
 		5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA653F12731C71800D4BABF /* CustomAlertController.swift */; };
+		5AA9102D279EA9C00091470E /* OperationTypesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9102C279EA9C00091470E /* OperationTypesEnums.swift */; };
 		5AB01AFB2760B28F00F5E2B8 /* todolist.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB01AFA2760B28F00F5E2B8 /* todolist.png */; };
 		5AB01AFF2760CF0C00F5E2B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A347D0A27234325002BD16C /* Assets.xcassets */; };
 		5AB66FE1276A38E800996CE4 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB66FE0276A38E800996CE4 /* UITextFieldExtensions.swift */; };
-		5AB66FE3276A5CE000996CE4 /* clock.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AB66FE2276A5CDF00996CE4 /* clock.json */; };
-		5AB66FE7276A781500996CE4 /* time.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AB66FE6276A781500996CE4 /* time.json */; };
 		5AD62EA5276F26DB0014BDF6 /* CommonEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD62EA4276F26DB0014BDF6 /* CommonEnums.swift */; };
 		5AD7DE932738670A004CA8AC /* RxTheme in Frameworks */ = {isa = PBXBuildFile; productRef = 5AD7DE922738670A004CA8AC /* RxTheme */; };
 		5AD7DE9727387478004CA8AC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7DE9627387478004CA8AC /* Theme.swift */; };
 		5ADE98B1273D406400FC8AE3 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */; };
 		5ADE98B5273D954B00FC8AE3 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE98B4273D954B00FC8AE3 /* StringExtensions.swift */; };
 		5AE313D62766A6EC00D0FADD /* FormValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE313D52766A6EC00D0FADD /* FormValidationExtension.swift */; };
+		5AE3DA2A27A1E8680048FBE2 /* UISearchbarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3DA2927A1E8680048FBE2 /* UISearchbarExtensions.swift */; };
+		5AE4245B27A856C000B745D1 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE4245A27A856C000B745D1 /* UITableViewExtensions.swift */; };
+		5AE86737278F1A8700BF263C /* TodoListAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE86736278F1A8700BF263C /* TodoListAlert.storyboard */; };
+		5AE86739278F1AC700BF263C /* TodoListAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE86738278F1AC700BF263C /* TodoListAlertViewController.swift */; };
+		5AE8673D278F464E00BF263C /* TodoListAlertContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8673C278F464E00BF263C /* TodoListAlertContracts.swift */; };
+		5AE8673F278F469F00BF263C /* TodoListAlertInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8673E278F469F00BF263C /* TodoListAlertInteractor.swift */; };
+		5AE86741278F4BF900BF263C /* TodoListAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE86740278F4BF900BF263C /* TodoListAlertPresenter.swift */; };
+		5AE86743278F4C1700BF263C /* TodoListAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE86742278F4C1700BF263C /* TodoListAlertRouter.swift */; };
+		5AE86745278F4F9500BF263C /* TodoListAlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE86744278F4F9500BF263C /* TodoListAlertBuilder.swift */; };
+		5AFF0D682791B2C900892AA9 /* TodoAlertPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF0D672791B2C900892AA9 /* TodoAlertPresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A1D0873276A139D00F079BE /* study.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = study.json; sourceTree = "<group>"; };
 		5A347CFB27234324002BD16C /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A347CFE27234324002BD16C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A347D0027234324002BD16C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +112,8 @@
 		5A347D57272729A0002BD16C /* TodoExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewController.swift; sourceTree = "<group>"; };
 		5A347D59272729FF002BD16C /* TodoExplanationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationViewModel.swift; sourceTree = "<group>"; };
 		5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoExplanationPresentation.swift; sourceTree = "<group>"; };
+		5A3CA17B278DE297003BD95E /* CustomizableAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableAlertController.swift; sourceTree = "<group>"; };
+		5A3CA17D278E2AE7003BD95E /* AdvanceAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvanceAlertController.swift; sourceTree = "<group>"; };
 		5A5C742F2747DB0500AF4BA0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5A7FDEC22740020C002573EB /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		5A7FDEC527400E29002573EB /* UImageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageEnums.swift; sourceTree = "<group>"; };
@@ -120,15 +131,24 @@
 		5A9D2D44275A73BD007E304E /* SnackbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarViewModel.swift; sourceTree = "<group>"; };
 		5AA653EF2731609B00D4BABF /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		5AA653F12731C71800D4BABF /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		5AA9102C279EA9C00091470E /* OperationTypesEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationTypesEnums.swift; sourceTree = "<group>"; };
 		5AB01AFA2760B28F00F5E2B8 /* todolist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todolist.png; sourceTree = "<group>"; };
 		5AB66FE0276A38E800996CE4 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
-		5AB66FE2276A5CDF00996CE4 /* clock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clock.json; sourceTree = "<group>"; };
-		5AB66FE6276A781500996CE4 /* time.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = time.json; sourceTree = "<group>"; };
 		5AD62EA4276F26DB0014BDF6 /* CommonEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEnums.swift; sourceTree = "<group>"; };
 		5AD7DE9627387478004CA8AC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5ADE98B0273D406400FC8AE3 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		5ADE98B4273D954B00FC8AE3 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		5AE313D52766A6EC00D0FADD /* FormValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationExtension.swift; sourceTree = "<group>"; };
+		5AE3DA2927A1E8680048FBE2 /* UISearchbarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchbarExtensions.swift; sourceTree = "<group>"; };
+		5AE4245A27A856C000B745D1 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		5AE86736278F1A8700BF263C /* TodoListAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoListAlert.storyboard; sourceTree = "<group>"; };
+		5AE86738278F1AC700BF263C /* TodoListAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAlertViewController.swift; sourceTree = "<group>"; };
+		5AE8673C278F464E00BF263C /* TodoListAlertContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAlertContracts.swift; sourceTree = "<group>"; };
+		5AE8673E278F469F00BF263C /* TodoListAlertInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAlertInteractor.swift; sourceTree = "<group>"; };
+		5AE86740278F4BF900BF263C /* TodoListAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAlertPresenter.swift; sourceTree = "<group>"; };
+		5AE86742278F4C1700BF263C /* TodoListAlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAlertRouter.swift; sourceTree = "<group>"; };
+		5AE86744278F4F9500BF263C /* TodoListAlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListAlertBuilder.swift; sourceTree = "<group>"; };
+		5AFF0D672791B2C900892AA9 /* TodoAlertPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAlertPresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +183,6 @@
 		5A347CFD27234324002BD16C /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
-				5AB66FE6276A781500996CE4 /* time.json */,
 				5A9B46362746633E00EF39DA /* Services */,
 				5A347D17272343BF002BD16C /* App */,
 				5A347D18272343C9002BD16C /* Scenes */,
@@ -173,8 +192,6 @@
 				5A347D19272343D4002BD16C /* Resources */,
 				5AB01AFA2760B28F00F5E2B8 /* todolist.png */,
 				5A8F295C273EF66C0033BABE /* Localizable.strings */,
-				5A1D0873276A139D00F079BE /* study.json */,
-				5AB66FE2276A5CDF00996CE4 /* clock.json */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -194,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				5A347D222723E193002BD16C /* TodoList */,
+				5AE86734278F19A500BF263C /* TodoListAlert */,
 				5A347D4127257C08002BD16C /* TodoDetail */,
 				5A347D50272728A1002BD16C /* TodoExplanation */,
 			);
@@ -222,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				5A347D362723F9EC002BD16C /* Extensions */,
+				5AFF0D672791B2C900892AA9 /* TodoAlertPresentation.swift */,
 				5A347D322723F993002BD16C /* TodoPresentation.swift */,
 				5A347D342723F9BC002BD16C /* TodoDetailPresentation.swift */,
 				5A347D5B27272A7C002BD16C /* TodoExplanationPresentation.swift */,
@@ -276,6 +295,15 @@
 			path = TodoExplanation;
 			sourceTree = "<group>";
 		};
+		5A3CA17A278DE221003BD95E /* CustomizableAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				5A3CA17B278DE297003BD95E /* CustomizableAlertController.swift */,
+				5A3CA17D278E2AE7003BD95E /* AdvanceAlertController.swift */,
+			);
+			path = CustomizableAlertController;
+			sourceTree = "<group>";
+		};
 		5A7FDEC1274001E1002573EB /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +319,7 @@
 				5A90EBF7274136C80066C7B2 /* StringEnums.swift */,
 				5A9B46372746658E00EF39DA /* CoreDataEnums.swift */,
 				5AD62EA4276F26DB0014BDF6 /* CommonEnums.swift */,
+				5AA9102C279EA9C00091470E /* OperationTypesEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -334,6 +363,7 @@
 		5A951DAA27340456001D587A /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5A3CA17A278DE221003BD95E /* CustomizableAlertController */,
 				5A9D2D41275A738C007E304E /* SnackBar */,
 				5A7FDEC1274001E1002573EB /* Images */,
 				5ADE98AF273D402A00FC8AE3 /* Buttons */,
@@ -354,6 +384,8 @@
 		5A951DAE27341231001D587A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5AE4245927A8568A00B745D1 /* UITableViewExtensions */,
+				5AE3DA2827A1E8220048FBE2 /* UISearchbarExtensions */,
 				5AB66FDF276A38BF00996CE4 /* UITextFieldExtensions */,
 				5AE313D42766A6C300D0FADD /* ValidationExtension */,
 				5A8D66232742A7AE00311423 /* CustomExtensions */,
@@ -473,6 +505,36 @@
 			path = ValidationExtension;
 			sourceTree = "<group>";
 		};
+		5AE3DA2827A1E8220048FBE2 /* UISearchbarExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AE3DA2927A1E8680048FBE2 /* UISearchbarExtensions.swift */,
+			);
+			path = UISearchbarExtensions;
+			sourceTree = "<group>";
+		};
+		5AE4245927A8568A00B745D1 /* UITableViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AE4245A27A856C000B745D1 /* UITableViewExtensions.swift */,
+			);
+			path = UITableViewExtensions;
+			sourceTree = "<group>";
+		};
+		5AE86734278F19A500BF263C /* TodoListAlert */ = {
+			isa = PBXGroup;
+			children = (
+				5AE86736278F1A8700BF263C /* TodoListAlert.storyboard */,
+				5AE86738278F1AC700BF263C /* TodoListAlertViewController.swift */,
+				5AE8673C278F464E00BF263C /* TodoListAlertContracts.swift */,
+				5AE8673E278F469F00BF263C /* TodoListAlertInteractor.swift */,
+				5AE86740278F4BF900BF263C /* TodoListAlertPresenter.swift */,
+				5AE86742278F4C1700BF263C /* TodoListAlertRouter.swift */,
+				5AE86744278F4F9500BF263C /* TodoListAlertBuilder.swift */,
+			);
+			path = TodoListAlert;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -541,15 +603,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A347D0E27234325002BD16C /* LaunchScreen.storyboard in Resources */,
+				5AE86737278F1A8700BF263C /* TodoListAlert.storyboard in Resources */,
 				5AB01AFB2760B28F00F5E2B8 /* todolist.png in Resources */,
-				5AB66FE7276A781500996CE4 /* time.json in Resources */,
 				5A8F295A273EF66C0033BABE /* Localizable.strings in Resources */,
-				5A1D0874276A139D00F079BE /* study.json in Resources */,
 				5A347D4327258400002BD16C /* TodoDetail.storyboard in Resources */,
 				5A347D5227272921002BD16C /* TodoExplanation.storyboard in Resources */,
 				5AB01AFF2760CF0C00F5E2B8 /* Assets.xcassets in Resources */,
 				5A347D262723E38D002BD16C /* TodoList.storyboard in Resources */,
-				5AB66FE3276A5CE000996CE4 /* clock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,9 +621,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A347D332723F993002BD16C /* TodoPresentation.swift in Sources */,
+				5AE86741278F4BF900BF263C /* TodoListAlertPresenter.swift in Sources */,
 				5ADE98B1273D406400FC8AE3 /* FloatingButton.swift in Sources */,
+				5AE8673D278F464E00BF263C /* TodoListAlertContracts.swift in Sources */,
 				5A347D282723E7EE002BD16C /* TodoListViewController.swift in Sources */,
+				5AFF0D682791B2C900892AA9 /* TodoAlertPresentation.swift in Sources */,
 				5AB66FE1276A38E800996CE4 /* UITextFieldExtensions.swift in Sources */,
+				5AE86745278F4F9500BF263C /* TodoListAlertBuilder.swift in Sources */,
 				5A347D452725841C002BD16C /* TodoDetailBuilder.swift in Sources */,
 				5A347D5A272729FF002BD16C /* TodoExplanationViewModel.swift in Sources */,
 				5AA653F02731609B00D4BABF /* TodoCell.swift in Sources */,
@@ -571,11 +635,16 @@
 				5AD62EA5276F26DB0014BDF6 /* CommonEnums.swift in Sources */,
 				5AA653F22731C71800D4BABF /* CustomAlertController.swift in Sources */,
 				5A347D3C27241953002BD16C /* CoreDataService.swift in Sources */,
+				5AE4245B27A856C000B745D1 /* UITableViewExtensions.swift in Sources */,
 				5A347D3E27242011002BD16C /* TodoListService.swift in Sources */,
 				5A951DB127341258001D587A /* UIColorExtensions.swift in Sources */,
+				5AA9102D279EA9C00091470E /* OperationTypesEnums.swift in Sources */,
 				5AE313D62766A6EC00D0FADD /* FormValidationExtension.swift in Sources */,
+				5A3CA17E278E2AE7003BD95E /* AdvanceAlertController.swift in Sources */,
+				5A3CA17C278DE297003BD95E /* CustomizableAlertController.swift in Sources */,
 				5A347CFF27234324002BD16C /* AppDelegate.swift in Sources */,
 				5A347D0127234324002BD16C /* SceneDelegate.swift in Sources */,
+				5AE3DA2A27A1E8680048FBE2 /* UISearchbarExtensions.swift in Sources */,
 				5A347D4D2726B4AE002BD16C /* TodoDetailCell.swift in Sources */,
 				5A347D352723F9BC002BD16C /* TodoDetailPresentation.swift in Sources */,
 				5A9D2D43275A73AF007E304E /* SnackbarView.swift in Sources */,
@@ -591,7 +660,9 @@
 				5A347D2127234486002BD16C /* AppRouter.swift in Sources */,
 				5A951DAD27340741001D587A /* BaseCustomAlertController.swift in Sources */,
 				5A9D2D45275A73BD007E304E /* SnackbarViewModel.swift in Sources */,
+				5AE86739278F1AC700BF263C /* TodoListAlertViewController.swift in Sources */,
 				5A347D58272729A0002BD16C /* TodoExplanationViewController.swift in Sources */,
+				5AE86743278F4C1700BF263C /* TodoListAlertRouter.swift in Sources */,
 				5A8CC734273FCAE5002D746E /* NavigationControllerExtensions.swift in Sources */,
 				5A7FDEC32740020C002573EB /* UIImageExtensions.swift in Sources */,
 				5A347D2C2723F4FC002BD16C /* TodoListInteractor.swift in Sources */,
@@ -605,6 +676,7 @@
 				5A347D49272584A7002BD16C /* TodoDetailViewController.swift in Sources */,
 				5A347D4F2726F21F002BD16C /* TodoDetailService.swift in Sources */,
 				5A347D542727293A002BD16C /* TodoExplanationBuilder.swift in Sources */,
+				5AE8673F278F469F00BF263C /* TodoListAlertInteractor.swift in Sources */,
 				5A951DB427343924001D587A /* DateExtensions.swift in Sources */,
 				5A347D5C27272A7C002BD16C /* TodoExplanationPresentation.swift in Sources */,
 			);
@@ -758,6 +830,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W73RSNM5TG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TodoApp/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -785,6 +858,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W73RSNM5TG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TodoApp/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
