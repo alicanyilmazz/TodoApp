@@ -6,17 +6,16 @@
 //
 
 import UIKit
-import Lottie
 
 class TodoExplanationViewController: UIViewController {
     
     @IBOutlet var customView: UIView!
     
-    @IBOutlet weak var animationView: AnimationView!
-    
-    @IBOutlet weak var timeAnimationView: AnimationView!
-    
     @IBOutlet weak var todoExplanationTitleTextField: UITextField!
+
+    @IBOutlet weak var PageTitleView: UIView!
+    
+    @IBOutlet weak var PageTitleViewLabel: UILabel!
     
     @IBOutlet weak var todoExplanationTitleView: UIView!
     
@@ -43,6 +42,20 @@ class TodoExplanationViewController: UIViewController {
     @IBOutlet weak var requestPermissionLabel: UILabel!
     
     @IBOutlet weak var todoExplanationSaveBtn: UIButton!
+        
+    @IBOutlet weak var color1st: UIButton!
+    
+    @IBOutlet weak var color2nd: UIButton!
+    
+    @IBOutlet weak var color3rd: UIButton!
+    
+    @IBOutlet weak var color4th: UIButton!
+    
+    @IBOutlet weak var color5th: UIButton!
+    
+    @IBOutlet weak var color6th: UIButton!
+    
+    var selectedColorButton : Int = 0
     
     private var notificationDate : DateComponents!
     
@@ -57,7 +70,7 @@ class TodoExplanationViewController: UIViewController {
     var viewModel: TodoExplanationViewModelProtocol!
     
     let titleValidityType : String.ValidityType = .between3to25
-    let detailValidityType : String.ValidityType = .between8to42
+    let detailValidityType : String.ValidityType = .between8to150
     
     var notificationId : String = ""
 
@@ -73,7 +86,6 @@ class TodoExplanationViewController: UIViewController {
         todoExplanationDateTextField.tag = 2
         
         viewModel.load()
-        setAnimation()
         setTheme()
         setUIComponent()
         setInitialValues()
@@ -89,6 +101,7 @@ class TodoExplanationViewController: UIViewController {
         textAreaView.layer.shadowOpacity = 0.3
         textAreaView.layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
         
+        
         todoExplanationTitleView.layer.cornerRadius = 15
         todoExplanationTitleView.clipsToBounds = false
         todoExplanationTitleView.layer.shadowOpacity = 0.3
@@ -99,14 +112,90 @@ class TodoExplanationViewController: UIViewController {
         todoExplanationDateView.layer.shadowOpacity = 0.3
         todoExplanationDateView.layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
         
-        todoExplanationDateRightIcon.image = UIImage(systemName: "calendar")
+        //todoExplanationSaveBtn.setTitle(LocalizableStrings.addPageButtonTitle.description.localized(), for: .normal) --> Deprecated
+        todoExplanationSaveBtn.setTitle(LocalizableStrings.addPageButtonTitle.description.localized(), for: .normal)
+        todoExplanationSaveBtn.setTitleColor(ColorPalette.darkGray, for: .normal)
+        todoExplanationSaveBtn.titleLabel?.font = UIFont(name: "Chalkboard SE Bold", size: 13)
+
+        PageTitleView.clipsToBounds = false
+        PageTitleView.layer.cornerRadius = 15
+        PageTitleView.layer.shadowOpacity = 0.3
+        PageTitleView.layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
+        //PageTitleView.backgroundColor = ColorPalette.yellow
         
+        color1st.layer.cornerRadius = 5
+        color2nd.layer.cornerRadius = 5
+        color3rd.layer.cornerRadius = 5
+        color4th.layer.cornerRadius = 5
+        color5th.layer.cornerRadius = 5
+        color6th.layer.cornerRadius = 5
+        setButtonUI()
+        
+        todoExplanationDateRightIcon.image = UIImage(systemName: "calendar")
         todoExplanationTextArea.returnKeyType = UIReturnKeyType.done
+        
+        PageTitleViewLabel.text = LocalizableStrings.todoChildTitle.description.localized()
+        
+        requestPermissionLabel.font = UIFont(name: "Chalkboard SE Bold", size: 10)
         
         switchIsEnabled()
         NotificationCenter.default.addObserver(self, selector: #selector(changeSwitchStatus(notification:)), name: .switchUINotification, object: nil)
     }
     
+    
+    @IBAction func colorTypeSelected(_ sender: UIButton) {
+        setSelectedColor(sender.tag)
+    }
+       
+    func setInitialSelectedColor(tagNumber : Int){
+        setSelectedColor(tagNumber)
+    }
+    
+    fileprivate func setSelectedColor(_ tagNumber: Int) {
+        resetColorSelected()
+        let borderWidth : CGFloat = 3
+        switch tagNumber{
+        case ColorButtonTag.First.rawValue : color1st.layer.borderWidth = borderWidth
+             selectedColorButton = 0
+        case ColorButtonTag.Second.rawValue : color2nd.layer.borderWidth = borderWidth
+             selectedColorButton = 1
+        case ColorButtonTag.Third.rawValue : color3rd.layer.borderWidth = borderWidth
+             selectedColorButton = 2
+        case ColorButtonTag.Fourth.rawValue : color4th.layer.borderWidth = borderWidth
+             selectedColorButton = 3
+        case ColorButtonTag.Fifth.rawValue : color5th.layer.borderWidth = borderWidth
+             selectedColorButton = 4
+        case ColorButtonTag.Sixth.rawValue : color6th.layer.borderWidth = borderWidth
+             selectedColorButton = 5
+        default : color1st.layer.borderWidth = borderWidth
+             selectedColorButton = 0
+        }
+    }
+    
+    func resetColorSelected(){
+        color1st.layer.borderWidth = 0
+        color2nd.layer.borderWidth = 0
+        color3rd.layer.borderWidth = 0
+        color4th.layer.borderWidth = 0
+        color5th.layer.borderWidth = 0
+        color6th.layer.borderWidth = 0
+    }
+    
+    func setButtonUI(){
+        color1st.layer.borderColor = ColorPalette.lightGray.cgColor
+        color2nd.layer.borderColor = ColorPalette.lightGray.cgColor
+        color3rd.layer.borderColor = ColorPalette.lightGray.cgColor
+        color4th.layer.borderColor = ColorPalette.lightGray.cgColor
+        color5th.layer.borderColor = ColorPalette.lightGray.cgColor
+        color6th.layer.borderColor = ColorPalette.lightGray.cgColor
+        
+        color1st.tintColor = ColorPalette.iconBlue
+        color2nd.tintColor = ColorPalette.iconRed
+        color3rd.tintColor = ColorPalette.iconGray
+        color4th.tintColor = ColorPalette.iconGreen
+        color5th.tintColor = ColorPalette.iconOrange
+        color6th.tintColor = ColorPalette.iconPurple
+    }
 }
 
 extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
@@ -118,6 +207,7 @@ extension TodoExplanationViewController: TodoExplanationViewModelDelegate {
         todoExplanationCompletedSwitch.isOn = presentation.isCompleted
         notificationId = presentation.notificationId
         isTheNotificationScheduled = presentation.isTheNotificationScheduled
+        setInitialSelectedColor(tagNumber: presentation.colorType)
     }
 }
 
@@ -139,18 +229,9 @@ extension TodoExplanationViewController{
         todoExplanationSaveBtn.theme.backgroundColor = themed { $0.todoExplanationSaveBtnBackgroundColor }
         todoExplanationSaveBtn.theme.tintColor = themed { $0.todoExplanationSaveBtnTextColor }
         customView.theme.backgroundColor = themed { $0.todoExplanationCustomViewThemeBackgroundColor }
-        timeAnimationView.theme.backgroundColor = themed { $0.todoExplanationCustomViewThemeBackgroundColor }
+        PageTitleView.theme.backgroundColor = themed { $0.PageTitleViewBackgroundColor }
+        //timeAnimationView.theme.backgroundColor = themed { $0.todoExplanationCustomViewThemeBackgroundColor }
         todoExplanationTextAreaLabel.textColor = .lightGray
-    }
-    
-    fileprivate func setAnimation() {
-        animationView.backgroundColor = .clear
-        animationView.loopMode = .loop
-        animationView.play()
-        
-        timeAnimationView.backgroundColor = .clear
-        timeAnimationView.loopMode = .loop
-        timeAnimationView.play()
     }
     
     fileprivate func setUIComponent() {
@@ -171,10 +252,10 @@ extension TodoExplanationViewController{
     
     fileprivate func setTextFieldPlaceHolder() {
         todoExplanationTitleTextField.attributedPlaceholder = NSAttributedString(
-            string: "Enter your todo title",
+            string: LocalizableStrings.textfieldTodoDetailTitle.description.localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         if todoExplanationTextArea.text.isEmpty {
-            todoExplanationTextArea.text = "Enter your todo detail"
+            todoExplanationTextArea.text = LocalizableStrings.textfieldTodoDetail.description.localized()
             todoExplanationTextArea.textColor = UIColor.lightGray
         }
     }
@@ -209,12 +290,12 @@ extension TodoExplanationViewController{
     
     @IBAction func switchChanged(_ sender: UISwitch) {
         if sender.isOn == true{
-            snackbarViewModel = SnackbarViewModel(type: .info, text: "You turned on notifications.", image: UIImage(systemName: "bell"))
+            snackbarViewModel = SnackbarViewModel(type: .info, text: LocalizableStrings.snackbarOnMessage.description.localized(), image: UIImage(systemName: "bell"))
             let frame = CGRect(x: 0, y: 0, width: view.frame.size.width/1.2, height: 60)
             let snackbar = SnackbarView(viewModel: snackbarViewModel , frame: frame)
             showSnackbar(snackBar: snackbar)
         }else{
-            snackbarViewModel = SnackbarViewModel(type: .info, text: "You turned off notifications.", image: UIImage(systemName: "bell"))
+            snackbarViewModel = SnackbarViewModel(type: .info, text: LocalizableStrings.snackbarOffMessage.description.localized(), image: UIImage(systemName: "bell"))
             let frame = CGRect(x: 0, y: 0, width: view.frame.size.width/1.2, height: 60)
             let snackbar = SnackbarView(viewModel: snackbarViewModel , frame: frame)
             showSnackbar(snackBar: snackbar)
@@ -231,7 +312,7 @@ extension TodoExplanationViewController{
             }else{
                 DispatchQueue.main.async {
                     self.todoExplanationCompletedSwitch.isEnabled = false
-                    self.requestPermissionLabel.text = "Please give permission to create notification."
+                    self.requestPermissionLabel.text = LocalizableStrings.notificationValidationMessage.description.localized()
                     self.requestPermissionLabel.textColor = .systemPink
                 }
             }
@@ -240,23 +321,27 @@ extension TodoExplanationViewController{
     
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         if isTitleValid && isDetailValid{
+            print("result of : \(notificationId)")
+            let title = todoExplanationTitleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let explanation = todoExplanationTextArea.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let isCompleted = todoExplanationCompletedSwitch.isOn
             let date = DateFormatter().convertStringToDate(date: todoExplanationDateTextField.text)
+            
             if todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == false {
-                viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: true)
-                LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationTextArea.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
+                viewModel.insertData(title: title , explanation: explanation, date: date, iscCompleted: isCompleted,isTheNotificationScheduled: true , colorType: selectedColorButton)
+                LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: title, body: explanation, userInfo: ["aps" : ["todoIsReady":"true"]])
             }
             else if todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == true{
-                viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: true)
+                viewModel.insertData(title: title, explanation: explanation, date: date, iscCompleted: isCompleted,isTheNotificationScheduled: true , colorType: selectedColorButton)
                     LocalNotificationManager.cancelThisNotification(notificationId)
-                    LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: todoExplanationTitleTextField.text!, body: todoExplanationTextArea.text!, userInfo: ["aps" : ["todoIsReady":"true"]])
+                    LocalNotificationManager.setNotification(notificationDate , notificationId , repeats: false, title: title, body: explanation, userInfo: ["aps" : ["todoIsReady":"true"]])
             }
             else if !todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == true{
-                viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: false)
+                viewModel.insertData(title: title, explanation: explanation, date: date, iscCompleted: isCompleted,isTheNotificationScheduled: false , colorType: selectedColorButton)
                 LocalNotificationManager.cancelThisNotification(notificationId)
             }else if !todoExplanationCompletedSwitch.isOn && isTheNotificationScheduled == false{
-                viewModel.addTodoDetail(title: todoExplanationTitleTextField.text!, explanation: todoExplanationTextArea.text!, date: date, iscCompleted: todoExplanationCompletedSwitch.isOn,isTheNotificationScheduled: false)
+                viewModel.insertData(title: title, explanation: explanation, date: date, iscCompleted: isCompleted,isTheNotificationScheduled: false , colorType: selectedColorButton)
             }
-
             _ = navigationController?.popViewController(animated: true)
         }
         else{
@@ -274,7 +359,7 @@ extension TodoExplanationViewController{
     
     fileprivate func titleValidator(_ text: String) {
         if text.isValid(titleValidityType){
-            titleValidationLabel.text = "Everything seems ok."
+            titleValidationLabel.text = LocalizableStrings.validationOkMessage.description.localized()
             titleValidationLabel.textColor = .systemGreen
             isTitleValid = true
             //todoExplanationTitleTextField.setRightIcon(UIImage(systemName: "checkmark.circle")!)
@@ -282,7 +367,7 @@ extension TodoExplanationViewController{
             todoExplanationTitleRightIcon.tintColor = .systemGreen
             
         }else{
-            titleValidationLabel.text = "The title must contain at least 3 characters and at most 10 characters."
+            titleValidationLabel.text = LocalizableStrings.validationMessage3and25.description.localized()
             titleValidationLabel.textColor = .systemPink
             isTitleValid = false
             //todoExplanationTitleTextField.setRightIcon(UIImage(systemName: "xmark.circle")!)
@@ -292,6 +377,7 @@ extension TodoExplanationViewController{
     }
     
     public func showSnackbar(snackBar : SnackbarView){
+        todoExplanationCompletedSwitch.isEnabled = false
         let width = view.frame.size.width/1.2
         snackBar.frame = CGRect(x: (view.frame.size.width-width)/2, y: view.frame.size.height - 110, width: width, height: 60)
         view.addSubview(snackBar)
@@ -300,12 +386,13 @@ extension TodoExplanationViewController{
             snackBar.frame = CGRect(x: (self.view.frame.size.width-width)/2, y: self.view.frame.size.height - 110, width: width, height: 60)
         },completion: { done in
             if done{
-                DispatchQueue.main.asyncAfter(deadline: .now()+4, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
                     UIView.animate(withDuration: 0.5) {
                         snackBar.frame = CGRect(x: (self.view.frame.size.width-width)/2, y: self.view.frame.size.height, width: width, height: 60)
                     } completion: { finished in
                         if finished{
                             snackBar.removeFromSuperview()
+                            self.todoExplanationCompletedSwitch.isEnabled = true
                         }
                     }
                 })
@@ -324,7 +411,7 @@ extension TodoExplanationViewController{
                 DispatchQueue.main.async {
                     self.todoExplanationCompletedSwitch.isOn = false
                     self.todoExplanationCompletedSwitch.isEnabled = false
-                    self.requestPermissionLabel.text = "Please give permission to create notification."
+                    self.requestPermissionLabel.text = LocalizableStrings.notificationValidationMessage.description.localized()
                     self.requestPermissionLabel.textColor = .systemPink
                 }
             }
@@ -337,6 +424,13 @@ extension TodoExplanationViewController : UITextFieldDelegate{
         if(textField.tag == textFieldType.dateTextField.rawValue){
             UIDatePicker().createDatePicker(_vc: self, textField: &todoExplanationDateTextField)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(textField.tag == textFieldType.titleTextField.rawValue){
+            self.view.endEditing(true)
+        }
+        return false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -377,7 +471,7 @@ extension TodoExplanationViewController : UITextViewDelegate{
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if todoExplanationTextArea.text.isEmpty{
-            todoExplanationTextArea.text = "Enter your todo detail"
+            todoExplanationTextArea.text = LocalizableStrings.textfieldTodoDetail.description.localized()
             todoExplanationTextArea.textColor = UIColor.lightGray
         }
     }
@@ -388,18 +482,18 @@ extension TodoExplanationViewController : UITextViewDelegate{
     }
     
     fileprivate func detailValidator(_ text: String) {
-        todoExplanationTextAreaLabel.text = String(180 - text.count)
+        todoExplanationTextAreaLabel.text = String(150 - text.count)
         
-        if text.isValid(detailValidityType) && text != "Enter your todo detail"{
+        if text.isValid(detailValidityType) && text != "Enter your todo detail" && text != "Liste detaylarını giriniz"{
             self.todoExplanationTextAreaIcon.image = UIImage(systemName: "checkmark.circle")
             self.todoExplanationTextAreaIcon.tintColor = .systemGreen
-            detailValidationLabel.text = "Everything seems ok."
+            detailValidationLabel.text = LocalizableStrings.validationOkMessage.description.localized()
             detailValidationLabel.textColor = .systemGreen
             isDetailValid = true
         }else{
             self.todoExplanationTextAreaIcon.image = UIImage(systemName: "x.circle")
             self.todoExplanationTextAreaIcon.tintColor = .systemPink
-            detailValidationLabel.text = "The detail must contain at least 8 characters and at most 180 characters."
+            detailValidationLabel.text = LocalizableStrings.validationMessage8and150.description.localized()
             detailValidationLabel.textColor = .systemPink
             isDetailValid = false
         }
@@ -409,7 +503,7 @@ extension TodoExplanationViewController : UITextViewDelegate{
         if (text == "\n") {
           textView.resignFirstResponder()
         }
-        return self.textLimit(existingText: textView.text, newText: text, limit: 180)
+        return self.textLimit(existingText: textView.text, newText: text, limit: 150)
     }
     
     private func textLimit(existingText: String?,
