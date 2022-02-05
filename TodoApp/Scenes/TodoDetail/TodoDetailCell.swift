@@ -48,6 +48,13 @@ class TodoDetailCell: UITableViewCell {
         dateLbl.theme.backgroundColor = themed { $0.dateLblBackgroundColor }
         dateLbl.theme.tintColor = themed { $0.dateLblTintColor }
         avatarLbl.theme.backgroundColor = themed { $0.customViewBackgroundColor }
+        
+        customView.layer.cornerRadius = 20
+        customView.clipsToBounds = false
+        customView.layer.shadowOpacity = 0.2
+        customView.layer.shadowColor = UIColor.black.withAlphaComponent(1.0).cgColor
+        customView.layer.shadowRadius = 5
+        customView.layer.shadowOffset = CGSize(width: 2, height: 1)
     }
 
 }
