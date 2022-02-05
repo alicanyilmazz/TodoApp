@@ -25,12 +25,8 @@ final class TodoListPresenter : TodoListPresenterProtocol{
         interactor.load()
     }
     
-    func selectedTodo(at index: Int) {
-        interactor.selectedTodo(at: index)
-    }
-    
-    func addTodo(todo : String) {
-        interactor.addTodo(todo: todo)
+    func selectedTodo(id: String , title : String) {
+        interactor.selectedTodo(id: id , title: title)
     }
     
     func searchTodo(todo: String) {
@@ -40,14 +36,19 @@ final class TodoListPresenter : TodoListPresenterProtocol{
     func deleteTodo(index: Int) {
         interactor.deleteTodo(index: index)
     }
-    
-    func EditTodo(index: Int, todo: String) {
-        interactor.EditTodo(index: index, todo: todo)
-    }
-    
+
     func removeNotifications(todo: String) {
         interactor.removeNotifications(todo: todo)
     }
+    
+    func addPage(at id : String) {
+        interactor.addPage(at: id)
+    }
+    
+    func editPage(at id : String) {
+        interactor.editPage(at: id)
+    }
+    
 }
 
 extension TodoListPresenter : TodoListInteractorDelegate{
@@ -58,8 +59,10 @@ extension TodoListPresenter : TodoListInteractorDelegate{
         case .showTodoList(let todos):
             let todoPresentation = todos.map(TodoPresentation.init)
             view.handleOutput(.showTodoList(todoPresentation))
-        case .showTodoDetail(let todo):
-            router.navigate(to: .detail(todo))
+        case .showTodoDetail(let id , let title):
+            router.navigate(to: .detailPage(id , title))
+        case .showTodoAddOrUpdate(let todoId , let type):
+            router.navigate(to: .TodoAddOrUpdate(todoId , type))
         }
     }
 }
