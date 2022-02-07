@@ -5,7 +5,7 @@
 
 #### What I used in the project?
 
-> #MVVM #VIPER #Lottie #Swift Package Manager #RxSwift #RxTheme #Custom AlertControllers #Custom Buttons #Custom Snackbar #Custom Floating Buttons #CoreData # Custom Dark And Light Mode #Localization (Turkish and English) #Regex #Local Notifications #Notification Center
+> #MVVM  #VIPER  #Lottie  #Swift Package Manager #RxSwift #RxTheme #Custom AlertControllers #Custom Buttons #Custom Snackbar #Custom Floating Buttons #CoreData # Custom Dark And Light Mode #Localization (Turkish and English) #Regex #Local Notifications #Notification Center
 
 <p>
  
