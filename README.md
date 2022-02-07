@@ -40,15 +40,15 @@
 
 <p>
  
-   <img src="https://user-images.githubusercontent.com/49749125/152654771-b796d2be-ea9e-4faa-9c7b-cabda36d47cc.gif" width="300">
-  <img src="https://user-images.githubusercontent.com/49749125/152654753-ebcdc11f-f63f-4313-af08-a5703970cd10.gif" width="300">
+   <img src="https://user-images.githubusercontent.com/49749125/152654771-b796d2be-ea9e-4faa-9c7b-cabda36d47cc.gif" width="200">
+  <img src="https://user-images.githubusercontent.com/49749125/152654753-ebcdc11f-f63f-4313-af08-a5703970cd10.gif" width="200">
   
  
 </p>
 <p> 
-   <img src="https://user-images.githubusercontent.com/49749125/152654755-4a6beca6-13c5-498d-8ac0-ec7be609e3d2.gif" width="300">
+   <img src="https://user-images.githubusercontent.com/49749125/152654755-4a6beca6-13c5-498d-8ac0-ec7be609e3d2.gif" width="200">
   
-  <img src="https://user-images.githubusercontent.com/49749125/152654757-c2a81491-4fa6-416f-86e6-72a92f3b6eb3.gif" width="300">
+  <img src="https://user-images.githubusercontent.com/49749125/152654757-c2a81491-4fa6-416f-86e6-72a92f3b6eb3.gif" width="200">
   
 
 </p>
