@@ -5,7 +5,7 @@
 
 #### What I used in the project?
 
-> #MVVM  #VIPER  #Lottie  #Swift Package Manager #RxSwift #RxTheme #Custom AlertControllers #Custom Buttons #Custom Snackbar #Custom Floating Buttons #CoreData # Custom Dark And Light Mode #Localization (Turkish and English) #Regex #Local Notifications #Notification Center
+
 
 
 ![1_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/49749125/152654771-b796d2be-ea9e-4faa-9c7b-cabda36d47cc.gif)
